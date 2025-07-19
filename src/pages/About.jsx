@@ -8,6 +8,39 @@ import {
   Smile
 } from "lucide-react";
 
+const skills = [
+  {
+    icon: <Code className="w-5 h-5 text-purple-600 mt-1" />,
+    label: "Languages",
+    text: "Python, PySpark, Java, C, C++, PowerShell, Unix, SQL",
+  },
+  {
+    icon: <Cloud className="w-5 h-5 text-purple-600 mt-1" />,
+    label: "Cloud Services",
+    text: "Azure Data Factory, Azure Databricks, Azure Data Lake, Logic App, Automation Account, Purview, ARM Templates, Terraform, Azure DevOps (YAML), AWS (EC2 & S3)",
+  },
+  {
+    icon: <Database className="w-5 h-5 text-purple-600 mt-1" />,
+    label: "Big Data",
+    text: "Hadoop, Scala, HDFS, Pig, Hive, Kafka, Spark",
+  },
+  {
+    icon: <BarChart className="w-5 h-5 text-purple-600 mt-1" />,
+    label: "Reporting",
+    text: "Power BI, Microsoft Fabric",
+  },
+  {
+    icon: <Wrench className="w-5 h-5 text-purple-600 mt-1" />,
+    label: "Other Tools",
+    text: "HTML, CSS, JS, Spring, Docker, K8s, SonarQube, Eclipse, Hibernate, Maven",
+  },
+  {
+    icon: <Smile className="w-5 h-5 text-purple-600 mt-1" />,
+    label: "Soft Skills",
+    text: "Problem solving, Critical thinking, Adaptability, Communication, AI Prompting",
+  },
+];
+
 export default function About() {
   return (
     <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
@@ -29,55 +62,53 @@ export default function About() {
               💼 Professional Highlights
             </h3>
             <ul className="list-disc pl-6 text-gray-800 dark:text-gray-200 space-y-3">
-              <li>Designed and developed ETL pipelines in ADF migrating terabytes of data from on-premise to Azure, achieving a 99% success rate.</li>
-              <li>Developed PySpark-based data processing solutions handling gigabytes of data daily across multiple formats.</li>
-              <li>Automated Vacuum and Optimize operations on ADB tables, enhancing storage efficiency and boosting table performance by 40%.</li>
-              <li>Reduced manual infrastructure setup time by 85% using ARM templates, Terraform, and Azure DevOps.</li>
-              <li>Implemented a selective deployment feature in the CI/CD pipeline, reducing deployment time and increasing flexibility.</li>
-              <li>Integrated SonarQube and ARMTTK with Azure DevOps to automate code quality checks, reducing manual reviews by 80%.</li>
-              <li>Automated weekly reports for cost, ADF performance, and Databricks metrics using PowerShell and Automation Account.</li>
-              <li>Built real-time Power BI dashboards for SLA tracking and pipeline monitoring.</li>
+              {[
+                "Designed and developed ETL pipelines in ADF migrating terabytes of data from on-premise to Azure, achieving a 99% success rate.",
+                "Developed PySpark-based data processing solutions handling gigabytes of data daily across multiple formats.",
+                "Automated Vacuum and Optimize operations on ADB tables, enhancing storage efficiency and boosting table performance by 40%.",
+                "Reduced manual infrastructure setup time by 85% using ARM templates, Terraform, and Azure DevOps.",
+                "Implemented a selective deployment feature in the CI/CD pipeline, reducing deployment time and increasing flexibility.",
+                "Integrated SonarQube and ARMTTK with Azure DevOps to automate code quality checks, reducing manual reviews by 80%.",
+                "Automated weekly reports for cost, ADF performance, and Databricks metrics using PowerShell and Automation Account.",
+                "Built real-time Power BI dashboards for SLA tracking and pipeline monitoring.",
+              ].map((item, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  {item}
+                </motion.li>
+              ))}
             </ul>
           </motion.div>
 
           {/* Skills */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6"
-          >
+          <div className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6">
             <h3 className="text-2xl font-semibold text-purple-800 dark:text-white mb-4 text-center">
               🛠️ Skills
             </h3>
-            <ul className="text-gray-800 dark:text-gray-200 space-y-3">
-              <li className="flex items-start gap-2">
-                <Code className="w-5 h-5 text-purple-600 mt-1" />
-                <span><strong>Languages:</strong> Python, PySpark, Java, C, C++, PowerShell, Unix, SQL</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Cloud className="w-5 h-5 text-purple-600 mt-1" />
-                <span><strong>Cloud Services:</strong> Azure Data Factory, Azure Databricks, Azure Data Lake, Logic App, Automation Account, Purview, ARM Templates, Terraform, Azure DevOps (YAML), AWS (EC2 & S3)</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Database className="w-5 h-5 text-purple-600 mt-1" />
-                <span><strong>Big Data:</strong> Hadoop, Scala, HDFS, Pig, Hive, Kafka, Spark</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <BarChart className="w-5 h-5 text-purple-600 mt-1" />
-                <span><strong>Reporting:</strong> Power BI, Microsoft Fabric</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Wrench className="w-5 h-5 text-purple-600 mt-1" />
-                <span><strong>Other Tools:</strong> HTML, CSS, JS, Spring, Docker, K8s, SonarQube, Eclipse, Hibernate, Maven</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Smile className="w-5 h-5 text-purple-600 mt-1" />
-                <span><strong>Soft Skills:</strong> Problem solving, Critical thinking, Adaptability, Communication, AI Prompting</span>
-              </li>
+          
+            <ul className="space-y-3 text-gray-800 dark:text-gray-200">
+              {skills.map((skill, index) => (
+                <motion.li
+                  key={index}
+                  className="flex items-start gap-2"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  {skill.icon}
+                  <span>
+                    <strong>{skill.label}:</strong> {skill.text}
+                  </span>
+                </motion.li>
+              ))}
             </ul>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
