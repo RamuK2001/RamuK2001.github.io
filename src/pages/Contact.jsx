@@ -1,32 +1,61 @@
 export default function Contact() {
   return (
-    <section className="p-10 max-w-2xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6">Contact Me</h2>
+    <section className="p-10 max-w-2xl mx-auto bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl shadow">
+      <h2 className="text-2xl font-bold text-blue-900 mb-6">Contact Me</h2>
+
       <form
         action="https://formspree.io/f/mjkokndo"
         method="POST"
         className="space-y-4"
       >
+        {/* Honeypot for spam protection */}
+        <input type="text" name="_gotcha" style={{ display: "none" }} />
+
         <div>
-          <label className="block text-sm font-medium">Name</label>
-          <input type="text" name="name" required className="w-full border px-3 py-2 rounded" />
+          <label className="block text-sm font-medium text-gray-800">Name</label>
+          <input
+            type="text"
+            name="name"
+            required
+            className="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
+          />
         </div>
+
         <div>
-          <label className="block text-sm font-medium">Email</label>
-          <input type="email" name="email" required className="w-full border px-3 py-2 rounded" />
+          <label className="block text-sm font-medium text-gray-800">Email</label>
+          <input
+            type="email"
+            name="email"
+            required
+            className="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
+          />
         </div>
+
         <div>
-          <label className="block text-sm font-medium">Message</label>
-          <textarea name="message" rows="4" required className="w-full border px-3 py-2 rounded"></textarea>
+          <label className="block text-sm font-medium text-gray-800">Message</label>
+          <textarea
+            name="message"
+            rows="5"
+            required
+            className="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-purple-400"
+          ></textarea>
         </div>
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+
+        <button
+          type="submit"
+          className="bg-purple-600 text-white px-5 py-2 rounded hover:bg-purple-700 transition duration-200"
+        >
           Send Message
         </button>
       </form>
 
       <div className="mt-10">
-        <h3 className="text-xl font-semibold mb-2">Resume</h3>
-        <a href="/resume.pdf" download className="text-blue-600 hover:underline">
+        <h3 className="text-xl font-semibold text-blue-800 mb-2">Resume</h3>
+        <a
+          href="/resume.pdf"
+          download
+          className="text-blue-700 underline hover:text-blue-900"
+        >
           Download My Resume (PDF)
         </a>
       </div>
