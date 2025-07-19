@@ -58,7 +58,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6"
           >
-            <h3 className="text-2xl font-semibold text-purple-800 dark:text-white mb-4 text-center">
+            <h3 className="text-2xl font-semibold text-purple-800 dark:text-white mb-6 text-center">
               💼 Professional Highlights
             </h3>
             <ul className="list-disc pl-6 text-gray-800 dark:text-gray-200 space-y-3">
@@ -93,7 +93,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="bg-white/60 dark:bg-white/10 ..."
           >
-            <h3 className="text-2xl font-semibold text-purple-800 dark:text-white mb-4 text-center">
+            <h3 className="text-2xl font-semibold text-purple-800 dark:text-white mb-6 text-center">
               🛠️ Skills
             </h3>
           
