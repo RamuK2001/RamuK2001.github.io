@@ -91,7 +91,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white/60 dark:bg-white/10 ..."
+            className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6"
           >
             <h3 className="text-2xl font-semibold text-purple-800 dark:text-white mb-6 text-center">
               🛠️ Skills
@@ -101,7 +101,6 @@ export default function About() {
               {skills.map((skill, index) => (
                 <motion.li
                   key={index}
-                  className="flex items-start gap-2"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
