@@ -17,7 +17,7 @@ export default function About() {
         </ul>
 
         <h3 className="text-2xl font-semibold text-purple-700 dark:text-purple-300 mt-10 mb-4 text-center">
-          🛠️ Skills
+          🛠️ Technical Skills
         </h3>
         <ul className="list-disc pl-6 text-gray-800 dark:text-gray-200 space-y-2">
           <li><strong>Languages:</strong> Python, PySpark, Java, C, C++, PowerShell, Unix, SQL</li>
