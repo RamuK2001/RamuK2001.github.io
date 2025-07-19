@@ -37,7 +37,7 @@ const skills = [
   {
     icon: <Smile className="w-5 h-5 text-purple-600 mt-1" />,
     label: "Soft Skills",
-    text: "Problem solving, Critical thinking, Adaptability, Communication, AI Prompting",
+    text: "Problem solving, Critical thinking, Adaptability, Quick learning ability, Attention to detail, Googling, AI Prompting",
   },
 ];
 
