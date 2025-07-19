@@ -86,7 +86,13 @@ export default function About() {
           </motion.div>
 
           {/* Skills */}
-          <div className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white/60 dark:bg-white/10 ..."
+          >
             <h3 className="text-2xl font-semibold text-purple-800 dark:text-white mb-4 text-center">
               🛠️ Skills
             </h3>
@@ -108,7 +114,7 @@ export default function About() {
                 </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
