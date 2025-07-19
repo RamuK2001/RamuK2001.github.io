@@ -9,18 +9,25 @@ const experienceData = [
     projects: [
       {
         title: "Azure DevOps and Data Migration",
-        description:
-          "Built robust YAML pipelines with SonarQube integration, deploying 150+ artifacts in under 5 minutes. Reduced manual effort by 90%.",
+        description: [
+          "Built robust YAML pipelines with SonarQube integration.",
+          "Deployed 150+ artifacts in under 5 minutes.",
+          "Reduced manual effort by 90%.",
+        ],
       },
       {
         title: "Data Warehousing and Data Engineering",
-        description:
-          "Developed PySpark-based ingestion pipelines for gigabyte-scale SAP/Salesforce/SFTP data into Delta Lake.",
+        description: [
+          "Developed PySpark ingestion pipelines for SAP, Salesforce, and SFTP.",
+          "Processed gigabyte-scale data into Delta Lake.",
+        ],
       },
       {
-        title: "Data Modelling and Data Engineering",
-        description:
-          "Implemented OpenAI hybrid models to classify 2.5B records with 90% accuracy using ADF and Databricks.",
+        title: "Data Modelling and Engineering",
+        description: [
+          "Implemented OpenAI hybrid models in ADF + Databricks.",
+          "Classified 2.5B records with 90% accuracy.",
+        ],
       },
     ],
   },
@@ -30,8 +37,10 @@ const experienceData = [
     projects: [
       {
         title: "Student Attendance Management System",
-        description:
-          "Created personal React + Vite portfolio with dark mode, animations, resume download, and form integrations.",
+        description: [
+          "Designed and built a React + Vite app with dark mode.",
+          "Integrated animations, formspree contact, and resume download.",
+        ],
       },
     ],
   },
@@ -59,8 +68,12 @@ export default function Experience() {
           const isOpen = openIndexes.includes(index);
 
           return (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
               className="mb-6 bg-white/60 dark:bg-white/10 backdrop-blur-md shadow-md rounded-xl p-5"
             >
               <button
@@ -95,23 +108,29 @@ export default function Experience() {
                   >
                     <ul className="space-y-4">
                       {exp.projects.map((proj, projIndex) => (
-                        <li
+                        <motion.li
                           key={projIndex}
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: projIndex * 0.1, duration: 0.4 }}
                           className="bg-white dark:bg-gray-900/40 p-4 rounded-md border border-purple-200 dark:border-purple-600 shadow-sm"
                         >
-                          <h4 className="text-lg font-semibold text-purple-700 dark:text-purple-300">
+                          <h4 className="text-lg font-semibold text-purple-700 dark:text-purple-300 mb-2">
                             {proj.title}
                           </h4>
-                          <p className="text-gray-700 dark:text-gray-200 text-sm mt-1">
-                            {proj.description}
-                          </p>
-                        </li>
+                          <ul className="list-disc pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-1">
+                            {proj.description.map((point, i) => (
+                              <li key={i}>{point}</li>
+                            ))}
+                          </ul>
+                        </motion.li>
                       ))}
                     </ul>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </motion.div>
           );
         })}
       </div>
