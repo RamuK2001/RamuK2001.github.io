@@ -49,17 +49,6 @@ export default function Contact() {
             Send Message
           </button>
         </form>
-
-        <div className="mt-10 text-center">
-          <h3 className="text-xl font-semibold text-blue-800 mb-2">Resume</h3>
-          <a
-            href="/resume.pdf"
-            download
-            className="text-blue-700 underline hover:text-blue-900"
-          >
-            Download My Resume (PDF)
-          </a>
-        </div>
       </div>
     </section>
   );
