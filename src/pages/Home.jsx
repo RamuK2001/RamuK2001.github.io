@@ -4,7 +4,8 @@ import {
   CheckCircle,
   ThumbsUp,
   Star,
-  ShieldCheck
+  ShieldCheck,
+  FileDown
 } from "lucide-react";
 
 export default function Home() {
@@ -63,6 +64,14 @@ export default function Home() {
             </motion.div>
           ))}
         </div>
+        <a
+          href="/resume.pdf"
+          download
+          className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-purple-700 transform hover:scale-105 transition-all duration-300"
+        >
+          <FileDown className="w-5 h-5" />
+          Download My Resume
+        </a>
       </section>
     </>
   );
