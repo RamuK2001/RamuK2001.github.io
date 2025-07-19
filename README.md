@@ -26,18 +26,23 @@ You can deploy this project using GitHub Pages, Vercel, or Netlify.
 
 ## 🔧 Installation & Setup
 
-1. **Clone the repository** (or unzip the provided folder)
-2. Navigate into the project directory:
+1. Download latest Node.js Windows installer (.msi) from [here](https://nodejs.org/en/download).
+2. Install vite:
+   ```bash
+   npm install -D vite
+   ```
+4. **Clone the repository** (or unzip the provided folder)
+5. Navigate into the project directory:
    ```bash
    cd ramakrishna-portfolio
    ```
-3. **Install dependencies**:
+6. **Install dependencies**:
    ```bash
    npm install
    ```
-4. **Start the development server**:
+7. **Start the development server**:
    ```bash
-   npm run dev
+   npm run build
    ```
 
 ## 🛠 Built With
