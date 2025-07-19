@@ -116,7 +116,7 @@ export default function About() {
                         {skill.text.split(',').map((tech, i) => (
                           <span
                             key={i}
-                            className="text-sm px-3 py-1 bg-purple-100 text-purple-800 dark:bg-purple-700/30 dark:text-purple-200 rounded-full"
+                            className="text-sm px-3 py-1 bg-blue-200 text-blue-900 dark:bg-blue-700/40 dark:text-blue-100 rounded-full shadow-sm"
                           >
                             {tech.trim()}
                           </span>
