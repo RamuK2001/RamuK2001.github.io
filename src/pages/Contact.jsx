@@ -1,3 +1,5 @@
+import { Mail, Phone, Linkedin, Github, MapPin } from 'lucide-react';
+
 export default function Contact() {
   return (
     <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100">
@@ -49,6 +51,52 @@ export default function Contact() {
             Send Message
           </button>
         </form>
+
+        {/* Contact Details */}
+        <div className="mt-10 bg-white/50 backdrop-blur-md p-6 rounded-lg text-gray-800 space-y-4 shadow">
+          <h3 className="text-xl font-semibold text-purple-900 mb-4 text-center">📞 Contact Details</h3>
+
+          <div className="flex items-center gap-3">
+            <Phone className="text-purple-600" />
+            <span>+91 7207000030</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Mail className="text-purple-600" />
+            <a href="mailto:ramukarnati2001@gmail.com" className="text-blue-700 hover:underline">
+              ramukarnati2001@gmail.com
+            </a>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Linkedin className="text-purple-600" />
+            <a
+              href="https://linkedin.com/in/ramakrishna-karnati-899066170"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-700 hover:underline"
+            >
+              LinkedIn Profile
+            </a>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Github className="text-purple-600" />
+            <a
+              href="https://github.com/RamuK2001"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-700 hover:underline"
+            >
+              GitHub Profile
+            </a>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <MapPin className="text-purple-600" />
+            <span>Hyderabad, India</span>
+          </div>
+        </div>
       </div>
     </section>
   );
