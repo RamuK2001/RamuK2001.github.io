@@ -97,22 +97,36 @@ export default function About() {
               🛠️ Skills
             </h3>
           
-            <ul className="space-y-3 text-gray-800 dark:text-gray-200">
+            <div className="space-y-6">
               {skills.map((skill, index) => (
-                <motion.li
+                <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  {skill.icon}
-                  <span>
-                    <strong>{skill.label}:</strong> {skill.text}
-                  </span>
-                </motion.li>
+                  <div className="flex items-start gap-3">
+                    <div className="mt-1">{skill.icon}</div>
+                    <div>
+                      <h4 className="font-semibold text-purple-700 dark:text-purple-300 mb-1">
+                        {skill.label}
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {skill.text.split(',').map((tech, i) => (
+                          <span
+                            key={i}
+                            className="text-sm px-3 py-1 bg-purple-100 text-purple-800 dark:bg-purple-700/30 dark:text-purple-200 rounded-full"
+                          >
+                            {tech.trim()}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               ))}
-            </ul>
+            </div>
           </motion.div>
         </div>
       </div>
