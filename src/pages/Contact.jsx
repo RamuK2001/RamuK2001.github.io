@@ -3,7 +3,7 @@ export default function Contact() {
     <section className="p-10 max-w-2xl mx-auto">
       <h2 className="text-2xl font-bold mb-6">Contact Me</h2>
       <form
-        action="https://formspree.io/f/moqgyjvw"
+        action="https://formspree.io/f/mjkokndo"
         method="POST"
         className="space-y-4"
       >
