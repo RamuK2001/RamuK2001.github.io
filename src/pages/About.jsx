@@ -1,3 +1,13 @@
+import { motion } from "framer-motion";
+import {
+  Code,
+  Cloud,
+  Database,
+  BarChart,
+  Wrench,
+  Smile
+} from "lucide-react";
+
 export default function About() {
   return (
     <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
@@ -8,7 +18,13 @@ export default function About() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Professional Highlights */}
-          <div className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6"
+          >
             <h3 className="text-2xl font-semibold text-purple-800 dark:text-white mb-4 text-center">
               💼 Professional Highlights
             </h3>
@@ -22,22 +38,46 @@ export default function About() {
               <li>Automated weekly reports for cost, ADF performance, and Databricks metrics using PowerShell and Automation Account.</li>
               <li>Built real-time Power BI dashboards for SLA tracking and pipeline monitoring.</li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Skills */}
-          <div className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md p-6"
+          >
             <h3 className="text-2xl font-semibold text-purple-800 dark:text-white mb-4 text-center">
               🛠️ Skills
             </h3>
-            <ul className="list-disc pl-6 text-gray-800 dark:text-gray-200 space-y-2">
-              <li><strong>Languages:</strong> Python, PySpark, Java, C, C++, PowerShell, Unix, SQL</li>
-              <li><strong>Cloud Services:</strong> Azure Data Factory, Azure Databricks, Azure Data Lake, Logic App, Automation Account, Purview, ARM Templates, Terraform, Azure DevOps (YAML), AWS (EC2 & S3)</li>
-              <li><strong>Big Data:</strong> Hadoop, Scala, HDFS, Pig, Hive, Kafka, Spark</li>
-              <li><strong>Reporting:</strong> Power BI, Microsoft Fabric</li>
-              <li><strong>Other Tools:</strong> HTML, CSS, JS, Spring, Docker, K8s, SonarQube, Eclipse, Hibernate, Maven</li>
-              <li><strong>Soft Skills:</strong> Problem solving, Critical thinking, Adaptability, Communication, AI Prompting</li>
+            <ul className="text-gray-800 dark:text-gray-200 space-y-3">
+              <li className="flex items-start gap-2">
+                <Code className="w-5 h-5 text-purple-600 mt-1" />
+                <span><strong>Languages:</strong> Python, PySpark, Java, C, C++, PowerShell, Unix, SQL</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Cloud className="w-5 h-5 text-purple-600 mt-1" />
+                <span><strong>Cloud Services:</strong> Azure Data Factory, Azure Databricks, Azure Data Lake, Logic App, Automation Account, Purview, ARM Templates, Terraform, Azure DevOps (YAML), AWS (EC2 & S3)</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Database className="w-5 h-5 text-purple-600 mt-1" />
+                <span><strong>Big Data:</strong> Hadoop, Scala, HDFS, Pig, Hive, Kafka, Spark</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <BarChart className="w-5 h-5 text-purple-600 mt-1" />
+                <span><strong>Reporting:</strong> Power BI, Microsoft Fabric</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Wrench className="w-5 h-5 text-purple-600 mt-1" />
+                <span><strong>Other Tools:</strong> HTML, CSS, JS, Spring, Docker, K8s, SonarQube, Eclipse, Hibernate, Maven</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Smile className="w-5 h-5 text-purple-600 mt-1" />
+                <span><strong>Soft Skills:</strong> Problem solving, Critical thinking, Adaptability, Communication, AI Prompting</span>
+              </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
