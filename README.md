@@ -30,6 +30,8 @@ You can deploy this project using GitHub Pages, Vercel, or Netlify.
 2. Install vite:
    ```bash
    npm install -D vite
+   npm install framer-motion
+   npm install lucide-react
    ```
 4. **Clone the repository** (or unzip the provided folder)
 5. Navigate into the project directory:
