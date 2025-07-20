@@ -36,7 +36,7 @@ You can deploy this project using GitHub Pages, Vercel, or Netlify.
 4. **Clone the repository** (or unzip the provided folder)
 5. Navigate into the project directory:
    ```bash
-   cd ramakrishna-portfolio
+   cd <directory_name>
    ```
 6. **Install dependencies**:
    ```bash
