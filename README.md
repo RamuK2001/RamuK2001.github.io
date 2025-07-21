@@ -52,7 +52,6 @@ You can deploy this project using GitHub Pages, Vercel, or Netlify.
    ```bash
    npm run build
    ```
-8. **Push the changes to Repository which will trigger the deployment to the GitHub Pages**
 
 ## 🛠 Built With
 
