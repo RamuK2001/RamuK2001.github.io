@@ -11,6 +11,7 @@ You can deploy this project using GitHub Pages, Vercel, or Netlify.
 ```
 ├── index.html
 ├── package.json
+├── package-lock.json
 ├── postcss.config.js
 ├── tailwind.config.js
 ├── vite.config.js
@@ -18,10 +19,15 @@ You can deploy this project using GitHub Pages, Vercel, or Netlify.
 │   ├── App.jsx
 │   ├── main.jsx
 │   ├── index.css
+│   ├── components/
+│       ├── Navbar.jsx
+│       └── ThemeToggle.jsx
 │   └── pages/
 │       ├── Home.jsx
 │       ├── About.jsx
-│       └── Projects.jsx
+│       ├── Contact.jsx
+│       ├── Certifications.jsx
+│       └── Experience.jsx
 ```
 
 ## 🔧 Installation & Setup
@@ -46,6 +52,7 @@ You can deploy this project using GitHub Pages, Vercel, or Netlify.
    ```bash
    npm run build
    ```
+8. **Push the changes to Repository which will trigger the deployment to the GitHub Pages**
 
 ## 🛠 Built With
 
