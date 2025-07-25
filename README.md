@@ -17,7 +17,7 @@ You can deploy this project using GitHub Pages, Vercel, or Netlify.
 ├── vite.config.js
 ├── public/
 │   ├── Portfolio_Home.png
-│   └── Resume.pdf
+│   └── resume.pdf
 ├── src/
 │   ├── App.jsx
 │   ├── main.jsx
