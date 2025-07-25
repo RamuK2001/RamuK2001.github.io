@@ -54,7 +54,7 @@ export default function Home() {
               Cloud Data Engineer | Infra to Insights
             </h2>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              Results-driven Full-Stack Azure Data Engineer with 3+ years of experience in ETL Development, Azure DevOps Automation, and Power BI Visualization. Adept at designing and implementing end-to-end Azure-based data solutions, developing CI/CD pipelines, and driving cost-efficient cloud operations. Brings full-stack expertise across the data lifecycle—from ingestion and transformation to orchestration, automation, and visualization. Proficient in Azure Databricks (ADB), Azure Data Factory (ADF), Azure DevOps, Power BI, and Fabric.
+              Results-driven Full-Stack Azure Data Engineer with 3+ years of experience in Azure Infra & ETL Development, Azure DevOps Automation, and Power BI Visualization. Adept at designing and implementing end-to-end Azure-based data solutions, developing CI/CD pipelines, and driving cost-efficient cloud operations.
             </p>
             <div className="mt-6">
               <a
