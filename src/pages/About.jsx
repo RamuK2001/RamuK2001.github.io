@@ -82,20 +82,20 @@ export default function About() {
                 <>
                   Automated{" "}
                   <span className="font-semibold text-purple-700 dark:text-purple-400">Vacuum</span> and{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">Optimize</span> ops on ADB tables, improving{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">Optimize</span> operations on ADB tables, improving table read/write{" "}
                   <span className="font-semibold text-green-700 dark:text-green-400">performance by 40%</span>.
                 </>,
                 <>
-                  Reduced manual infra setup time by{" "}
-                  <span className="font-semibold text-green-700 dark:text-green-400">85%</span> using{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">ARM templates</span>,{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">Terraform</span>, and{" "}
+                  Reduced cloud infrastructure setup time by{" "}
+                  <span className="font-semibold text-green-700 dark:text-green-400">85%</span> using IaC (Infrastructure as Code) developed using{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">ARM templates</span> and{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">Terraform</span> and deployed through{" "}
                   <span className="font-semibold text-blue-700 dark:text-blue-400">Azure DevOps</span>.
                 </>,
                 <>
                   Implemented{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">selective deployment</span> in the{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">CI/CD pipeline</span>, improving speed & flexibility.
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">selective deployment</span> feature in the{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">CI/CD pipeline</span>, enabling targeted artifact deployment and improving speed & flexibility.
                 </>,
                 <>
                   Integrated{" "}
@@ -107,15 +107,16 @@ export default function About() {
                 </>,
                 <>
                   Automated weekly{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">cost & performance reports</span> using{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">cost, ADF & ADB performance reports, and ADB cluster usage metrics</span> extraction using{" "}
                   <span className="font-semibold text-blue-700 dark:text-blue-400">PowerShell</span> and{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">Azure Automation Account</span>.
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">Azure Automation Account</span>, reducing{" "}
+                  <span className="font-semibold text-green-700 dark:text-green-400">manual effort by 95%</span>.
                 </>,
                 <>
-                  Built real-time{" "}
+                  Built near real-time{" "}
                   <span className="font-semibold text-blue-700 dark:text-blue-400">Power BI dashboards</span> for{" "}
                   <span className="font-semibold text-purple-700 dark:text-purple-400">SLA tracking</span> and{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">pipeline monitoring</span>.
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">job monitoring</span>, improving performance insights.
                 </>
               ].map((item, index) => (
                 <motion.li
