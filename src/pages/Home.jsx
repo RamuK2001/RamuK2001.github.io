@@ -58,14 +58,23 @@ export default function Home() {
             </div>
           </div>
       
-          {/* Right: Image */}
-          <div className="md:w-1/2">
+          {/* Right: Animated Image with Caption */}
+          <motion.div
+            className="md:w-1/2 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <img
               src="/Portfolio_Home.png"
               alt="Infra to Insights Illustration"
               className="rounded-xl shadow-lg w-full max-w-md mx-auto"
             />
-          </div>
+            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+              Visualizing the full-stack expertise across the data lifecycle — from infrastructure to actionable insights.
+            </p>
+          </motion.div>
         </div>
       </section>
 
