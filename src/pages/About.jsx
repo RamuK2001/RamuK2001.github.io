@@ -63,8 +63,8 @@ export default function About() {
             </h3>
             <ul className="list-disc pl-6 text-gray-800 dark:text-gray-200 space-y-3">
               {[
-                "Designed and developed ETL pipelines in ADF migrating terabytes of data from on-premise to Azure, achieving a 99% success rate.",
-                "Developed PySpark-based data processing solutions handling gigabytes of data daily across multiple formats.",
+                "Designed and developed ETL pipelines in Azure Data Factory (ADF) migrating terabytes of data from various sources such as SAP, Salesforce, on-premise databases, etc., to Azure, achieving a 99% success rate.",
+                "Developed PySpark-based data processing solutions in Azure Databricks (ADB) Jobs & Pipelines handling gigabytes of data daily across multiple formats like CSV, Excel, XML, and Parquet.",
                 "Automated Vacuum and Optimize operations on ADB tables, enhancing storage efficiency and boosting table performance by 40%.",
                 "Reduced manual infrastructure setup time by 85% using ARM templates, Terraform, and Azure DevOps.",
                 "Implemented a selective deployment feature in the CI/CD pipeline, reducing deployment time and increasing flexibility.",
