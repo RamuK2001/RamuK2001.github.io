@@ -82,7 +82,7 @@ export default function Home() {
               className="rounded-xl shadow-lg w-full max-w-md mx-auto"
             />
             <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
-              Visualizing the full-stack expertise across the data lifecycle — from infrastructure to actionable insights.
+              Overall technical expertise summarized in a picture.
             </p>
           </motion.div>
         </div>
