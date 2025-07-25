@@ -35,22 +35,37 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="p-10 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-gray-900 dark:to-gray-800 min-h-[60vh] text-center">
-        <h2 className="text-4xl font-bold text-blue-900 dark:text-white mb-4">
-          Cloud Data Engineer | Infra to Insights
-        </h2>
-        <p className="text-lg max-w-2xl mx-auto text-gray-700 dark:text-gray-300">
-          Results-driven Full-Stack Azure Data Engineer with 3+ years of experience in ETL Development, Azure DevOps Automation, and PowerBI Visualization. Adept at designing and implementing end-to-end Azure-based data solutions, developing CI/CD pipelines, and driving cost-efficient cloud operations. Brings full-stack expertise across the data lifecycle—from ingestion and transformation to orchestration, automation, and visualization. Proficient in Azure Databricks (ADB), Azure Data Factory (ADF), Azure DevOps, Power BI, and Fabric.
-        </p>
-        <div className="mt-6 mb-12">
-          <a
-            href="/resume.pdf"
-            download
-            className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-purple-700 transform hover:scale-105 transition-all duration-300"
-          >
-            <FileDown className="w-5 h-5" />
-            Download My Resume
-          </a>
+      <section className="p-10 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-gray-900 dark:to-gray-800 min-h-[70vh]">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
+          
+          {/* Left: Summary Text */}
+          <div className="md:w-1/2 text-center md:text-left">
+            <h2 className="text-4xl font-bold text-blue-900 dark:text-white mb-4">
+              Cloud Data Engineer | Infra to Insights
+            </h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300">
+              Results-driven Full-Stack Azure Data Engineer with 3+ years of experience in ETL Development, Azure DevOps Automation, and Power BI Visualization. Adept at designing and implementing end-to-end Azure-based data solutions, developing CI/CD pipelines, and driving cost-efficient cloud operations. Brings full-stack expertise across the data lifecycle—from ingestion and transformation to orchestration, automation, and visualization. Proficient in Azure Databricks (ADB), Azure Data Factory (ADF), Azure DevOps, Power BI, and Fabric.
+            </p>
+            <div className="mt-6">
+              <a
+                href="/resume.pdf"
+                download
+                className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-purple-700 transform hover:scale-105 transition-all duration-300"
+              >
+                <FileDown className="w-5 h-5" />
+                Download My Resume
+              </a>
+            </div>
+          </div>
+      
+          {/* Right: Image */}
+          <div className="md:w-1/2">
+            <img
+              src="/Portfolio_Home.png"
+              alt="Infra to Insights Illustration"
+              className="rounded-xl shadow-lg w-full max-w-md mx-auto"
+            />
+          </div>
         </div>
       </section>
 
