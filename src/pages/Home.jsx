@@ -1,34 +1,39 @@
 import { motion } from "framer-motion";
 import {
-  Award,
-  CheckCircle,
+  FileDown,
   ThumbsUp,
+  CheckCircle,
   Star,
+  Award,
   ShieldCheck,
-  FileDown
 } from "lucide-react";
 
 export default function Home() {
   const achievements = [
     {
       icon: <ThumbsUp className="text-purple-600 w-6 h-6" />,
-      text: "Earned a formal appreciation (individual) from the client for resolving a critical incident during a crucial month-end business closure outside the scope of the project and my usual work hours.",
+      text:
+        "Earned a formal appreciation (individual) from the client for resolving a critical incident during a crucial month-end business closure outside the scope of the project and my usual work hours.",
     },
     {
       icon: <CheckCircle className="text-purple-600 w-6 h-6" />,
-      text: "Received formal client appreciation (individual) for delivering exceptional support on a separate project, particularly for seamlessly automating CI/CD deployments.",
+      text:
+        "Received formal client appreciation (individual) for delivering exceptional support on a separate project, particularly for seamlessly automating CI/CD deployments.",
     },
     {
       icon: <Star className="text-yellow-500 w-6 h-6" />,
-      text: 'Consistently recognized with “Rise Insta” awards for exceptional performance every quarter.',
+      text:
+        'Consistently recognized with “Rise Insta” awards for exceptional performance every quarter.',
     },
     {
       icon: <Award className="text-pink-500 w-6 h-6" />,
-      text: 'Awarded with the “Business Ninja Award” in recognition of remarkable contributions and outstanding achievements.',
+      text:
+        'Awarded with the “Business Ninja Award” in recognition of remarkable contributions and outstanding achievements.',
     },
     {
       icon: <ShieldCheck className="text-green-600 w-6 h-6" />,
-      text: 'Achieved the “Outstanding” rating twice in year-end performance appraisals, reflecting exceptional contributions.',
+      text:
+        'Achieved the “Outstanding” rating twice in year-end performance appraisals, reflecting exceptional contributions.',
     },
   ];
 
@@ -37,9 +42,14 @@ export default function Home() {
       {/* Hero Section */}
       <section className="p-10 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-gray-900 dark:to-gray-800 min-h-[70vh]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
-          
           {/* Left: Summary Text */}
-          <div className="md:w-1/2 text-center md:text-left">
+          <motion.div
+            className="md:w-1/2 text-center md:text-left"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-4xl font-bold text-blue-900 dark:text-white mb-4">
               Cloud Data Engineer | Infra to Insights
             </h2>
@@ -56,15 +66,15 @@ export default function Home() {
                 Download My Resume
               </a>
             </div>
-          </div>
-      
-          {/* Right: Animated Image with Caption */}
+          </motion.div>
+
+          {/* Right: Animated Image with Slide-in */}
           <motion.div
             className="md:w-1/2 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
           >
             <img
               src="/Portfolio_Home.png"
