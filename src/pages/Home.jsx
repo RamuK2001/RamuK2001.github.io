@@ -99,9 +99,10 @@ export default function Home() {
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * index, duration: 0.6 }}
-              className="bg-white dark:bg-gray-900 shadow-md rounded-lg p-5 flex items-start space-x-4 border border-purple-200 dark:border-gray-700"
+              viewport={{ once: true }}
+              className="..."
             >
               <div>{item.icon}</div>
               <p className="text-gray-700 dark:text-gray-300">{item.text}</p>
