@@ -15,6 +15,9 @@ You can deploy this project using GitHub Pages, Vercel, or Netlify.
 ├── postcss.config.js
 ├── tailwind.config.js
 ├── vite.config.js
+├── public/
+│   ├── Portfolio_Home.png
+│   └── Resume.pdf
 ├── src/
 │   ├── App.jsx
 │   ├── main.jsx
