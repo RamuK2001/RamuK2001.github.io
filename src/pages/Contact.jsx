@@ -1,4 +1,5 @@
-import { Mail, Phone, Linkedin, Github, MapPin } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
@@ -10,16 +11,21 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           {/* Contact Form */}
-          <form
+          <motion.form
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
             action="https://formspree.io/f/mjkokndo"
             method="POST"
             className="space-y-6 bg-white/50 dark:bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-md"
           >
-            {/* Honeypot for spam protection */}
             <input type="text" name="_gotcha" style={{ display: "none" }} />
 
             <div>
-              <label className="block text-sm font-medium text-gray-800 dark:text-gray-200">Name</label>
+              <label className="block text-sm font-medium text-gray-800 dark:text-gray-200">
+                Name
+              </label>
               <input
                 type="text"
                 name="name"
@@ -29,7 +35,9 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-800 dark:text-gray-200">Email</label>
+              <label className="block text-sm font-medium text-gray-800 dark:text-gray-200">
+                Email
+              </label>
               <input
                 type="email"
                 name="email"
@@ -39,7 +47,9 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-800 dark:text-gray-200">Message</label>
+              <label className="block text-sm font-medium text-gray-800 dark:text-gray-200">
+                Message
+              </label>
               <textarea
                 name="message"
                 rows="5"
@@ -54,10 +64,16 @@ export default function Contact() {
             >
               Send Message
             </button>
-          </form>
+          </motion.form>
 
           {/* Contact Info */}
-          <div className="bg-white/50 dark:bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-md text-gray-800 dark:text-gray-200 space-y-5">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="bg-white/50 dark:bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-md text-gray-800 dark:text-gray-200 space-y-5"
+          >
             <h3 className="text-xl font-semibold text-purple-900 dark:text-white text-center">
               📞 Contact Details
             </h3>
@@ -110,7 +126,7 @@ export default function Contact() {
               <MapPin className="text-purple-600" />
               <span>Hyderabad, India</span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
