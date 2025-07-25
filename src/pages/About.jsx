@@ -63,14 +63,60 @@ export default function About() {
             </h3>
             <ul className="list-disc pl-6 text-gray-800 dark:text-gray-200 space-y-3">
               {[
-                "Designed and developed ETL pipelines in Azure Data Factory (ADF) migrating terabytes of data from various sources such as SAP, Salesforce, on-premise databases, etc., to Azure, achieving a 99% success rate.",
-                "Developed PySpark-based data processing solutions in Azure Databricks (ADB) Jobs & Pipelines handling gigabytes of data daily across multiple formats like CSV, Excel, XML, and Parquet.",
-                "Automated Vacuum and Optimize operations on ADB tables, enhancing storage efficiency and boosting table performance by 40%.",
-                "Reduced manual infrastructure setup time by 85% using ARM templates, Terraform, and Azure DevOps.",
-                "Implemented a selective deployment feature in the CI/CD pipeline, reducing deployment time and increasing flexibility.",
-                "Integrated SonarQube and ARMTTK with Azure DevOps to automate code quality checks, reducing manual reviews by 80%.",
-                "Automated weekly reports for cost, ADF performance, and Databricks metrics using PowerShell and Automation Account.",
-                "Built real-time Power BI dashboards for SLA tracking and pipeline monitoring.",
+                <>
+                  Designed and developed{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">ETL pipelines</span> in{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">Azure Data Factory (ADF)</span>{" "}
+                  migrating <span className="font-semibold text-pink-700 dark:text-pink-400">terabytes of data</span> from sources like{" "}
+                  <span className="italic">SAP, Salesforce, on-premise DBs</span> to Azure, achieving a{" "}
+                  <span className="font-semibold text-green-700 dark:text-green-400">99% success rate</span>.
+                </>,
+                <>
+                  Developed{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">PySpark-based</span> processing in{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">Azure Databricks (ADB)</span>{" "}
+                  Jobs & Pipelines handling{" "}
+                  <span className="font-semibold text-pink-700 dark:text-pink-400">gigabytes of data</span> across formats like{" "}
+                  <span className="italic">CSV, Excel, XML, Parquet</span>.
+                </>,
+                <>
+                  Automated{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">Vacuum</span> and{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">Optimize</span> ops on ADB tables, improving{" "}
+                  <span className="font-semibold text-green-700 dark:text-green-400">performance by 40%</span>.
+                </>,
+                <>
+                  Reduced manual infra setup time by{" "}
+                  <span className="font-semibold text-green-700 dark:text-green-400">85%</span> using{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">ARM templates</span>,{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">Terraform</span>, and{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">Azure DevOps</span>.
+                </>,
+                <>
+                  Implemented{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">selective deployment</span> in the{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">CI/CD pipeline</span>, improving speed & flexibility.
+                </>,
+                <>
+                  Integrated{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">SonarQube</span> and{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">ARMTTK</span> with{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">Azure DevOps</span> for automating{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">code quality checks</span>, saving{" "}
+                  <span className="font-semibold text-green-700 dark:text-green-400">80% review effort</span>.
+                </>,
+                <>
+                  Automated weekly{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">cost & performance reports</span> using{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">PowerShell</span> and{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">Azure Automation Account</span>.
+                </>,
+                <>
+                  Built real-time{" "}
+                  <span className="font-semibold text-blue-700 dark:text-blue-400">Power BI dashboards</span> for{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">SLA tracking</span> and{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">pipeline monitoring</span>.
+                </>
               ].map((item, index) => (
                 <motion.li
                   key={index}
