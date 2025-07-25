@@ -80,6 +80,19 @@ export default function About() {
                   <span className="italic">CSV, Excel, XML, Parquet</span>.
                 </>,
                 <>
+                  Expert in developing complex{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">SQL queries</span> with multiple{" "}
+                  <span className="italic">CTEs and window functions</span> based on business requirements and optimizing queries by utilizing advanced concepts like{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">Partitioning</span> and{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">Liquid Clustering</span>.
+                </>,
+                <>
+                  Experienced in developing data models using{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">Star</span> and{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">Snowflake</span> schemas and also defining{" "}
+                  <span className="font-semibold text-purple-700 dark:text-purple-400">SCDs</span> on dimension tables as per business requirements.
+                </>,
+                <>
                   Automated{" "}
                   <span className="font-semibold text-purple-700 dark:text-purple-400">Vacuum</span> and{" "}
                   <span className="font-semibold text-purple-700 dark:text-purple-400">Optimize</span> operations on ADB tables, improving table read/write{" "}
