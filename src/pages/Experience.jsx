@@ -9,11 +9,15 @@ const experienceData = [
     duration: "Aug 2022 – Present",
     projects: [
       {
-        title: "Project-1: Azure Infrastructure Setup and DevOps",
+        title: "Project-1: Azure Infrastructure Setup, ETL Development and DevOps",
         description: [
-          "Built robust YAML pipelines with SonarQube integration.",
-          "Deployed 150+ artifacts in under 5 minutes.",
-          "Reduced manual effort by 90%.",
+          "Configured a comprehensive Azure environment, including Storage Accounts (ADLS), Azure Databricks (ADB), Azure Data Factory (ADF), and Virtual Machines, with end-to-end private networking using ARM templates deployed through Azure DevOps pipelines, reducing the environment setup time to just around 20 minutes, an 85% reduction in manual configuration time.",
+          "Integrated ADF & ADB with Azure DevOps Repos to enable efficient version control and seamless collaboration.",
+          "Implemented CI/CD for artifacts such as ADB notebooks, workflows, ADF pipelines, datasets, etc., using Repos and YAML-based pipelines in Azure DevOps, capable of selectively deploying around 150 artifacts within 5 minutes.",
+          "Automated the setup and configuration of Azure Databricks clusters, pools, etc., and Microsoft Purview sources, scans, etc., using REST APIs through Azure DevOps pipelines, enhancing deployment efficiency by 70% and streamlining data governance processes.",
+          "Designed and developed ETL pipelines in ADF, integrating ADB notebooks and ADLS, to orchestrate & automate the migration of terabytes of data from various on-premise sources like SAP, SFTP, Salesforce, Database servers, etc., to the cloud, achieving a 99% success rate.",
+          "Created Azure Logic App workflows to fetch data from SAP source using RFC parameters and land it in ADLS, then orchestrated the movement of data to downstream applications via ADF pipelines and performed data processing using PySpark in ADB notebooks.",
+          "Worked with managed and external tables within a Unity Catalog, utilizing a custom metastore to effectively manage and govern data across various environments in ADB.",
         ],
         tags: ["ARM Templates", "Terraform", "Azure DevOps", "YAML", "CI/CD", "SonarQube", "Azure Data Factory", "Azure Databricks", "Azure Logic Apps"],
       },
@@ -41,7 +45,7 @@ const experienceData = [
     duration: "Feb 2022 – Apr 2022",
     projects: [
       {
-        title: "Student Attendance Management System",
+        title: "Case Study: Student Attendance Management System",
         description: [
           "Designed and built a React + Vite app with dark mode.",
           "Integrated animations, formspree contact, and resume download.",
