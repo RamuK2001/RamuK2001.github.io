@@ -5,6 +5,7 @@ import { ChevronDown, ChevronUp, Briefcase } from "lucide-react";
 const experienceData = [
   {
     company: "Infosys",
+    logo: "/assets/logos/infosys.png",
     duration: "Aug 2022 – Present",
     projects: [
       {
@@ -33,6 +34,7 @@ const experienceData = [
   },
   {
     company: "Capgemini",
+    logo: "/assets/logos/capgemini.png",
     duration: "Feb 2022 – Apr 2022",
     projects: [
       {
@@ -81,9 +83,15 @@ export default function Experience() {
                 className="w-full flex justify-between items-center text-left"
                 aria-expanded={isOpen}
               >
-                <div>
+                <div className="flex items-center space-x-4">
+                  {exp.logo && (
+                    <img
+                      src={exp.logo}
+                      alt={`${exp.company} logo`}
+                      className="w-10 h-10 object-contain rounded bg-white p-1 dark:bg-gray-800 dark:brightness-90"
+                    />
+                  )}
                   <h3 className="text-xl font-semibold text-purple-800 dark:text-white flex items-center gap-2">
-                    <Briefcase className="w-5 h-5" />
                     {exp.company}
                   </h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">
