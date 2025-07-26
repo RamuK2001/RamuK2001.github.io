@@ -3,22 +3,22 @@ import { motion } from "framer-motion";
 export default function Certifications() {
   const certifications = [
     {
-      emoji: "🧠",
+      logo: "/assets/badges/db_professional_badge.png",
       title: "Databricks Certified: Data Engineer Professional",
       link: "https://credentials.databricks.com/a433bf7e-4db4-484a-8f3b-bec4761b103b#acc.uQJa82lf",
     },
     {
-      emoji: "📊",
+      logo: "/assets/badges/dp_600_badge.png",
       title: "Microsoft Certified: Fabric Analytics Engineer Associate (DP-600)",
       link: "https://learn.microsoft.com/api/credentials/share/en-us/RamakrishnaKarnati-9798/4758FFFD196B98F",
     },
     {
-      emoji: "☁️",
+      logo: "/assets/badges/az_fundamentals_badge.png",
       title: "Microsoft Certified: Azure Fundamentals (AZ-900)",
       link: "https://learn.microsoft.com/api/credentials/share/en-us/RamakrishnaKarnati-9798/470AB1DC400F6146",
     },
     {
-      emoji: "☁️",
+      logo: "/assets/badges/az_fundamentals_badge.png",
       title: "Microsoft Certified: Azure Data Fundamentals (DP-900)",
       link: "https://learn.microsoft.com/api/credentials/share/en-us/RamakrishnaKarnati-9798/E573B6137CAF15FE",
     },
@@ -47,7 +47,11 @@ export default function Certifications() {
                 rel="noopener noreferrer"
                 className="text-lg font-medium text-blue-700 dark:text-blue-400 hover:underline flex items-center gap-2"
               >
-                <span className="text-xl">{cert.emoji}</span>
+                <img
+                  src={cert.logo}
+                  alt={`${cert.title} badge`}
+                  className="w-8 h-8 object-contain rounded bg-white dark:bg-gray-100 p-1"
+                />
                 {cert.title}
               </a>
             </motion.li>
