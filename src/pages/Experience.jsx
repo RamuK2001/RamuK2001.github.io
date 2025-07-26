@@ -2,6 +2,13 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
+const highlight = (text) => {
+  return text
+    .replace(/\b(reduced|improved|achieved|handled|built|designed|automated|developed|configured|created|analyzed|supported|engineered|implemented|managed|scheduled|authored|monitored|integrated)\b/gi, '<span class="font-semibold text-purple-700 dark:text-purple-300">$1</span>')
+    .replace(/\b(ADF|ADB|Azure DevOps|Databricks|Power BI|ARM Templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|JSON|XML|PARQUET|SAP|SFTP|Salesforce|ADLS)\b/g, '<span class="text-indigo-700 dark:text-indigo-300 font-medium">$1</span>')
+    .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records)/g, '<span class="text-emerald-700 dark:text-emerald-300 font-semibold">$1</span>');
+};
+
 const experienceData = [
   {
     company: "Infosys",
@@ -9,7 +16,7 @@ const experienceData = [
     duration: "Aug 2022 – Present",
     projects: [
       {
-        title: "Project 1: Cloud Infrastructure & DevOps",
+        title: "Cloud Infrastructure & DevOps",
         description: [
           "Configured full Azure environments (ADLS, Databricks, Data Factory, VMs) with private networking using ARM templates, reducing setup time by 85%.",
           "Integrated Azure services (ADF, ADB) with Azure DevOps for streamlined version control and collaboration.",
@@ -33,7 +40,7 @@ const experienceData = [
         ],
       },
       {
-        title: "Project 2: ETL & Automations",
+        title: "ETL & Automations",
         description: [
           "Built ADF pipelines integrated with ADLS and ADB to migrate terabytes of on-premise data (SAP, SFTP, Salesforce, DBs) to Azure with 99% success.",
           "Created detailed logging and HTML-based email alerts in ADF to notify stakeholders of failures.",
@@ -61,7 +68,7 @@ const experienceData = [
         ],
       },
       {
-        title: "Project 3: Visualization",
+        title: "Reporting & Visualization",
         description: [
           "Built a Power BI SLA matrix report to monitor ServiceNow incidents and service requests.",
           "Designed centralized Power BI dashboards to monitor production pipelines using embedded logs for real-time visibility.",
@@ -213,14 +220,15 @@ export default function Experience() {
                                   transition={{ duration: 0.3 }}
                                   className="mt-2 space-y-2"
                                 >
-                                  {/* Bullet points */}
                                   <ul className="pl-5 text-sm text-gray-700 dark:text-gray-300 list-disc space-y-1">
                                     {proj.description.map((point, i) => (
-                                      <li key={i}>{point}</li>
+                                      <li
+                                        key={i}
+                                        dangerouslySetInnerHTML={{ __html: highlight(point) }}
+                                      ></li>
                                     ))}
                                   </ul>
-                            
-                                  {/* Tags */}
+
                                   {proj.tags && (
                                     <div className="flex flex-wrap gap-2 mt-3">
                                       {proj.tags.map((tag, i) => (
