@@ -15,6 +15,7 @@ const experienceData = [
           "Deployed 150+ artifacts in under 5 minutes.",
           "Reduced manual effort by 90%.",
         ],
+        tags: ["Azure DevOps", "YAML", "CI/CD", "SonarQube"],
       },
       {
         title: "Data Warehousing and Data Engineering",
@@ -22,6 +23,7 @@ const experienceData = [
           "Developed PySpark ingestion pipelines for SAP, Salesforce, and SFTP.",
           "Processed gigabyte-scale data into Delta Lake.",
         ],
+        tags: ["Azure DevOps", "YAML", "CI/CD", "SonarQube"],
       },
       {
         title: "Data Modelling and Engineering",
@@ -29,6 +31,7 @@ const experienceData = [
           "Implemented OpenAI hybrid models in ADF + Databricks.",
           "Classified 2.5B records with 90% accuracy.",
         ],
+        tags: ["Azure DevOps", "YAML", "CI/CD", "SonarQube"],
       },
     ],
   },
@@ -43,6 +46,7 @@ const experienceData = [
           "Designed and built a React + Vite app with dark mode.",
           "Integrated animations, formspree contact, and resume download.",
         ],
+        tags: ["Azure DevOps", "YAML", "CI/CD", "SonarQube"],
       },
     ],
   },
@@ -135,7 +139,9 @@ export default function Experience() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: projIndex * 0.1, duration: 0.4 }}
-                            className="bg-white dark:bg-gray-900/40 p-4 rounded-md border border-purple-200 dark:border-purple-600 shadow-sm"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="bg-white dark:bg-gray-900/40 p-4 rounded-md border border-purple-200 dark:border-purple-600 shadow-md hover:shadow-purple-300 dark:hover:shadow-purple-700 transition-shadow duration-300"
                           >
                             <button
                               className="flex justify-between items-center w-full text-left"
@@ -153,17 +159,34 @@ export default function Experience() {
 
                             <AnimatePresence>
                               {isOpen && (
-                                <motion.ul
+                                <motion.div
                                   initial={{ opacity: 0, height: 0 }}
                                   animate={{ opacity: 1, height: "auto" }}
                                   exit={{ opacity: 0, height: 0 }}
                                   transition={{ duration: 0.3 }}
-                                  className="mt-2 pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc overflow-hidden"
+                                  className="mt-2 space-y-2"
                                 >
-                                  {proj.description.map((point, i) => (
-                                    <li key={i}>{point}</li>
-                                  ))}
-                                </motion.ul>
+                                  {/* Bullet points */}
+                                  <ul className="pl-5 text-sm text-gray-700 dark:text-gray-300 list-disc space-y-1">
+                                    {proj.description.map((point, i) => (
+                                      <li key={i}>{point}</li>
+                                    ))}
+                                  </ul>
+                            
+                                  {/* Tags */}
+                                  {proj.tags && (
+                                    <div className="flex flex-wrap gap-2 mt-3">
+                                      {proj.tags.map((tag, i) => (
+                                        <span
+                                          key={i}
+                                          className="text-xs bg-purple-100 dark:bg-purple-800/30 text-purple-800 dark:text-purple-200 px-2 py-1 rounded-full font-medium shadow-sm"
+                                        >
+                                          {tag}
+                                        </span>
+                                      ))}
+                                    </div>
+                                  )}
+                                </motion.div>
                               )}
                             </AnimatePresence>
                           </motion.li>
