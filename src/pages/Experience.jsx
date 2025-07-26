@@ -4,7 +4,6 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const highlight = (text) => {
   return text
-    .replace(/\b(reduced|improved|achieved|handled|built|designed|automated|developed|configured|created|analyzed|supported|engineered|implemented|managed|scheduled|authored|monitored|integrated)\b/gi, '<span class="font-semibold text-purple-700 dark:text-purple-300">$1</span>')
     .replace(/\b(ADF|ADB|Azure DevOps|Databricks|Power BI|ARM Templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|JSON|XML|PARQUET|SAP|SFTP|Salesforce|ADLS)\b/g, '<span class="text-indigo-700 dark:text-indigo-300 font-medium">$1</span>')
     .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records)/g, '<span class="text-emerald-700 dark:text-emerald-300 font-semibold">$1</span>');
 };
