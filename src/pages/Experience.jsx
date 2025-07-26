@@ -5,7 +5,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 const highlight = (text) => {
   return text
     .replace(/\b(ADF|ADB|Azure DevOps|Databricks|Power BI|ARM Templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|JSON|XML|PARQUET|SAP|SFTP|Salesforce|ADLS)\b/g, '<span class="text-indigo-700 dark:text-indigo-300 font-medium">$1</span>')
-    .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records)/g, '<span class="text-emerald-700 dark:text-emerald-300 font-semibold">$1</span>');
+    .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records|\d+ billion)/g, '<span class="text-emerald-700 dark:text-emerald-300 font-semibold">$1</span>');
 };
 
 const experienceData = [
@@ -50,7 +50,7 @@ const experienceData = [
           "Improved Databricks cluster performance and cost efficiency by 30% via advanced optimization techniques like partitioning and liquid clustering.",
           "Scheduled workflows using CRON syntax and configured them with job clusters for efficient resource use.",
           "Handled production-level CI/CD for ADB workflows and resolved critical issues including Row-Level Security and concurrency bugs.",
-          "Designed category classification logic for 2.5B records using UPC, keyword, and LLM-based approaches, achieving 90%+ accuracy.",
+          "Designed category classification logic for 3 billion records using UPC, keyword, and LLM-based approaches, achieving 90%+ accuracy.",
           "Developed ADB workflows to merge all categorization strategies into a unified system for historic and incremental data.",
         ],
         tags: [
