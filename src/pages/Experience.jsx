@@ -126,7 +126,7 @@ export default function Experience() {
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="overflow-hidden mt-4"
+                    className="mt-4 overflow-visible relative"
                   >
                     <ul className="space-y-4">
                       {exp.projects.map((proj, projIndex) => {
@@ -141,7 +141,7 @@ export default function Experience() {
                             transition={{ delay: projIndex * 0.1, duration: 0.4 }}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="bg-white dark:bg-gray-900/40 p-4 rounded-md border border-purple-200 dark:border-purple-600 shadow-md hover:shadow-purple-300 dark:hover:shadow-purple-700 transition-shadow duration-300"
+                            className="relative z-10 bg-white dark:bg-gray-900/40 p-4 rounded-xl border border-purple-200 dark:border-purple-600 shadow-md hover:shadow-xl hover:shadow-purple-300 dark:hover:shadow-purple-700 transition-all duration-300 transform-gpu"
                           >
                             <button
                               className="flex justify-between items-center w-full text-left"
