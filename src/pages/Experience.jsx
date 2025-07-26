@@ -9,29 +9,29 @@ const experienceData = [
     duration: "Aug 2022 – Present",
     projects: [
       {
-        title: "Azure DevOps and Data Migration",
+        title: "Project-1: Azure Infrastructure Setup and DevOps",
         description: [
           "Built robust YAML pipelines with SonarQube integration.",
           "Deployed 150+ artifacts in under 5 minutes.",
           "Reduced manual effort by 90%.",
         ],
-        tags: ["Azure DevOps", "YAML", "CI/CD", "SonarQube"],
+        tags: ["ARM Templates", "Terraform", "Azure DevOps", "YAML", "CI/CD", "SonarQube", "Azure Data Factory", "Azure Databricks", "Azure Logic Apps"],
       },
       {
-        title: "Data Warehousing and Data Engineering",
+        title: "Project-2: ETL Development and Visualization",
         description: [
           "Developed PySpark ingestion pipelines for SAP, Salesforce, and SFTP.",
           "Processed gigabyte-scale data into Delta Lake.",
         ],
-        tags: ["Azure DevOps", "YAML", "CI/CD", "SonarQube"],
+        tags: ["Azure Data Factory", "Azure Databricks", "PySpark", "Spark SQL", "CI/CD", "SonarQube", "Power BI", "Azure Powershell", "Azure Automation Account"],
       },
       {
-        title: "Data Modelling and Engineering",
+        title: "Project-3: ETL and Data Warehousing using Fabric",
         description: [
           "Implemented OpenAI hybrid models in ADF + Databricks.",
           "Classified 2.5B records with 90% accuracy.",
         ],
-        tags: ["Azure DevOps", "YAML", "CI/CD", "SonarQube"],
+        tags: ["Microsoft Fabric", "Lakehouse", "Warehouse", "PySpark", "Visualization"],
       },
     ],
   },
@@ -46,7 +46,7 @@ const experienceData = [
           "Designed and built a React + Vite app with dark mode.",
           "Integrated animations, formspree contact, and resume download.",
         ],
-        tags: ["Azure DevOps", "YAML", "CI/CD", "SonarQube"],
+        tags: ["Java", "Microservices", "Maven", "JUnit", "Docker", "Kubernetes", "SonarQube", "AWS (EC2 & S3)"],
       },
     ],
   },
