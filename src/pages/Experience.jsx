@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ChevronUp, Briefcase } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const experienceData = [
   {
@@ -49,14 +49,22 @@ const experienceData = [
 ];
 
 export default function Experience() {
-  const [openIndexes, setOpenIndexes] = useState([]);
+  const [openCompanies, setOpenCompanies] = useState([]);
+  const [openProjects, setOpenProjects] = useState({});
 
-  const toggleIndex = (index) => {
-    setOpenIndexes((prev) =>
-      prev.includes(index)
-        ? prev.filter((i) => i !== index)
-        : [...prev, index]
+  const toggleCompany = (index) => {
+    setOpenCompanies((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
+  };
+
+  const toggleProject = (companyIndex, projectIndex) => {
+    setOpenProjects((prev) => ({
+      ...prev,
+      [companyIndex]: prev[companyIndex]?.includes(projectIndex)
+        ? prev[companyIndex].filter((i) => i !== projectIndex)
+        : [...(prev[companyIndex] || []), projectIndex],
+    }));
   };
 
   return (
@@ -67,7 +75,8 @@ export default function Experience() {
         </h2>
 
         {experienceData.map((exp, index) => {
-          const isOpen = openIndexes.includes(index);
+          const isCompanyOpen = openCompanies.includes(index);
+          const openProj = openProjects[index] || [];
 
           return (
             <motion.div
@@ -79,9 +88,8 @@ export default function Experience() {
               className="mb-6 bg-white/60 dark:bg-white/10 backdrop-blur-md shadow-md rounded-xl p-5"
             >
               <button
-                onClick={() => toggleIndex(index)}
+                onClick={() => toggleCompany(index)}
                 className="w-full flex justify-between items-center text-left"
-                aria-expanded={isOpen}
               >
                 <div className="flex items-center space-x-4">
                   {exp.logo && (
@@ -91,14 +99,16 @@ export default function Experience() {
                       className="w-10 h-10 object-contain rounded bg-white p-1 dark:bg-gray-800 dark:brightness-90"
                     />
                   )}
-                  <h3 className="text-xl font-semibold text-purple-800 dark:text-white flex items-center gap-2">
-                    {exp.company}
-                  </h3>
-                  <p className="text-sm text-gray-700 dark:text-gray-300 mt-1">
-                    {exp.duration}
-                  </p>
+                  <div>
+                    <h3 className="text-xl font-semibold text-purple-800 dark:text-white">
+                      {exp.company}
+                    </h3>
+                    <p className="text-sm text-gray-700 dark:text-gray-300">
+                      {exp.duration}
+                    </p>
+                  </div>
                 </div>
-                {isOpen ? (
+                {isCompanyOpen ? (
                   <ChevronUp className="text-purple-700" />
                 ) : (
                   <ChevronDown className="text-purple-700" />
@@ -106,7 +116,7 @@ export default function Experience() {
               </button>
 
               <AnimatePresence>
-                {isOpen && (
+                {isCompanyOpen && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
@@ -115,25 +125,50 @@ export default function Experience() {
                     className="overflow-hidden mt-4"
                   >
                     <ul className="space-y-4">
-                      {exp.projects.map((proj, projIndex) => (
-                        <motion.li
-                          key={projIndex}
-                          initial={{ opacity: 0, y: 10 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: projIndex * 0.1, duration: 0.4 }}
-                          className="bg-white dark:bg-gray-900/40 p-4 rounded-md border border-purple-200 dark:border-purple-600 shadow-sm"
-                        >
-                          <h4 className="text-lg font-semibold text-purple-700 dark:text-purple-300 mb-2">
-                            {proj.title}
-                          </h4>
-                          <ul className="list-disc pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-1">
-                            {proj.description.map((point, i) => (
-                              <li key={i}>{point}</li>
-                            ))}
-                          </ul>
-                        </motion.li>
-                      ))}
+                      {exp.projects.map((proj, projIndex) => {
+                        const isOpen = openProj.includes(projIndex);
+
+                        return (
+                          <motion.li
+                            key={projIndex}
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: projIndex * 0.1, duration: 0.4 }}
+                            className="bg-white dark:bg-gray-900/40 p-4 rounded-md border border-purple-200 dark:border-purple-600 shadow-sm"
+                          >
+                            <button
+                              className="flex justify-between items-center w-full text-left"
+                              onClick={() => toggleProject(index, projIndex)}
+                            >
+                              <h4 className="text-lg font-semibold text-purple-700 dark:text-purple-300">
+                                {proj.title}
+                              </h4>
+                              {isOpen ? (
+                                <ChevronUp className="text-purple-600" />
+                              ) : (
+                                <ChevronDown className="text-purple-600" />
+                              )}
+                            </button>
+
+                            <AnimatePresence>
+                              {isOpen && (
+                                <motion.ul
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: "auto" }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  transition={{ duration: 0.3 }}
+                                  className="mt-2 pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-1 list-disc overflow-hidden"
+                                >
+                                  {proj.description.map((point, i) => (
+                                    <li key={i}>{point}</li>
+                                  ))}
+                                </motion.ul>
+                              )}
+                            </AnimatePresence>
+                          </motion.li>
+                        );
+                      })}
                     </ul>
                   </motion.div>
                 )}
