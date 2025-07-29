@@ -4,9 +4,9 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const highlight = (text) => {
   return text
-    .replace(/\b(ADF|ADB|Azure DevOps|Databricks|Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental)\b/g, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
+    .replace(/\b(Azure|ADF|ADB|DevOps|Databricks|Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental|Unity Catalog|HTML|Vacuum|Optimize|Partitioning|Z-Ordering|Liquid Clustering|Row-Level Security|REST APIs)\b/g, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
     .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records|\d+ billion)/g, '<span class="font-semibold text-green-700 dark:text-green-400">$1</span>')
-    .replace(/\b(gigabytes|terrabytes)\b/g, '<span class="font-semibold text-pink-700 dark:text-pink-400">$1</span>')
+    .replace(/\b(gigabytes|terabytes)\b/g, '<span class="font-semibold text-pink-700 dark:text-pink-400">$1</span>')
     .replace(/\b(CSV|JSON|XML|PARQUET)\b/g, '<span class="italic">$1</span>');
 };
 
@@ -19,15 +19,14 @@ const experienceData = [
       {
         title: "Cloud Infrastructure & DevOps",
         description: [
-          "Configured end-to-end Azure environments (ADLS, Databricks, Data Factory, VMs) with private networking using ARM templates and Terraform, reducing setup time by 85%.",
-          "Integrated Azure services (ADF, ADB) with Azure DevOps for streamlined version control and collaboration.",
+          "Configured end-to-end Azure environments (ADLS, Databricks, Data Factory, VMs, etc.,) with private networking using ARM templates and Terraform, reducing setup time by 85%.",
           "Implemented CI/CD YAML-based pipelines via Azure DevOps to deploy 150+ artifacts selectively (notebooks, pipelines, datasets) in under 5 minutes.",
-          "Automated deployment of Databricks clusters/pools and Microsoft Purview scans using REST APIs via Azure DevOps.",
-          "Authored detailed documentation in Azure Wiki covering infrastructure setup, CI/CD processes, and branching strategies.",
-          "Developed PowerShell scripts and used Azure Automation Accounts to generate weekly cost and performance reports, reducing manual work by 95%.",
-          "Managed production deployments, bug fixes, and enhancements during monthly release cycles.",
+          "Automated deployment of Databricks clusters/pools and Microsoft Purview scans using REST APIs and Azure Powershell via Azure DevOps.",
+          "Developed PowerShell scripts and used Azure Automation Accounts to generate weekly cost and job performance reports, reducing manual work by 95%.",
+          "Managed production deployments, bug fixes, and enhancements during monthly release cycles through automated DevOps pipelines.",
           "Analyzed weekly Azure cost reports to identify anomalies and provide optimization insights.",
-          "Used Azure tags in Databricks resources for cost segregation and reporting across business units.",
+          "Integrated Azure services (ADF, ADB) with Azure DevOps for streamlined version control and collaboration.",
+          "Authored comprehensive documentation in Azure Wiki detailing infrastructure configurations, CI/CD workflows, and DevOps security practices.",
         ],
         tags: [
           "ARM Templates",
@@ -43,17 +42,18 @@ const experienceData = [
       {
         title: "ETL & Automations",
         description: [
-          "Built ADF pipelines integrated with ADLS and ADB to migrate terabytes of on-premise data (SAP, SFTP, Salesforce, on-prem DBs) to Azure with 99% success.",
+          "Built scheduled ADF pipelines integrated with ADLS and ADB to migrate terabytes of on-premise data (SAP, SFTP, Salesforce, on-prem DBs) to Azure Unity Catalog with 99% success rate.",
           "Created detailed logging and HTML-based email alerts in ADF to notify stakeholders of failures.",
-          "Developed PySpark jobs to process gigabytes of data in various formats (CSV, JSON, XML, PARQUET) with optimal performance.",
+          "Developed PySpark jobs to process gigabytes of data daily in various formats (CSV, JSON, XML, PARQUET) with optimal performance.",
           "Created Logic App workflows to extract SAP data via RFC and orchestrated end-to-end data flow through ADF and ADB.",
           "Engineered event-triggered pipelines to auto-load files from ADLS to target tables, handling 20+ files/day with 99% automation.",
-          "Automated vacuum and optimize operations in ADB, improving table performance by 40%.",
-          "Improved Databricks cluster performance and cost efficiency by 30% via advanced optimization techniques like partitioning and liquid clustering.",
-          "Scheduled workflows using CRON syntax and configured them with job clusters for efficient resource use.",
-          "Handled production-level CI/CD for ADB workflows and resolved critical issues including Row-Level Security and concurrency bugs.",
-          "Designed category classification logic for 3 billion records using UPC, keyword, and LLM-based approaches, achieving 90%+ accuracy.",
-          "Developed ADB workflows to merge all categorization strategies into a unified system for historic and incremental data.",
+          "Automated Vacuum and Optimize operations in ADB, improving storage costs and table performance",
+          "Improved Databricks cluster performance and cost efficiency using optimization techniques like Partitioning, Z-Ordering and Liquid Clustering.",
+          "Scheduled ADB jobs using CRON syntax and configured using job clusters for efficient resource use.",
+          "Handled production-level CI/CD for ADB jobs and resolved critical issues including Row-Level Security and concurrency bugs.",
+          "Designed product categorization job in ADB for over 3 billion records data using lookup tables, keyword matching, and LLM-based approaches, achieving over 90% accuracy.",
+          "Developed generic ADB jobs to ingest both historic and incremental data extracted from on-prem DBs using JDBC into Delta Lake.",
+          "Built scheduled data pipelines in Microsoft Fabric to ingest data into a Lakehouse from multiple sources (ADLS, OneLake, and AWS S3 Bucket).",
         ],
         tags: [
           "Azure Data Factory",
@@ -65,27 +65,23 @@ const experienceData = [
           "ETL",
           "Data Migration",
           "LLM",
-          "Automation",
+          "OneLake",
         ],
       },
       {
         title: "Reporting & Visualization",
         description: [
-          "Built a Power BI SLA matrix report to monitor ServiceNow incidents and service requests.",
-          "Designed centralized Power BI dashboards to monitor production pipelines using embedded logs for real-time visibility.",
-          "Created Power BI reports to monitor weekly Azure costs, aligning insights with engineering activities.",
-          "Supported post-go-live maintenance, including troubleshooting failed ADF pipelines and deploying fixes.",
+          "Built a Power BI SLA matrix report to monitor the SLA breaches in ServiceNow incidents and service requests.",
+          "Designed centralized Power BI dashboard to monitor production ADF pipelines using embedded logs for near real-time visibility.",
+          "Developed an interactive report in Microsoft Fabric to visualize sales and revenue data using aggregated metrics like Month-To-Date (MTD) and Year-To-Date (YTD).",
+          "Leveraged REST APIs to trigger near real-time report refreshes, effectively overcoming the scheduling limitations of the Power BI service.",
           "Collaborated with business teams to define visualization needs, identify KPIs, and streamline reporting logic for dashboards.",
         ],
         tags: [
           "Power BI",
           "ServiceNow",
-          "Azure Data Factory",
-          "ADF Monitoring",
-          "Dashboarding",
-          "SLA Metrics",
-          "Reporting",
-          "Post-Go-Live Support",
+          "Microsoft Fabric",
+          "REST APIs",
         ],
       },
     ],
