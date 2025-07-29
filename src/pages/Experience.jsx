@@ -4,7 +4,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const highlight = (text) => {
   return text
-    .replace(/\b(Azure|ADF|ADB|DevOps|Databricks|Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental|Unity Catalog|HTML|Vacuum|Optimize|Partitioning|Z-Ordering|Liquid Clustering|Row-Level Security|REST APIs)\b/g, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
+    .replace(/\b(Azure|ADF|ADB|DevOps|Databricks|Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental|Unity Catalog|HTML|Vacuum|Optimize|Partitioning|Z-Ordering|Liquid Clustering|Row-Level Security|REST APIs|Microsoft Fabric)\b/g, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
     .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records|\d+ billion)/g, '<span class="font-semibold text-green-700 dark:text-green-400">$1</span>')
     .replace(/\b(gigabytes|terabytes)\b/g, '<span class="font-semibold text-pink-700 dark:text-pink-400">$1</span>')
     .replace(/\b(CSV|JSON|XML|PARQUET)\b/g, '<span class="italic">$1</span>');
