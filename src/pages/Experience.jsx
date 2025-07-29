@@ -4,7 +4,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const highlight = (text) => {
   return text
-    .replace(/\b(ADF|ADB|Azure DevOps|Databricks|Power BI|ARM Templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|CSV|JSON|XML|PARQUET|SAP|SFTP|Salesforce|ADLS|Terraform)\b/g, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
+    .replace(/\b(ADF|ADB|Azure DevOps|Databricks|Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental)\b/g, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
     .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records|\d+ billion)/g, '<span class="font-semibold text-green-700 dark:text-green-400">$1</span>')
     .replace(/\b(gigabytes|terrabytes)\b/g, '<span class="font-semibold text-pink-700 dark:text-pink-400">$1</span>')
     .replace(/\b(CSV|JSON|XML|PARQUET)\b/g, '<span class="italic">$1</span>');
@@ -21,7 +21,7 @@ const experienceData = [
         description: [
           "Configured end-to-end Azure environments (ADLS, Databricks, Data Factory, VMs) with private networking using ARM templates and Terraform, reducing setup time by 85%.",
           "Integrated Azure services (ADF, ADB) with Azure DevOps for streamlined version control and collaboration.",
-          "Implemented CI/CD pipelines via Azure DevOps YAML to deploy 150+ artifacts (notebooks, pipelines, datasets) in under 5 minutes.",
+          "Implemented CI/CD YAML-based pipelines via Azure DevOps to deploy 150+ artifacts selectively (notebooks, pipelines, datasets) in under 5 minutes.",
           "Automated deployment of Databricks clusters/pools and Microsoft Purview scans using REST APIs via Azure DevOps.",
           "Authored detailed documentation in Azure Wiki covering infrastructure setup, CI/CD processes, and branching strategies.",
           "Developed PowerShell scripts and used Azure Automation Accounts to generate weekly cost and performance reports, reducing manual work by 95%.",
@@ -43,7 +43,7 @@ const experienceData = [
       {
         title: "ETL & Automations",
         description: [
-          "Built ADF pipelines integrated with ADLS and ADB to migrate terabytes of on-premise data (SAP, SFTP, Salesforce, DBs) to Azure with 99% success.",
+          "Built ADF pipelines integrated with ADLS and ADB to migrate terabytes of on-premise data (SAP, SFTP, Salesforce, on-prem DBs) to Azure with 99% success.",
           "Created detailed logging and HTML-based email alerts in ADF to notify stakeholders of failures.",
           "Developed PySpark jobs to process gigabytes of data in various formats (CSV, JSON, XML, PARQUET) with optimal performance.",
           "Created Logic App workflows to extract SAP data via RFC and orchestrated end-to-end data flow through ADF and ADB.",
