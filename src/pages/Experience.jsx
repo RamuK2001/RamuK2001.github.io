@@ -4,8 +4,10 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const highlight = (text) => {
   return text
-    .replace(/\b(ADF|ADB|Azure DevOps|Databricks|Power BI|ARM Templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|JSON|XML|PARQUET|SAP|SFTP|Salesforce|ADLS)\b/g, '<span class="text-indigo-700 dark:text-indigo-300 font-medium">$1</span>')
-    .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records|\d+ billion)/g, '<span class="text-emerald-700 dark:text-emerald-300 font-semibold">$1</span>');
+    .replace(/\b(ADF|ADB|Azure DevOps|Databricks|Power BI|ARM Templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|CSV|JSON|XML|PARQUET|SAP|SFTP|Salesforce|ADLS|Terraform)\b/g, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
+    .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records|\d+ billion)/g, '<span class="font-semibold text-green-700 dark:text-green-400">$1</span>')
+    .replace(/\b(gigabytes|terrabytes)\b/g, '<span class="font-semibold text-pink-700 dark:text-pink-400">$1</span>')
+    .replace(/\b(CSV|JSON|XML|PARQUET)\b/g, '<span class="italic">$1</span>');
 };
 
 const experienceData = [
@@ -17,7 +19,7 @@ const experienceData = [
       {
         title: "Cloud Infrastructure & DevOps",
         description: [
-          "Configured full Azure environments (ADLS, Databricks, Data Factory, VMs) with private networking using ARM templates, reducing setup time by 85%.",
+          "Configured end-to-end Azure environments (ADLS, Databricks, Data Factory, VMs) with private networking using ARM templates and Terraform, reducing setup time by 85%.",
           "Integrated Azure services (ADF, ADB) with Azure DevOps for streamlined version control and collaboration.",
           "Implemented CI/CD pipelines via Azure DevOps YAML to deploy 150+ artifacts (notebooks, pipelines, datasets) in under 5 minutes.",
           "Automated deployment of Databricks clusters/pools and Microsoft Purview scans using REST APIs via Azure DevOps.",
