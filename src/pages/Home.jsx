@@ -58,7 +58,7 @@ export default function Home() {
             </p>
             <div className="mt-6">
               <a
-                href="/resume.pdf"
+                href="/Ramakrishna_Karnati_Azure_Data_Engineer.pdf"
                 download
                 className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-purple-700 transform hover:scale-105 transition-all duration-300"
               >
