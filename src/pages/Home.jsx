@@ -100,11 +100,18 @@ export default function Home() {
           {achievements.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index, duration: 0.6 }}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={{ scale: 1.03, boxShadow: "0 8px 32px 0 rgba(124,58,237,0.15)" }}
+              transition={{
+                delay: 0.08 * index,
+                duration: 0.5,
+                type: "spring",
+                stiffness: 120,
+                damping: 15,
+              }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-gray-900 shadow-md rounded-lg p-5 flex items-start space-x-4 border border-purple-200 dark:border-gray-700"
+              className="bg-white dark:bg-gray-900 shadow-md rounded-lg p-5 flex items-start space-x-4 border border-purple-200 dark:border-gray-700 transition-all"
             >
               <div>{item.icon}</div>
               <p className="text-gray-700 dark:text-gray-300">{item.text}</p>
