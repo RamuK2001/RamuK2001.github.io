@@ -17,7 +17,7 @@ export default function Navbar() {
   return (
     <nav className="bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md px-6 py-4">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold tracking-tight">Ramakrishna Karnati</h1>
+        <h1 className="text-2xl font-bold tracking-tight">RAMAKRISHNA KARNATI</h1>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-4 font-medium">
