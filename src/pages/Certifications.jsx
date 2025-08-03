@@ -37,9 +37,14 @@ export default function Certifications() {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow:
+                  "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
+              }}
+              transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 120, damping: 15 }}
               viewport={{ once: true }}
-              className="bg-white/60 dark:bg-white/10 backdrop-blur-md p-5 rounded-xl shadow-md"
+              className="bg-white/60 dark:bg-white/10 backdrop-blur-md p-5 rounded-xl shadow-md transition-all"
             >
               <a
                 href={cert.link}
