@@ -17,14 +17,22 @@ You can deploy this project using GitHub Pages, Vercel, or Netlify.
 ├── vite.config.js
 ├── public/
 │   ├── Portfolio_Home.png
-│   └── resume.pdf
+│   ├── Ramakrishna_Karnati_Azure_Data_Engineer.pdf
+│   └── assets/
+│       ├── badges/
+│       │   ├── az_fundamentals_badge.png
+│       │   ├── db_professional_badge.png
+│       │   └── dp_600_badge.png
+│       └── logos/
+│           ├── capgemini.png
+│           └── infosys.png
 ├── src/
 │   ├── App.jsx
 │   ├── main.jsx
 │   ├── index.css
 │   ├── components/
-│       ├── Navbar.jsx
-│       └── ThemeToggle.jsx
+│   │   ├── Navbar.jsx
+│   │   └── ThemeToggle.jsx
 │   └── pages/
 │       ├── Home.jsx
 │       ├── About.jsx
