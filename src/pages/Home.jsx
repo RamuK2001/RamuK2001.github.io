@@ -68,7 +68,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Right: Animated Image with Slide-in */}
+          {/* Right: Animated Image with Slide-in and Hover Scale */}
           <motion.div
             className="md:w-1/2 text-center"
             initial={{ opacity: 0, x: 40 }}
@@ -76,10 +76,12 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <img
+            <motion.img
               src="/Portfolio_Home.png"
               alt="Infra to Insights Illustration"
-              className="rounded-xl shadow-lg w-full max-w-md mx-auto"
+              className="rounded-xl shadow-lg w-full max-w-lg mx-auto"
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             />
             <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
               Overall technical expertise summarized in a picture.
