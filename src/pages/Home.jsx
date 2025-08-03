@@ -102,7 +102,11 @@ export default function Home() {
               key={index}
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              whileHover={{ scale: 1.03, boxShadow: "0 8px 32px 0 rgba(124,58,237,0.15)" }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow:
+                  "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
+              }}
               transition={{
                 delay: 0.08 * index,
                 duration: 0.5,
