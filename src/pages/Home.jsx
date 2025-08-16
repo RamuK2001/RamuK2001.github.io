@@ -111,8 +111,8 @@ export default function Home() {
                 // delay: 0.08 * index,
                 // duration: 0.5,
                 type: "spring",
-                stiffness: 120,
-                damping: 15,
+                stiffness: 300,
+                damping: 20
               }}
               viewport={{ once: true }}
               className="bg-white dark:bg-gray-900 shadow-md rounded-lg p-5 flex items-start space-x-4 border border-purple-200 dark:border-gray-700 transition-all"
