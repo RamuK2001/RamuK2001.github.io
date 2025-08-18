@@ -1,9 +1,6 @@
-# Ramakrishna Karnati - Portfolio
+# 🚀 Ramakrishna Karnati - Portfolio
 
 This is a personal portfolio website built using **React**, **Vite**, and **Tailwind CSS**. It highlights my professional experience, skills, projects, and certifications as an Azure Cloud & DevOps Specialist and Data Engineer.
-
-## 🚀 Live Demo
-
 You can deploy this project using GitHub Pages, Vercel, or Netlify.
 
 ## 📁 Project Structure
