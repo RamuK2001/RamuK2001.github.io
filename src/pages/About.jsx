@@ -8,6 +8,28 @@ import {
   Smile
 } from "lucide-react";
 
+// Highlight function similar to Experience.jsx
+const highlight = (text) => {
+  return text
+    .replace(/\b(Azure|ADF|ADB|DevOps|Databricks|Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental|Unity Catalog|HTML|Vacuum|Optimize|Partitioning|Z-Ordering|Liquid Clustering|Row-Level Security|REST APIs|Microsoft Fabric|Star|Snowflake|SCDs|SonarQube|ARMTTK|Automation Account|cost|performance|reports|dimension tables|table|artifact|infrastructure|IaC|infrastructure as code|selective deployment|pipeline|cluster|job|metrics|manual effort|real-time|SLA tracking|job monitoring|performance insights)\b/gi, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
+    .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records|\d+ billion|40%|85%|95%|99%|80%)/g, '<span class="font-semibold text-green-700 dark:text-green-400">$1</span>')
+    .replace(/\b(gigabytes|terabytes)\b/gi, '<span class="font-semibold text-pink-700 dark:text-pink-400">$1</span>')
+    .replace(/\b(CSV|Excel|XML|Parquet)\b/g, '<span class="italic">$1</span>');
+};
+
+const highlights = [
+  "Designed and developed ETL pipelines in Azure Data Factory (ADF) migrating terabytes of data from sources like SAP, Salesforce, on-premise DBs to Azure, achieving a 99% success rate.",
+  "Developed PySpark-based processing in Azure Databricks (ADB) Jobs & Pipelines handling gigabytes of data across formats like CSV, Excel, XML, Parquet.",
+  "Expert in developing complex SQL queries with multiple CTEs and window functions based on business requirements and optimizing queries by utilizing advanced concepts like Partitioning and Liquid Clustering.",
+  "Experienced in developing data models using Star and Snowflake schemas and also defining SCDs on dimension tables as per business requirements.",
+  "Automated Vacuum and Optimize operations on ADB tables, improving table read/write performance by 40%.",
+  "Reduced cloud infrastructure setup time by 85% using IaC (Infrastructure as Code) developed using ARM templates and Terraform and deployed through Azure DevOps.",
+  "Implemented selective deployment feature in the CI/CD pipeline, enabling targeted artifact deployment and improving speed & flexibility.",
+  "Integrated SonarQube and ARMTTK with Azure DevOps for automating code quality checks, saving 80% review effort.",
+  "Automated weekly cost, ADF & ADB performance reports, and ADB cluster usage metrics extraction using PowerShell and Azure Automation Account, reducing manual effort by 95%.",
+  "Built near real-time Power BI dashboards for SLA tracking and job monitoring, improving performance insights."
+];
+
 const skills = [
   {
     icon: <Code className="w-5 h-5 text-purple-600 mt-1" />,
@@ -61,86 +83,16 @@ export default function About() {
             <h3 className="text-2xl font-semibold text-purple-800 dark:text-white mb-6 text-center">
               💼 Professional Highlights
             </h3>
-            <ul className="list-disc pl-6 text-gray-800 dark:text-gray-200 space-y-3">
-              {[
-                <>
-                  Designed and developed{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">ETL pipelines</span> in{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">Azure Data Factory (ADF)</span>{" "}
-                  migrating <span className="font-semibold text-pink-700 dark:text-pink-400">terabytes of data</span> from sources like{" "}
-                  <span className="italic">SAP, Salesforce, on-premise DBs</span> to Azure, achieving a{" "}
-                  <span className="font-semibold text-green-700 dark:text-green-400">99% success rate</span>.
-                </>,
-                <>
-                  Developed{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">PySpark-based</span> processing in{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">Azure Databricks (ADB)</span>{" "}
-                  Jobs & Pipelines handling{" "}
-                  <span className="font-semibold text-pink-700 dark:text-pink-400">gigabytes of data</span> across formats like{" "}
-                  <span className="italic">CSV, Excel, XML, Parquet</span>.
-                </>,
-                <>
-                  Expert in developing complex{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">SQL queries</span> with multiple{" "}
-                  <span className="italic">CTEs and window functions</span> based on business requirements and optimizing queries by utilizing advanced concepts like{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">Partitioning</span> and{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">Liquid Clustering</span>.
-                </>,
-                <>
-                  Experienced in developing data models using{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">Star</span> and{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">Snowflake</span> schemas and also defining{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">SCDs</span> on dimension tables as per business requirements.
-                </>,
-                <>
-                  Automated{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">Vacuum</span> and{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">Optimize</span> operations on ADB tables, improving table read/write{" "}
-                  <span className="font-semibold text-green-700 dark:text-green-400">performance by 40%</span>.
-                </>,
-                <>
-                  Reduced cloud infrastructure setup time by{" "}
-                  <span className="font-semibold text-green-700 dark:text-green-400">85%</span> using IaC (Infrastructure as Code) developed using{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">ARM templates</span> and{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">Terraform</span> and deployed through{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">Azure DevOps</span>.
-                </>,
-                <>
-                  Implemented{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">selective deployment</span> feature in the{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">CI/CD pipeline</span>, enabling targeted artifact deployment and improving speed & flexibility.
-                </>,
-                <>
-                  Integrated{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">SonarQube</span> and{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">ARMTTK</span> with{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">Azure DevOps</span> for automating{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">code quality checks</span>, saving{" "}
-                  <span className="font-semibold text-green-700 dark:text-green-400">80% review effort</span>.
-                </>,
-                <>
-                  Automated weekly{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">cost, ADF & ADB performance reports, and ADB cluster usage metrics</span> extraction using{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">PowerShell</span> and{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">Azure Automation Account</span>, reducing{" "}
-                  <span className="font-semibold text-green-700 dark:text-green-400">manual effort by 95%</span>.
-                </>,
-                <>
-                  Built near real-time{" "}
-                  <span className="font-semibold text-blue-700 dark:text-blue-400">Power BI dashboards</span> for{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">SLA tracking</span> and{" "}
-                  <span className="font-semibold text-purple-700 dark:text-purple-400">job monitoring</span>, improving performance insights.
-                </>
-              ].map((item, index) => (
+            <ul className="list-disc pl-6 text-gray-800 dark:text-gray-200 space-y-4">
+              {highlights.map((item, index) => (
                 <motion.li
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   viewport={{ once: true }}
-                >
-                  {item}
-                </motion.li>
+                  dangerouslySetInnerHTML={{ __html: highlight(item) }}
+                />
               ))}
             </ul>
           </motion.div>
@@ -156,7 +108,6 @@ export default function About() {
             <h3 className="text-2xl font-semibold text-purple-800 dark:text-white mb-6 text-center">
               🛠️ Skills
             </h3>
-          
             <div className="space-y-6">
               {skills.map((skill, index) => (
                 <motion.div
