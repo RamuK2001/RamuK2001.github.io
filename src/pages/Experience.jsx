@@ -201,8 +201,8 @@ export default function Experience() {
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: projIndex * 0.1, duration: 0.4 }}
-                            whileHover={{ scale: 1.02 }}
+                            transition={{ delay: projIndex * 0.1, type: "spring", stiffness: 300, damping: 20 }}
+                            whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
                             className="relative z-10 bg-white dark:bg-gray-900/40 p-4 rounded-xl border border-purple-200 dark:border-purple-600 shadow-md hover:shadow-xl hover:shadow-purple-300 dark:hover:shadow-purple-700 duration-300"
                           >
