@@ -108,8 +108,6 @@ export default function Home() {
                   "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
               }}
               transition={{
-                // delay: 0.08 * index,
-                // duration: 0.5,
                 type: "spring",
                 stiffness: 300,
                 damping: 20

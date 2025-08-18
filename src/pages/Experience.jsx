@@ -204,7 +204,7 @@ export default function Experience() {
                             transition={{ delay: projIndex * 0.1, duration: 0.4 }}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="relative z-10 bg-white dark:bg-gray-900/40 p-4 rounded-xl border border-purple-200 dark:border-purple-600 shadow-md hover:shadow-xl hover:shadow-purple-300 dark:hover:shadow-purple-700 transition-all duration-300"
+                            className="relative z-10 bg-white dark:bg-gray-900/40 p-4 rounded-xl border border-purple-200 dark:border-purple-600 shadow-md hover:shadow-xl hover:shadow-purple-300 dark:hover:shadow-purple-700 duration-300"
                           >
                             <button
                               className="flex justify-between items-center w-full text-left"
