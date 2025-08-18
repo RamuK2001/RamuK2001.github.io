@@ -80,7 +80,11 @@ export default function Home() {
               src="/Portfolio_Home.png"
               alt="Infra to Insights Illustration"
               className="rounded-xl shadow-lg w-full max-w-lg mx-auto border-2 border-purple-300 dark:border-purple-600"
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ 
+                scale: 1.1,
+                boxShadow:
+                  "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
+              }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             />
             <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
