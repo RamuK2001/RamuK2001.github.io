@@ -202,9 +202,13 @@ export default function Experience() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: projIndex * 0.1, type: "spring", stiffness: 300, damping: 20 }}
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{
+                              scale: 1.05,
+                              boxShadow:
+                                "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
+                            }}
                             whileTap={{ scale: 0.98 }}
-                            className="relative z-10 bg-white dark:bg-gray-900/40 p-4 rounded-xl border border-purple-200 dark:border-purple-600 shadow-md hover:shadow-xl hover:shadow-purple-300 dark:hover:shadow-purple-700 duration-300"
+                            className="relative z-10 bg-white dark:bg-gray-900/40 p-4 rounded-xl border border-purple-200 dark:border-purple-600 shadow-md"
                           >
                             <button
                               className="flex justify-between items-center w-full text-left"
