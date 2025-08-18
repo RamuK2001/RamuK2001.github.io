@@ -42,9 +42,9 @@ export default function Certifications() {
                 boxShadow:
                   "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
               }}
-              transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 120, damping: 15 }}
+              transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 300, damping: 20 }}
               viewport={{ once: true }}
-              className="bg-white/60 dark:bg-white/10 backdrop-blur-md p-5 rounded-xl shadow-md transition-all"
+              className="bg-white/60 dark:bg-white/10 backdrop-blur-md p-5 rounded-xl shadow-md"
             >
               <a
                 href={cert.link}
