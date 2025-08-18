@@ -203,7 +203,7 @@ export default function Experience() {
                             viewport={{ once: true }}
                             transition={{ delay: projIndex * 0.1, type: "spring", stiffness: 300, damping: 20 }}
                             whileHover={{
-                              scale: 1.05,
+                              scale: 1.04,
                               boxShadow:
                                 "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
                             }}

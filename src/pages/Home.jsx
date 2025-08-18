@@ -79,7 +79,7 @@ export default function Home() {
             <motion.img
               src="/Portfolio_Home.png"
               alt="Infra to Insights Illustration"
-              className="rounded-xl shadow-lg w-full max-w-lg mx-auto"
+              className="rounded-xl shadow-lg w-full max-w-lg mx-auto border-2 border-purple-300 dark:border-purple-600"
               whileHover={{ scale: 1.1 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             />
