@@ -11,19 +11,18 @@ import {
 // Highlight function similar to Experience.jsx
 const highlight = (text) => {
   return text
-    .replace(/\b(Azure|ADF|ADB|DevOps|Databricks|Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental|Unity Catalog|HTML|Vacuum|Optimize|Partitioning|Z-Ordering|Liquid Clustering|Row-Level Security|REST APIs|Microsoft Fabric|Star|Snowflake|SCDs|SonarQube|ARMTTK|Automation Account|cost|performance|reports|dimension tables|table|artifact|infrastructure|IaC|infrastructure as code|selective deployment|pipeline|cluster|job|metrics|manual effort|real-time|SLA tracking|job monitoring|performance insights)\b/gi, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
+    .replace(/\b(ADF|ADB|Azure DevOps|Azure Databricks|Azure Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental|Unity Catalog|HTML|Vacuum|Optimize|Partitioning|Z-Ordering|Liquid Clustering|Row-Level Security|REST APIs|Microsoft Fabric|Star|Snowflake|SCDs|SonarQube|ARMTTK|Automation Account|cost|performance|reports|dimension tables|table|artifact|infrastructure|IaC|infrastructure as code|selective deployment|pipeline|cluster|job|metrics|manual effort|real-time|SLA tracking|job monitoring|performance insights|Led)\b/gi, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
     .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records|\d+ billion|40%|85%|95%|99%|80%)/g, '<span class="font-semibold text-green-700 dark:text-green-400">$1</span>')
     .replace(/\b(gigabytes|terabytes)\b/gi, '<span class="font-semibold text-pink-700 dark:text-pink-400">$1</span>')
-    .replace(/\b(CSV|Excel|XML|Parquet)\b/g, '<span class="italic">$1</span>');
+    .replace(/\b(CSV|Excel|JSON|XML|Parquet)\b/g, '<span class="italic">$1</span>');
 };
 
 const highlights = [
-  "Designed and developed ETL pipelines in Azure Data Factory (ADF) migrating terabytes of data from sources like SAP, Salesforce, on-premise DBs to Azure, achieving a 99% success rate.",
-  "Developed PySpark-based processing in Azure Databricks (ADB) Jobs & Pipelines handling gigabytes of data across formats like CSV, Excel, XML, Parquet.",
-  "Expert in developing complex SQL queries with multiple CTEs and window functions based on business requirements and optimizing queries by utilizing advanced concepts like Partitioning and Liquid Clustering.",
-  "Experienced in developing data models using Star and Snowflake schemas and also defining SCDs on dimension tables as per business requirements.",
-  "Automated Vacuum and Optimize operations on ADB tables, improving table read/write performance by 40%.",
-  "Reduced cloud infrastructure setup time by 85% using IaC (Infrastructure as Code) developed using ARM templates and Terraform and deployed through Azure DevOps.",
+  "Built scheduled Azure Data Factory (ADF) pipelines integrated with ADLS and Azure Databricks (ADB) to migrate terabytes of on-premise data (SAP, SFTP, Salesforce, on-prem DBs) into Unity Catalog with 99% success rate, featuring detailed logging and HTML-based failure alerts.",
+  "Developed generic PySpark jobs in ADB for ingesting and processing both historic and incremental data from flat-files (CSV, Excel, JSON, XML, Parquet) and on-prem DBs via JDBC, orchestrated using REST APIs.",
+  "Led a team of 5 to design a scalable product categorization job in ADB for over 3 billion records leveraging external lookup tables, keyword matching, and LLM-based approaches, achieving over 90% accuracy",
+  "Automated ADB Vacuum & Optimize and achieved 75% improvement in query performance by implementing Partitioning, Z-Ordering, and Liquid Clustering based on the data cardinality.",
+  "Provisioned full-stack Azure environments (ADLS, ADB, ADF, VMs) with private networking via ARM templates and Terraform, cutting setup time by 85%.",
   "Implemented selective deployment feature in the CI/CD pipeline, enabling targeted artifact deployment and improving speed & flexibility.",
   "Integrated SonarQube and ARMTTK with Azure DevOps for automating code quality checks, saving 80% review effort.",
   "Automated weekly cost, ADF & ADB performance reports, and ADB cluster usage metrics extraction using PowerShell and Azure Automation Account, reducing manual effort by 95%.",
