@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-// Example: Animated gradient blobs (customize colors to match your theme)
+// Animated "data packets" moving across the background, emphasizing data engineering
 export default function BackgroundVisuals() {
   const canvasRef = useRef(null);
 
@@ -11,7 +11,6 @@ export default function BackgroundVisuals() {
     let width = window.innerWidth;
     let height = window.innerHeight;
 
-    // Responsive resize
     function resize() {
       width = window.innerWidth;
       height = window.innerHeight;
@@ -21,28 +20,90 @@ export default function BackgroundVisuals() {
     window.addEventListener("resize", resize);
     resize();
 
-    // Blob properties
-    const blobs = [
-      { x: 200, y: 200, r: 180, dx: 0.3, dy: 0.2, color: "rgba(168,85,247,0.18)" }, // purple
-      { x: 600, y: 400, r: 120, dx: -0.2, dy: 0.25, color: "rgba(236,72,153,0.15)" }, // pink
-      { x: 400, y: 700, r: 150, dx: 0.15, dy: -0.18, color: "rgba(59,130,246,0.12)" }, // blue
+    // Generate data packets (rectangles/lines) with random start/end points and colors
+    const packetColors = [
+      "rgba(168,85,247,0.25)", // purple
+      "rgba(236,72,153,0.18)", // pink
+      "rgba(59,130,246,0.18)", // blue
+      "rgba(34,197,94,0.15)",  // green
     ];
+
+    function createPacket() {
+      const vertical = Math.random() > 0.5;
+      const length = 60 + Math.random() * 80;
+      const speed = 0.7 + Math.random() * 1.2;
+      const color = packetColors[Math.floor(Math.random() * packetColors.length)];
+      if (vertical) {
+        // Vertical packet (top to bottom)
+        return {
+          x: Math.random() * width,
+          y: -length,
+          dx: 0,
+          dy: speed,
+          length,
+          vertical,
+          color,
+          width: 4 + Math.random() * 3,
+        };
+      } else {
+        // Horizontal packet (left to right)
+        return {
+          x: -length,
+          y: Math.random() * height,
+          dx: speed,
+          dy: 0,
+          length,
+          vertical,
+          color,
+          width: 4 + Math.random() * 3,
+        };
+      }
+    }
+
+    let packets = [];
+    for (let i = 0; i < 22; i++) {
+      packets.push(createPacket());
+    }
 
     function animate() {
       ctx.clearRect(0, 0, width, height);
-      blobs.forEach((b) => {
-        // Move blobs
-        b.x += b.dx;
-        b.y += b.dy;
-        // Bounce
-        if (b.x - b.r < 0 || b.x + b.r > width) b.dx *= -1;
-        if (b.y - b.r < 0 || b.y + b.r > height) b.dy *= -1;
-        // Draw
+
+      // Draw gradient overlay for subtle effect
+      const grad = ctx.createLinearGradient(0, 0, width, height);
+      grad.addColorStop(0, "rgba(168,85,247,0.08)");
+      grad.addColorStop(0.5, "rgba(236,72,153,0.07)");
+      grad.addColorStop(1, "rgba(59,130,246,0.08)");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, width, height);
+
+      packets.forEach((p, i) => {
+        ctx.save();
+        ctx.globalAlpha = 0.7;
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = p.width;
         ctx.beginPath();
-        ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
-        ctx.fillStyle = b.color;
-        ctx.fill();
+        if (p.vertical) {
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p.x, p.y + p.length);
+        } else {
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p.x + p.length, p.y);
+        }
+        ctx.stroke();
+        ctx.restore();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        // Reset packet if out of bounds
+        if (
+          (p.vertical && p.y > height + p.length) ||
+          (!p.vertical && p.x > width + p.length)
+        ) {
+          packets[i] = createPacket();
+        }
       });
+
       animationFrameId = requestAnimationFrame(animate);
     }
     animate();
@@ -63,7 +124,7 @@ export default function BackgroundVisuals() {
         width: "100vw", height: "100vh",
         zIndex: 0,
         pointerEvents: "none",
-        opacity: 0.65,
+        opacity: 0.7,
       }}
       aria-hidden="true"
     />
