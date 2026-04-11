@@ -119,7 +119,7 @@ export default function Home() {
                 damping: 20
               }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-gray-900 shadow-md rounded-lg p-5 flex items-start space-x-4 border border-purple-200 dark:border-gray-700"
+              className="bg-white/60 dark:bg-white/10 backdrop-blur-md shadow-md rounded-lg p-5 flex items-start space-x-4 border border-purple-200 dark:border-gray-700"
             >
               <div>{item.icon}</div>
               <p className="text-gray-700 dark:text-gray-300">{item.text}</p>

@@ -9,9 +9,19 @@ export default function Certifications() {
       link: "https://credentials.databricks.com/a433bf7e-4db4-484a-8f3b-bec4761b103b#acc.uQJa82lf",
     },
     {
+      logo: "/assets/badges/microsoft-certified-expert-badge.png",
+      title: "Microsoft Certified: Azure Solutions Architect Expert (AZ-305)",
+      link: "https://learn.microsoft.com/api/credentials/share/en-us/RamakrishnaKarnati-9798/6C22BEF46B187286",
+    },
+    {
       logo: "/assets/badges/dp_600_badge.png",
       title: "Microsoft Certified: Fabric Analytics Engineer Associate (DP-600)",
       link: "https://learn.microsoft.com/api/credentials/share/en-us/RamakrishnaKarnati-9798/4758FFFD196B98F",
+    },
+    {
+      logo: "/assets/badges/dp_600_badge.png",
+      title: "Microsoft Certified: Fabric Data Engineer Associate (DP-700)",
+      link: "https://learn.microsoft.com/api/credentials/share/en-us/RamakrishnaKarnati-9798/34249CB5868CC6BB",
     },
     {
       logo: "/assets/badges/az_fundamentals_badge.png",
