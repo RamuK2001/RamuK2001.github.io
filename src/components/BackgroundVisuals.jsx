@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-// Animated "data packets" moving across the background, emphasizing data engineering
+// "Hardcore" data engineering visualization: animated nodes, connections, and flowing data pulses
 export default function BackgroundVisuals() {
   const canvasRef = useRef(null);
 
@@ -20,93 +20,122 @@ export default function BackgroundVisuals() {
     window.addEventListener("resize", resize);
     resize();
 
-    // Generate data packets (rectangles/lines) with random start/end points and colors
-    const packetColors = [
-      "rgba(168,85,247,0.25)", // purple
-      "rgba(236,72,153,0.18)", // pink
-      "rgba(59,130,246,0.18)", // blue
-      "rgba(34,197,94,0.15)",  // green
-    ];
+    // Generate nodes (representing data sources, sinks, and processors)
+    const nodeCount = width < 600 ? 8 : 16;
+    const nodes = [];
+    for (let i = 0; i < nodeCount; i++) {
+      nodes.push({
+        x: Math.random() * width * 0.9 + width * 0.05,
+        y: Math.random() * height * 0.7 + height * 0.15,
+        r: 16 + Math.random() * 10,
+        color: [
+          "rgba(168,85,247,0.85)", // purple
+          "rgba(236,72,153,0.85)", // pink
+          "rgba(59,130,246,0.85)", // blue
+          "rgba(34,197,94,0.85)",  // green
+        ][Math.floor(Math.random() * 4)],
+        pulse: Math.random() * Math.PI * 2,
+      });
+    }
 
-    function createPacket() {
-      const vertical = Math.random() > 0.5;
-      const length = 60 + Math.random() * 80;
-      const speed = 0.7 + Math.random() * 1.2;
-      const color = packetColors[Math.floor(Math.random() * packetColors.length)];
-      if (vertical) {
-        // Vertical packet (top to bottom)
-        return {
-          x: Math.random() * width,
-          y: -length,
-          dx: 0,
-          dy: speed,
-          length,
-          vertical,
-          color,
-          width: 4 + Math.random() * 3,
-        };
-      } else {
-        // Horizontal packet (left to right)
-        return {
-          x: -length,
-          y: Math.random() * height,
-          dx: speed,
-          dy: 0,
-          length,
-          vertical,
-          color,
-          width: 4 + Math.random() * 3,
-        };
+    // Generate connections (edges) between nodes
+    const edges = [];
+    for (let i = 0; i < nodeCount; i++) {
+      for (let j = i + 1; j < nodeCount; j++) {
+        if (Math.random() < 0.23) {
+          edges.push({
+            from: i,
+            to: j,
+            color: "rgba(168,85,247,0.18)",
+            pulseOffset: Math.random() * 1000,
+          });
+        }
       }
     }
 
-    let packets = [];
-    for (let i = 0; i < 22; i++) {
-      packets.push(createPacket());
+    // Data pulses moving along edges
+    function drawPulse(x1, y1, x2, y2, t, color) {
+      const pulseCount = 2;
+      for (let i = 0; i < pulseCount; i++) {
+        const progress = ((t / 1200 + i / pulseCount) % 1);
+        const px = x1 + (x2 - x1) * progress;
+        const py = y1 + (y2 - y1) * progress;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(px, py, 6 + 4 * Math.sin(t / 400 + i), 0, Math.PI * 2);
+        ctx.globalAlpha = 0.7;
+        ctx.fillStyle = color;
+        ctx.shadowColor = color;
+        ctx.shadowBlur = 12;
+        ctx.fill();
+        ctx.restore();
+      }
     }
 
-    function animate() {
+    function animate(t) {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw gradient overlay for subtle effect
+      // Subtle gradient background
       const grad = ctx.createLinearGradient(0, 0, width, height);
-      grad.addColorStop(0, "rgba(168,85,247,0.08)");
+      grad.addColorStop(0, "rgba(168,85,247,0.09)");
       grad.addColorStop(0.5, "rgba(236,72,153,0.07)");
-      grad.addColorStop(1, "rgba(59,130,246,0.08)");
+      grad.addColorStop(1, "rgba(59,130,246,0.09)");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, width, height);
 
-      packets.forEach((p, i) => {
+      // Draw edges (connections)
+      edges.forEach((edge) => {
+        const n1 = nodes[edge.from];
+        const n2 = nodes[edge.to];
         ctx.save();
-        ctx.globalAlpha = 0.7;
-        ctx.strokeStyle = p.color;
-        ctx.lineWidth = p.width;
         ctx.beginPath();
-        if (p.vertical) {
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p.x, p.y + p.length);
-        } else {
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p.x + p.length, p.y);
-        }
+        ctx.moveTo(n1.x, n1.y);
+        ctx.lineTo(n2.x, n2.y);
+        ctx.strokeStyle = "rgba(168,85,247,0.18)";
+        ctx.lineWidth = 3;
+        ctx.shadowColor = "rgba(168,85,247,0.18)";
+        ctx.shadowBlur = 8;
+        ctx.globalAlpha = 0.7;
         ctx.stroke();
         ctx.restore();
 
-        p.x += p.dx;
-        p.y += p.dy;
+        // Draw animated data pulses
+        drawPulse(n1.x, n1.y, n2.x, n2.y, t + edge.pulseOffset, n1.color);
+      });
 
-        // Reset packet if out of bounds
-        if (
-          (p.vertical && p.y > height + p.length) ||
-          (!p.vertical && p.x > width + p.length)
-        ) {
-          packets[i] = createPacket();
-        }
+      // Draw nodes
+      nodes.forEach((node) => {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(
+          node.x,
+          node.y,
+          node.r + Math.sin(t / 600 + node.pulse) * 2,
+          0,
+          Math.PI * 2
+        );
+        ctx.globalAlpha = 0.85;
+        ctx.fillStyle = node.color;
+        ctx.shadowColor = node.color;
+        ctx.shadowBlur = 18;
+        ctx.fill();
+        ctx.restore();
+
+        // Draw node "core"
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.r * 0.45, 0, Math.PI * 2);
+        ctx.globalAlpha = 0.7;
+        ctx.fillStyle = "#fff";
+        ctx.shadowColor = node.color;
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.restore();
       });
 
       animationFrameId = requestAnimationFrame(animate);
     }
-    animate();
+    animate(0);
 
     return () => {
       window.removeEventListener("resize", resize);
