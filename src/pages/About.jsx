@@ -7,6 +7,7 @@ import {
   Wrench,
   Smile
 } from "lucide-react";
+import BackgroundVisuals from "../components/BackgroundVisuals";
 
 // Highlight function similar to Experience.jsx
 const highlight = (text) => {
@@ -64,6 +65,7 @@ const skills = [
 export default function About() {
   return (
     <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      <BackgroundVisuals />
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-purple-900 dark:text-white mb-10 text-center">
           About Me

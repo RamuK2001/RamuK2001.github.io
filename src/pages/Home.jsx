@@ -7,6 +7,7 @@ import {
   Award,
   ShieldCheck,
 } from "lucide-react";
+import BackgroundVisuals from "../components/BackgroundVisuals";
 
 export default function Home() {
   const achievements = [
@@ -39,6 +40,7 @@ export default function Home() {
 
   return (
     <>
+      <BackgroundVisuals />
       {/* Hero Section */}
       <section className="p-10 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-gray-900 dark:to-gray-800 min-h-[70vh]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">

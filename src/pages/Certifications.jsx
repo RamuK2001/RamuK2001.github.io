@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import BackgroundVisuals from "../components/BackgroundVisuals";
 
 export default function Certifications() {
   const certifications = [
@@ -25,44 +26,47 @@ export default function Certifications() {
   ];
 
   return (
-    <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-purple-900 dark:text-white mb-10 text-center">
-          📜 Certifications
-        </h2>
+    <>
+      <BackgroundVisuals />
+      <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-purple-900 dark:text-white mb-10 text-center">
+            📜 Certifications
+          </h2>
 
-        <ul className="space-y-6">
-          {certifications.map((cert, index) => (
-            <motion.li
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{
-                scale: 1.05,
-                boxShadow:
-                  "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
-              }}
-              transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 300, damping: 20 }}
-              viewport={{ once: true }}
-              className="bg-white/60 dark:bg-white/10 backdrop-blur-md p-5 rounded-xl shadow-md"
-            >
-              <a
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lg font-medium text-blue-700 dark:text-blue-400 hover:underline flex items-center gap-2"
+          <ul className="space-y-6">
+            {certifications.map((cert, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow:
+                    "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
+                }}
+                transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 300, damping: 20 }}
+                viewport={{ once: true }}
+                className="bg-white/60 dark:bg-white/10 backdrop-blur-md p-5 rounded-xl shadow-md"
               >
-                <img
-                  src={cert.logo}
-                  alt={`${cert.title} badge`}
-                  className="w-8 h-8 object-contain rounded bg-white dark:bg-gray-100 p-1"
-                />
-                {cert.title}
-              </a>
-            </motion.li>
-          ))}
-        </ul>
-      </div>
-    </section>
+                <a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg font-medium text-blue-700 dark:text-blue-400 hover:underline flex items-center gap-2"
+                >
+                  <img
+                    src={cert.logo}
+                    alt={`${cert.title} badge`}
+                    className="w-8 h-8 object-contain rounded bg-white dark:bg-gray-100 p-1"
+                  />
+                  {cert.title}
+                </a>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </>
   );
 }

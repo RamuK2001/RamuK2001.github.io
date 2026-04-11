@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import BackgroundVisuals from "../components/BackgroundVisuals";
 
 const highlight = (text) => {
   return text
@@ -135,139 +136,142 @@ export default function Experience() {
   };
 
   return (
-    <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-purple-900 dark:text-white mb-10 text-center">
-          💼 Experience
-        </h2>
+    <>
+      <BackgroundVisuals />
+      <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-purple-900 dark:text-white mb-10 text-center">
+            💼 Experience
+          </h2>
 
-        {experienceData.map((exp, index) => {
-          const isCompanyOpen = openCompanies.includes(index);
-          const openProj = openProjects[index] || [];
+          {experienceData.map((exp, index) => {
+            const isCompanyOpen = openCompanies.includes(index);
+            const openProj = openProjects[index] || [];
 
-          return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="mb-6 bg-white/60 dark:bg-white/10 backdrop-blur-md shadow-md rounded-xl p-5"
-            >
-              <button
-                onClick={() => toggleCompany(index)}
-                className="w-full flex justify-between items-center text-left"
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="mb-6 bg-white/60 dark:bg-white/10 backdrop-blur-md shadow-md rounded-xl p-5"
               >
-                <div className="flex items-center space-x-4">
-                  {exp.logo && (
-                    <img
-                      src={exp.logo}
-                      alt={`${exp.company} logo`}
-                      className="w-10 h-10 object-contain rounded bg-white p-1 dark:bg-gray-800 dark:brightness-90"
-                    />
-                  )}
-                  <div>
-                    <h3 className="text-xl font-semibold text-purple-800 dark:text-white">
-                      {exp.company}
-                    </h3>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
-                      {exp.duration}
-                    </p>
+                <button
+                  onClick={() => toggleCompany(index)}
+                  className="w-full flex justify-between items-center text-left"
+                >
+                  <div className="flex items-center space-x-4">
+                    {exp.logo && (
+                      <img
+                        src={exp.logo}
+                        alt={`${exp.company} logo`}
+                        className="w-10 h-10 object-contain rounded bg-white p-1 dark:bg-gray-800 dark:brightness-90"
+                      />
+                    )}
+                    <div>
+                      <h3 className="text-xl font-semibold text-purple-800 dark:text-white">
+                        {exp.company}
+                      </h3>
+                      <p className="text-sm text-gray-700 dark:text-gray-300">
+                        {exp.duration}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                {isCompanyOpen ? (
-                  <ChevronUp className="text-purple-700" />
-                ) : (
-                  <ChevronDown className="text-purple-700" />
-                )}
-              </button>
+                  {isCompanyOpen ? (
+                    <ChevronUp className="text-purple-700" />
+                  ) : (
+                    <ChevronDown className="text-purple-700" />
+                  )}
+                </button>
 
-              <AnimatePresence>
-                {isCompanyOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="mt-4 overflow-visible relative"
-                  >
-                    <ul className="space-y-4">
-                      {exp.projects.map((proj, projIndex) => {
-                        const isOpen = openProj.includes(projIndex);
+                <AnimatePresence>
+                  {isCompanyOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="mt-4 overflow-visible relative"
+                    >
+                      <ul className="space-y-4">
+                        {exp.projects.map((proj, projIndex) => {
+                          const isOpen = openProj.includes(projIndex);
 
-                        return (
-                          <motion.li
-                            key={projIndex}
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: projIndex * 0.1, type: "spring", stiffness: 300, damping: 20 }}
-                            whileHover={{
-                              scale: 1.025,
-                              boxShadow:
-                                "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
-                            }}
-                            whileTap={{ scale: 0.98 }}
-                            className="relative z-10 bg-white dark:bg-gray-900/40 p-4 rounded-xl border border-purple-200 dark:border-purple-600 shadow-md"
-                          >
-                            <button
-                              className="flex justify-between items-center w-full text-left"
-                              onClick={() => toggleProject(index, projIndex)}
+                          return (
+                            <motion.li
+                              key={projIndex}
+                              initial={{ opacity: 0, y: 10 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: projIndex * 0.1, type: "spring", stiffness: 300, damping: 20 }}
+                              whileHover={{
+                                scale: 1.025,
+                                boxShadow:
+                                  "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
+                              }}
+                              whileTap={{ scale: 0.98 }}
+                              className="relative z-10 bg-white dark:bg-gray-900/40 p-4 rounded-xl border border-purple-200 dark:border-purple-600 shadow-md"
                             >
-                              <h4 className="text-lg font-semibold text-purple-700 dark:text-purple-300">
-                                {proj.title}
-                              </h4>
-                              {isOpen ? (
-                                <ChevronUp className="text-purple-600" />
-                              ) : (
-                                <ChevronDown className="text-purple-600" />
-                              )}
-                            </button>
+                              <button
+                                className="flex justify-between items-center w-full text-left"
+                                onClick={() => toggleProject(index, projIndex)}
+                              >
+                                <h4 className="text-lg font-semibold text-purple-700 dark:text-purple-300">
+                                  {proj.title}
+                                </h4>
+                                {isOpen ? (
+                                  <ChevronUp className="text-purple-600" />
+                                ) : (
+                                  <ChevronDown className="text-purple-600" />
+                                )}
+                              </button>
 
-                            <AnimatePresence>
-                              {isOpen && (
-                                <motion.div
-                                  initial={{ opacity: 0, height: 0 }}
-                                  animate={{ opacity: 1, height: "auto" }}
-                                  exit={{ opacity: 0, height: 0 }}
-                                  transition={{ duration: 0.3 }}
-                                  className="mt-2 space-y-2"
-                                >
-                                  <ul className="pl-5 text-sm text-gray-700 dark:text-gray-300 list-disc space-y-1">
-                                    {proj.description.map((point, i) => (
-                                      <li
-                                        key={i}
-                                        dangerouslySetInnerHTML={{ __html: highlight(point) }}
-                                      ></li>
-                                    ))}
-                                  </ul>
-
-                                  {proj.tags && (
-                                    <div className="flex flex-wrap gap-2 mt-3">
-                                      {proj.tags.map((tag, i) => (
-                                        <span
+                              <AnimatePresence>
+                                {isOpen && (
+                                  <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: "auto" }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="mt-2 space-y-2"
+                                  >
+                                    <ul className="pl-5 text-sm text-gray-700 dark:text-gray-300 list-disc space-y-1">
+                                      {proj.description.map((point, i) => (
+                                        <li
                                           key={i}
-                                          className="text-xs bg-purple-100 dark:bg-purple-800/30 text-purple-800 dark:text-purple-200 px-2 py-1 rounded-full font-medium shadow-sm"
-                                        >
-                                          {tag}
-                                        </span>
+                                          dangerouslySetInnerHTML={{ __html: highlight(point) }}
+                                        ></li>
                                       ))}
-                                    </div>
-                                  )}
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </motion.li>
-                        );
-                      })}
-                    </ul>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          );
-        })}
-      </div>
-    </section>
+                                    </ul>
+
+                                    {proj.tags && (
+                                      <div className="flex flex-wrap gap-2 mt-3">
+                                        {proj.tags.map((tag, i) => (
+                                          <span
+                                            key={i}
+                                            className="text-xs bg-purple-100 dark:bg-purple-800/30 text-purple-800 dark:text-purple-200 px-2 py-1 rounded-full font-medium shadow-sm"
+                                          >
+                                            {tag}
+                                          </span>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+                            </motion.li>
+                          );
+                        })}
+                      </ul>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </div>
+      </section>
+    </>
   );
 }
