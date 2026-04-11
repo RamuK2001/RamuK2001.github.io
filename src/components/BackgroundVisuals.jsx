@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-// Animated data packets, 3 charts at bottom right, 2 charts (area + scatter) at top left, all equally sized with axes (except pie), top left charts fixed below navbar
+// Animated data packets, 3 charts at bottom right, 3 charts (area, scatter, horizontal bar) at top left, all equally sized with axes (no diagonal lines)
 export default function BackgroundVisuals() {
   const canvasRef = useRef(null);
 
@@ -111,6 +111,13 @@ export default function BackgroundVisuals() {
       "rgba(168,85,247,0.38)",
     ];
 
+    // --- Horizontal Bar Chart (top left, right of area chart) ---
+    const hBarColors = [
+      "rgba(251,191,36,0.32)",
+      "rgba(59,130,246,0.32)",
+      "rgba(236,72,153,0.32)",
+    ];
+
     function animate(t) {
       ctx.clearRect(0, 0, width, height);
 
@@ -156,7 +163,7 @@ export default function BackgroundVisuals() {
 
       // --- Chart Placement ---
       // Bottom right: bar, pie (above), line (left)
-      // Top left: area, scatter (below area)
+      // Top left: area, scatter (below area), horizontal bar (right of area)
       const barX = width - chartSize - chartPadding;
       const barY = height - chartSize - chartPadding;
       const pieX = barX + chartSize / 2;
@@ -168,18 +175,20 @@ export default function BackgroundVisuals() {
       const topStartX = chartPadding;
       const topStartY = navBarHeight + chartPadding;
       const chartGapY = chartSize + chartPadding * 0.7;
+      const chartGapX = chartSize + chartPadding * 0.7;
 
-      // --- Area Chart (top left, with axes) ---
+      // --- Area Chart (top left, with axes, no diagonal) ---
       const areaX = topStartX;
       const areaY = topStartY;
       ctx.save();
-      // Axes
+      // Axes (no diagonal)
       ctx.globalAlpha = 0.45;
       ctx.strokeStyle = "#fff";
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.moveTo(areaX, areaY + chartSize);
       ctx.lineTo(areaX, areaY);
+      ctx.moveTo(areaX, areaY + chartSize);
       ctx.lineTo(areaX + chartSize, areaY + chartSize);
       ctx.stroke();
       ctx.restore();
@@ -205,10 +214,10 @@ export default function BackgroundVisuals() {
       ctx.fill();
       ctx.restore();
 
-      // --- Scatter Plot (top left, below area chart, with axes) ---
+      // --- Scatter Plot (top left, below area chart, with axes, no diagonal) ---
       const dotX = topStartX;
       const dotY = topStartY + chartGapY;
-      // Axes
+      // Axes (no diagonal)
       ctx.save();
       ctx.globalAlpha = 0.45;
       ctx.strokeStyle = "#fff";
@@ -216,6 +225,7 @@ export default function BackgroundVisuals() {
       ctx.beginPath();
       ctx.moveTo(dotX, dotY + chartSize);
       ctx.lineTo(dotX, dotY);
+      ctx.moveTo(dotX, dotY + chartSize);
       ctx.lineTo(dotX + chartSize, dotY + chartSize);
       ctx.stroke();
       ctx.restore();
@@ -234,12 +244,53 @@ export default function BackgroundVisuals() {
         ctx.restore();
       }
 
-      // --- Bar Graph (with axes, bottom right) ---
+      // --- Horizontal Bar Chart (top left, right of area chart, with axes, no diagonal) ---
+      const hBarX = topStartX + chartGapX;
+      const hBarY = topStartY;
+      // Axes (no diagonal)
+      ctx.save();
+      ctx.globalAlpha = 0.45;
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(hBarX, hBarY);
+      ctx.lineTo(hBarX, hBarY + chartSize);
+      ctx.moveTo(hBarX, hBarY + chartSize);
+      ctx.lineTo(hBarX + chartSize, hBarY + chartSize);
+      ctx.stroke();
+      ctx.restore();
+      // Bars
+      const hBarCount = 5;
+      const hBarH = chartSize / (hBarCount * 1.5);
+      const hBarSpacing = hBarH * 0.5;
+      for (let i = 0; i < hBarCount; i++) {
+        const phase = t / 1100 + i;
+        const w =
+          chartSize * 0.3 +
+          Math.abs(Math.sin(phase + i * 0.7)) * (chartSize * 0.6);
+        ctx.save();
+        ctx.beginPath();
+        ctx.roundRect(
+          hBarX + 2,
+          hBarY + i * (hBarH + hBarSpacing) + hBarH * 0.2,
+          w,
+          hBarH,
+          4
+        );
+        ctx.globalAlpha = 0.38;
+        ctx.fillStyle = hBarColors[i % hBarColors.length];
+        ctx.shadowColor = hBarColors[i % hBarColors.length];
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // --- Bar Graph (with axes, bottom right, no diagonal) ---
       const barAreaW = chartSize;
       const barAreaH = chartSize;
       const barW = barAreaW / (barCount * 1.5);
       const barSpacing = barW * 0.5;
-      // Axes
+      // Axes (no diagonal)
       ctx.save();
       ctx.globalAlpha = 0.45;
       ctx.strokeStyle = "#fff";
@@ -247,6 +298,7 @@ export default function BackgroundVisuals() {
       ctx.beginPath();
       ctx.moveTo(barX, barY + barAreaH);
       ctx.lineTo(barX, barY);
+      ctx.moveTo(barX, barY + barAreaH);
       ctx.lineTo(barX + barAreaW, barY + barAreaH);
       ctx.stroke();
       ctx.restore();
@@ -304,10 +356,10 @@ export default function BackgroundVisuals() {
       ctx.stroke();
       ctx.restore();
 
-      // --- Line Graph (left of bar graph, with axes, bottom right) ---
+      // --- Line Graph (left of bar graph, with axes, bottom right, no diagonal) ---
       const graphW = chartSize;
       const graphH = chartSize;
-      // Axes
+      // Axes (no diagonal)
       ctx.save();
       ctx.globalAlpha = 0.45;
       ctx.strokeStyle = "#fff";
@@ -315,6 +367,7 @@ export default function BackgroundVisuals() {
       ctx.beginPath();
       ctx.moveTo(lineX, lineY + graphH);
       ctx.lineTo(lineX, lineY);
+      ctx.moveTo(lineX, lineY + graphH);
       ctx.lineTo(lineX + graphW, lineY + graphH);
       ctx.stroke();
       ctx.restore();
