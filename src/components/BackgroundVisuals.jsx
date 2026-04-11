@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-// Data engineering visualization with animated network, bar chart (bottom right), and moving data packets (top right)
+// Animated data packets across the screen and a subtle, transparent bar graph at bottom right
 export default function BackgroundVisuals() {
   const canvasRef = useRef(null);
 
@@ -20,154 +20,106 @@ export default function BackgroundVisuals() {
     window.addEventListener("resize", resize);
     resize();
 
-    // --- Network Nodes and Connections (center) ---
-    const nodeCount = width < 600 ? 8 : 16;
-    const nodes = [];
-    for (let i = 0; i < nodeCount; i++) {
-      nodes.push({
-        x: Math.random() * width * 0.9 + width * 0.05,
-        y: Math.random() * height * 0.7 + height * 0.15,
-        r: 16 + Math.random() * 10,
-        color: [
-          "rgba(168,85,247,0.85)", // purple
-          "rgba(236,72,153,0.85)", // pink
-          "rgba(59,130,246,0.85)", // blue
-          "rgba(34,197,94,0.85)",  // green
-        ][Math.floor(Math.random() * 4)],
-        pulse: Math.random() * Math.PI * 2,
-      });
-    }
-    const edges = [];
-    for (let i = 0; i < nodeCount; i++) {
-      for (let j = i + 1; j < nodeCount; j++) {
-        if (Math.random() < 0.23) {
-          edges.push({
-            from: i,
-            to: j,
-            color: "rgba(168,85,247,0.18)",
-            pulseOffset: Math.random() * 1000,
-          });
-        }
+    // --- Data Packets (across the screen) ---
+    function createPacket() {
+      const vertical = Math.random() > 0.5;
+      const length = 40 + Math.random() * 60;
+      const speed = 0.7 + Math.random() * 1.5;
+      const color = [
+        "rgba(168,85,247,0.18)",
+        "rgba(236,72,153,0.13)",
+        "rgba(59,130,246,0.13)",
+        "rgba(34,197,94,0.10)",
+      ][Math.floor(Math.random() * 4)];
+      if (vertical) {
+        // Vertical packet (top to bottom)
+        return {
+          x: Math.random() * width,
+          y: -length,
+          dx: 0,
+          dy: speed,
+          length,
+          vertical,
+          color,
+          width: 3 + Math.random() * 2,
+        };
+      } else {
+        // Horizontal packet (left to right)
+        return {
+          x: -length,
+          y: Math.random() * height,
+          dx: speed,
+          dy: 0,
+          length,
+          vertical,
+          color,
+          width: 3 + Math.random() * 2,
+        };
       }
     }
-    function drawPulse(x1, y1, x2, y2, t, color) {
-      const pulseCount = 2;
-      for (let i = 0; i < pulseCount; i++) {
-        const progress = ((t / 1200 + i / pulseCount) % 1);
-        const px = x1 + (x2 - x1) * progress;
-        const py = y1 + (y2 - y1) * progress;
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(px, py, 6 + 4 * Math.sin(t / 400 + i), 0, Math.PI * 2);
-        ctx.globalAlpha = 0.7;
-        ctx.fillStyle = color;
-        ctx.shadowColor = color;
-        ctx.shadowBlur = 12;
-        ctx.fill();
-        ctx.restore();
-      }
+    let packets = [];
+    for (let i = 0; i < 28; i++) {
+      packets.push(createPacket());
     }
 
     // --- Bar Graph (bottom right) ---
     const barCount = 7;
     const barColors = [
-      "rgba(168,85,247,0.85)",
-      "rgba(236,72,153,0.85)",
-      "rgba(59,130,246,0.85)",
-      "rgba(34,197,94,0.85)",
-      "rgba(251,191,36,0.85)",
-      "rgba(244,63,94,0.85)",
-      "rgba(20,184,166,0.85)",
+      "rgba(168,85,247,0.45)",
+      "rgba(236,72,153,0.38)",
+      "rgba(59,130,246,0.38)",
+      "rgba(34,197,94,0.32)",
+      "rgba(251,191,36,0.32)",
+      "rgba(244,63,94,0.32)",
+      "rgba(20,184,166,0.32)",
     ];
     let barBaseHeight = 60;
     let barMaxHeight = 120;
-
-    // --- Data Packets (top right) ---
-    function createPacket() {
-      const y = 30 + Math.random() * 60;
-      const length = 40 + Math.random() * 40;
-      const speed = 1.2 + Math.random() * 1.2;
-      const color = [
-        "rgba(168,85,247,0.25)",
-        "rgba(236,72,153,0.18)",
-        "rgba(59,130,246,0.18)",
-        "rgba(34,197,94,0.15)",
-      ][Math.floor(Math.random() * 4)];
-      return {
-        x: width - 200 - Math.random() * 100,
-        y,
-        dx: speed,
-        length,
-        color,
-        width: 4 + Math.random() * 3,
-      };
-    }
-    let packets = [];
-    for (let i = 0; i < 10; i++) {
-      packets.push(createPacket());
-    }
 
     function animate(t) {
       ctx.clearRect(0, 0, width, height);
 
       // Subtle gradient background
       const grad = ctx.createLinearGradient(0, 0, width, height);
-      grad.addColorStop(0, "rgba(168,85,247,0.09)");
-      grad.addColorStop(0.5, "rgba(236,72,153,0.07)");
-      grad.addColorStop(1, "rgba(59,130,246,0.09)");
+      grad.addColorStop(0, "rgba(168,85,247,0.07)");
+      grad.addColorStop(0.5, "rgba(236,72,153,0.05)");
+      grad.addColorStop(1, "rgba(59,130,246,0.07)");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, width, height);
 
-      // --- Network edges and pulses ---
-      edges.forEach((edge) => {
-        const n1 = nodes[edge.from];
-        const n2 = nodes[edge.to];
+      // --- Data Packets (across the screen) ---
+      for (let i = 0; i < packets.length; i++) {
+        const p = packets[i];
         ctx.save();
         ctx.beginPath();
-        ctx.moveTo(n1.x, n1.y);
-        ctx.lineTo(n2.x, n2.y);
-        ctx.strokeStyle = "rgba(168,85,247,0.18)";
-        ctx.lineWidth = 3;
-        ctx.shadowColor = "rgba(168,85,247,0.18)";
+        if (p.vertical) {
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p.x, p.y + p.length);
+        } else {
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p.x + p.length, p.y);
+        }
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = p.width;
+        ctx.globalAlpha = 0.8;
+        ctx.shadowColor = p.color;
         ctx.shadowBlur = 8;
-        ctx.globalAlpha = 0.7;
         ctx.stroke();
         ctx.restore();
 
-        drawPulse(n1.x, n1.y, n2.x, n2.y, t + edge.pulseOffset, n1.color);
-      });
+        p.x += p.dx;
+        p.y += p.dy;
 
-      // --- Network nodes ---
-      nodes.forEach((node) => {
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(
-          node.x,
-          node.y,
-          node.r + Math.sin(t / 600 + node.pulse) * 2,
-          0,
-          Math.PI * 2
-        );
-        ctx.globalAlpha = 0.85;
-        ctx.fillStyle = node.color;
-        ctx.shadowColor = node.color;
-        ctx.shadowBlur = 18;
-        ctx.fill();
-        ctx.restore();
+        // Reset packet if out of bounds
+        if (
+          (p.vertical && p.y > height + p.length) ||
+          (!p.vertical && p.x > width + p.length)
+        ) {
+          packets[i] = createPacket();
+        }
+      }
 
-        // Node core
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, node.r * 0.45, 0, Math.PI * 2);
-        ctx.globalAlpha = 0.7;
-        ctx.fillStyle = "#fff";
-        ctx.shadowColor = node.color;
-        ctx.shadowBlur = 8;
-        ctx.fill();
-        ctx.restore();
-      });
-
-      // --- Bar Graph (bottom right) ---
+      // --- Bar Graph (bottom right, more transparent) ---
       const barAreaW = Math.min(260, width * 0.45);
       const barAreaH = Math.min(120, height * 0.18);
       const barW = barAreaW / (barCount * 1.5);
@@ -189,34 +141,12 @@ export default function BackgroundVisuals() {
           h,
           6
         );
-        ctx.globalAlpha = 0.85;
+        ctx.globalAlpha = 0.38; // More transparent
         ctx.fillStyle = barColors[i % barColors.length];
         ctx.shadowColor = barColors[i % barColors.length];
-        ctx.shadowBlur = 12;
+        ctx.shadowBlur = 8;
         ctx.fill();
         ctx.restore();
-      }
-
-      // --- Data Packets (top right) ---
-      for (let i = 0; i < packets.length; i++) {
-        const p = packets[i];
-        ctx.save();
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(p.x + p.length, p.y);
-        ctx.strokeStyle = p.color;
-        ctx.lineWidth = p.width;
-        ctx.globalAlpha = 0.8;
-        ctx.shadowColor = p.color;
-        ctx.shadowBlur = 10;
-        ctx.stroke();
-        ctx.restore();
-
-        p.x += p.dx;
-        if (p.x > width) {
-          packets[i] = createPacket();
-          packets[i].x = width - 200 - Math.random() * 100;
-        }
       }
 
       animationFrameId = requestAnimationFrame(animate);
