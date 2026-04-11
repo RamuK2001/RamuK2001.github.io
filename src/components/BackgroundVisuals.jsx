@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-// Animated data packets, bar graph (bottom right), moving pie chart (above bar), and line graph (left of bar graph)
+// Animated data packets, bar graph, pie chart, and line graph, all aligned and sized equally with axes (except pie)
 export default function BackgroundVisuals() {
   const canvasRef = useRef(null);
 
@@ -62,6 +62,11 @@ export default function BackgroundVisuals() {
       packets.push(createPacket());
     }
 
+    // --- Chart Area Sizing ---
+    // All charts: 80x80 px (responsive minimum)
+    const chartSize = Math.max(70, Math.min(90, width * 0.13, height * 0.13));
+    const chartPadding = 18;
+
     // --- Bar Graph (bottom right) ---
     const barCount = 7;
     const barColors = [
@@ -73,8 +78,8 @@ export default function BackgroundVisuals() {
       "rgba(244,63,94,0.32)",
       "rgba(20,184,166,0.32)",
     ];
-    let barBaseHeight = 60;
-    let barMaxHeight = 120;
+    let barBaseHeight = chartSize * 0.35;
+    let barMaxHeight = chartSize * 0.8;
 
     // --- Pie Chart (above bar graph) ---
     const pieColors = [
@@ -84,7 +89,7 @@ export default function BackgroundVisuals() {
       "rgba(251,191,36,0.5)",
       "rgba(34,197,94,0.5)",
     ];
-    const pieRadius = 38;
+    const pieRadius = chartSize * 0.38;
 
     // --- Line Graph (left of bar graph) ---
     const lineColors = [
@@ -135,14 +140,32 @@ export default function BackgroundVisuals() {
         }
       }
 
-      // --- Bar Graph (bottom right, more transparent) ---
-      const barAreaW = Math.min(260, width * 0.45);
-      const barAreaH = Math.min(120, height * 0.18);
+      // --- Chart Placement ---
+      // Bar: bottom right, Pie: above bar, Line: left of bar
+      const barX = width - chartSize - chartPadding;
+      const barY = height - chartSize - chartPadding;
+      const pieX = barX + chartSize / 2;
+      const pieY = barY - chartSize / 2 - chartPadding;
+      const lineX = barX - chartSize - chartPadding;
+      const lineY = barY;
+
+      // --- Bar Graph (with axes) ---
+      const barAreaW = chartSize;
+      const barAreaH = chartSize;
       const barW = barAreaW / (barCount * 1.5);
       const barSpacing = barW * 0.5;
-      const baseX = width - barAreaW - 32;
-      const baseY = height - barAreaH - 24;
-
+      // Axes
+      ctx.save();
+      ctx.globalAlpha = 0.45;
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(barX, barY + barAreaH);
+      ctx.lineTo(barX, barY);
+      ctx.lineTo(barX + barAreaW, barY + barAreaH);
+      ctx.stroke();
+      ctx.restore();
+      // Bars
       for (let i = 0; i < barCount; i++) {
         const phase = t / 900 + i;
         const h =
@@ -151,13 +174,13 @@ export default function BackgroundVisuals() {
         ctx.save();
         ctx.beginPath();
         ctx.roundRect(
-          baseX + i * (barW + barSpacing),
-          baseY + barAreaH - h,
+          barX + i * (barW + barSpacing) + barW * 0.2,
+          barY + barAreaH - h,
           barW,
           h,
-          6
+          4
         );
-        ctx.globalAlpha = 0.38; // More transparent
+        ctx.globalAlpha = 0.38;
         ctx.fillStyle = barColors[i % barColors.length];
         ctx.shadowColor = barColors[i % barColors.length];
         ctx.shadowBlur = 8;
@@ -166,8 +189,6 @@ export default function BackgroundVisuals() {
       }
 
       // --- Pie Chart (above bar graph) ---
-      const pieCenterX = baseX + barAreaW - pieRadius - 10;
-      const pieCenterY = baseY - pieRadius - 24;
       let startAngle = t / 3000 % (2 * Math.PI);
       let total = 0;
       const pieData = [
@@ -183,14 +204,8 @@ export default function BackgroundVisuals() {
         const angle = (value / total) * Math.PI * 2;
         ctx.save();
         ctx.beginPath();
-        ctx.moveTo(pieCenterX, pieCenterY);
-        ctx.arc(
-          pieCenterX,
-          pieCenterY,
-          pieRadius,
-          startAngle,
-          startAngle + angle
-        );
+        ctx.moveTo(pieX, pieY);
+        ctx.arc(pieX, pieY, pieRadius, startAngle, startAngle + angle);
         ctx.closePath();
         ctx.globalAlpha = 0.7;
         ctx.fillStyle = pieColors[i % pieColors.length];
@@ -203,26 +218,35 @@ export default function BackgroundVisuals() {
       // Pie chart outline
       ctx.save();
       ctx.beginPath();
-      ctx.arc(pieCenterX, pieCenterY, pieRadius, 0, Math.PI * 2);
+      ctx.arc(pieX, pieY, pieRadius, 0, Math.PI * 2);
       ctx.globalAlpha = 0.18;
       ctx.strokeStyle = "#fff";
-      ctx.lineWidth = 3;
+      ctx.lineWidth = 2;
       ctx.stroke();
       ctx.restore();
 
-      // --- Line Graph (left of bar graph) ---
-      const graphW = 70;
-      const graphH = 60;
-      const graphX = baseX - graphW - 24;
-      const graphY = baseY + barAreaH - graphH - 10;
+      // --- Line Graph (left of bar graph, with axes) ---
+      const graphW = chartSize;
+      const graphH = chartSize;
+      // Axes
+      ctx.save();
+      ctx.globalAlpha = 0.45;
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(lineX, lineY + graphH);
+      ctx.lineTo(lineX, lineY);
+      ctx.lineTo(lineX + graphW, lineY + graphH);
+      ctx.stroke();
+      ctx.restore();
       // Generate two lines with moving points
       for (let l = 0; l < 2; l++) {
         ctx.save();
         ctx.beginPath();
         for (let i = 0; i < 10; i++) {
-          const px = graphX + (i / 9) * graphW;
+          const px = lineX + (i / 9) * graphW;
           const py =
-            graphY +
+            lineY +
             graphH / 2 +
             Math.sin(t / (900 + l * 400) + i + l * 1.2) * (graphH / 2.2) +
             (l === 1 ? 8 : 0);
@@ -240,7 +264,7 @@ export default function BackgroundVisuals() {
       // Graph outline
       ctx.save();
       ctx.beginPath();
-      ctx.rect(graphX, graphY, graphW, graphH);
+      ctx.rect(lineX, lineY, graphW, graphH);
       ctx.globalAlpha = 0.13;
       ctx.strokeStyle = "#fff";
       ctx.lineWidth = 2;
@@ -263,10 +287,8 @@ export default function BackgroundVisuals() {
       className="fixed inset-0 w-full h-full pointer-events-none z-0"
       style={{
         position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100vh",
+        top: 0, left: 0,
+        width: "100vw", height: "100vh",
         zIndex: 0,
         pointerEvents: "none",
         opacity: 0.7,
