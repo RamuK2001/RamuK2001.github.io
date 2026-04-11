@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-// Animated data packets across the screen and a subtle, transparent bar graph at bottom right
+// Animated data packets, bar graph (bottom right), moving pie chart (above bar), and line graph (left of bar graph)
 export default function BackgroundVisuals() {
   const canvasRef = useRef(null);
 
@@ -76,6 +76,22 @@ export default function BackgroundVisuals() {
     let barBaseHeight = 60;
     let barMaxHeight = 120;
 
+    // --- Pie Chart (above bar graph) ---
+    const pieColors = [
+      "rgba(168,85,247,0.7)",
+      "rgba(236,72,153,0.6)",
+      "rgba(59,130,246,0.6)",
+      "rgba(251,191,36,0.5)",
+      "rgba(34,197,94,0.5)",
+    ];
+    const pieRadius = 38;
+
+    // --- Line Graph (left of bar graph) ---
+    const lineColors = [
+      "rgba(59,130,246,0.7)",
+      "rgba(236,72,153,0.6)",
+    ];
+
     function animate(t) {
       ctx.clearRect(0, 0, width, height);
 
@@ -149,6 +165,88 @@ export default function BackgroundVisuals() {
         ctx.restore();
       }
 
+      // --- Pie Chart (above bar graph) ---
+      const pieCenterX = baseX + barAreaW - pieRadius - 10;
+      const pieCenterY = baseY - pieRadius - 24;
+      let startAngle = t / 3000 % (2 * Math.PI);
+      let total = 0;
+      const pieData = [
+        1.2 + Math.sin(t / 1200),
+        0.8 + Math.cos(t / 900),
+        1.1 + Math.sin(t / 1700),
+        0.7 + Math.cos(t / 1400),
+        0.9 + Math.sin(t / 2100),
+      ];
+      for (let i = 0; i < pieData.length; i++) total += Math.abs(pieData[i]);
+      for (let i = 0; i < pieData.length; i++) {
+        const value = Math.abs(pieData[i]);
+        const angle = (value / total) * Math.PI * 2;
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(pieCenterX, pieCenterY);
+        ctx.arc(
+          pieCenterX,
+          pieCenterY,
+          pieRadius,
+          startAngle,
+          startAngle + angle
+        );
+        ctx.closePath();
+        ctx.globalAlpha = 0.7;
+        ctx.fillStyle = pieColors[i % pieColors.length];
+        ctx.shadowColor = pieColors[i % pieColors.length];
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.restore();
+        startAngle += angle;
+      }
+      // Pie chart outline
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(pieCenterX, pieCenterY, pieRadius, 0, Math.PI * 2);
+      ctx.globalAlpha = 0.18;
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      ctx.restore();
+
+      // --- Line Graph (left of bar graph) ---
+      const graphW = 70;
+      const graphH = 60;
+      const graphX = baseX - graphW - 24;
+      const graphY = baseY + barAreaH - graphH - 10;
+      // Generate two lines with moving points
+      for (let l = 0; l < 2; l++) {
+        ctx.save();
+        ctx.beginPath();
+        for (let i = 0; i < 10; i++) {
+          const px = graphX + (i / 9) * graphW;
+          const py =
+            graphY +
+            graphH / 2 +
+            Math.sin(t / (900 + l * 400) + i + l * 1.2) * (graphH / 2.2) +
+            (l === 1 ? 8 : 0);
+          if (i === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+        ctx.globalAlpha = 0.7;
+        ctx.strokeStyle = lineColors[l];
+        ctx.lineWidth = 2.5;
+        ctx.shadowColor = lineColors[l];
+        ctx.shadowBlur = 8;
+        ctx.stroke();
+        ctx.restore();
+      }
+      // Graph outline
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(graphX, graphY, graphW, graphH);
+      ctx.globalAlpha = 0.13;
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.restore();
+
       animationFrameId = requestAnimationFrame(animate);
     }
     animate(0);
@@ -165,8 +263,10 @@ export default function BackgroundVisuals() {
       className="fixed inset-0 w-full h-full pointer-events-none z-0"
       style={{
         position: "fixed",
-        top: 0, left: 0,
-        width: "100vw", height: "100vh",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
         zIndex: 0,
         pointerEvents: "none",
         opacity: 0.7,
