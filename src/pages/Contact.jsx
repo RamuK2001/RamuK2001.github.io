@@ -75,7 +75,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-white/50 dark:bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-md text-gray-800 dark:text-gray-200 space-y-5"
+              className="bg-white/50 dark:bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-md text-gray-800 dark:text-gray-200 space-y-5 text-justify"
             >
               <h3 className="text-xl font-semibold text-purple-900 dark:text-white text-center">
                 📞 Contact Details

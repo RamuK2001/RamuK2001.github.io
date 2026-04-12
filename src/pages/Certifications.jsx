@@ -63,7 +63,7 @@ export default function Certifications() {
                   href={cert.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg font-medium text-blue-700 dark:text-blue-400 hover:underline flex items-center gap-2"
+                  className="text-lg font-medium text-blue-700 dark:text-blue-400 hover:underline flex items-center gap-2 text-justify"
                 >
                   <img
                     src={cert.logo}

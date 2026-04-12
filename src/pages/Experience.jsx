@@ -173,7 +173,7 @@ export default function Experience() {
                       <h3 className="text-xl font-semibold text-purple-800 dark:text-white">
                         {exp.company}
                       </h3>
-                      <p className="text-sm text-gray-700 dark:text-gray-300">
+                      <p className="text-sm text-gray-700 dark:text-gray-300 text-justify">
                         {exp.duration}
                       </p>
                     </div>

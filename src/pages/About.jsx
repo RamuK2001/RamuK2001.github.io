@@ -83,7 +83,7 @@ export default function About() {
             <h3 className="text-2xl font-semibold text-purple-800 dark:text-white mb-6 text-center">
               💼 Professional Highlights
             </h3>
-            <ul className="list-disc pl-6 text-gray-800 dark:text-gray-200 space-y-4">
+            <ul className="list-disc pl-6 text-gray-800 dark:text-gray-200 space-y-4 text-justify">
               {highlights.map((item, index) => (
                 <motion.li
                   key={index}

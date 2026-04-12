@@ -55,7 +55,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-blue-900 dark:text-white mb-4">
               Cloud Data Engineer | Infra to Insights
             </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300">
+            <p className="text-lg text-gray-700 dark:text-gray-300 text-justify">
               Results-driven Full-Stack Azure Data Engineer with 3+ years of experience in Azure Infra & ETL Development, Azure DevOps Automation, and Power BI Visualization. Adept at designing and implementing end-to-end Azure-based data solutions, developing CI/CD pipelines, and driving cost-efficient cloud operations.
             </p>
             <div className="mt-6">
@@ -89,7 +89,7 @@ export default function Home() {
               }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             />
-            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400 text-justify">
               Overall technical expertise summarized in a picture.
             </p>
           </motion.div>
@@ -122,7 +122,7 @@ export default function Home() {
               className="bg-white/60 dark:bg-white/10 backdrop-blur-md shadow-md rounded-lg p-5 flex items-start space-x-4 border border-purple-200 dark:border-gray-700"
             >
               <div>{item.icon}</div>
-              <p className="text-gray-700 dark:text-gray-300">{item.text}</p>
+              <p className="text-gray-700 dark:text-gray-300 text-justify">{item.text}</p>
             </motion.div>
           ))}
         </div>
