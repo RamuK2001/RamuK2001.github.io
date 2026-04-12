@@ -81,7 +81,7 @@ export default function Home() {
             <motion.img
               src="/Portfolio_Home.png"
               alt="Infra to Insights Illustration"
-              className="rounded-xl shadow-lg w-full max-w-lg mx-auto border-2 border-purple-300 dark:border-purple-600"
+              className="rounded-xl shadow-lg w-full max-w-lg mx-auto border-2 border-purple-300 dark:border-purple-600 bg-white/60 dark:bg-white/10 backdrop-blur-md"
               whileHover={{ 
                 scale: 1.1,
                 boxShadow:
