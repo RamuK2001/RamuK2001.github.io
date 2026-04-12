@@ -52,14 +52,12 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <div className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md border border-purple-200 dark:border-gray-700 p-6 mb-4">
-              <h2 className="text-4xl font-bold text-blue-900 dark:text-white mb-4">
-                Cloud Data Engineer | Infra to Insights
-              </h2>
-              <p className="text-lg text-gray-700 dark:text-gray-300 text-justify">
-                Results-driven Full-Stack Azure Data Engineer with 3+ years of experience in Azure Infra & ETL Development, Azure DevOps Automation, and Power BI Visualization. Adept at designing and implementing end-to-end Azure-based data solutions, developing CI/CD pipelines, and driving cost-efficient cloud operations.
-              </p>
-            </div>
+            <h2 className="text-4xl font-bold text-blue-900 dark:text-white mb-4">
+              Cloud Data Engineer | Infra to Insights
+            </h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300 text-justify">
+              Results-driven Full-Stack Azure Data Engineer with 3+ years of experience in Azure Infra & ETL Development, Azure DevOps Automation, and Power BI Visualization. Adept at designing and implementing end-to-end Azure-based data solutions, developing CI/CD pipelines, and driving cost-efficient cloud operations.
+            </p>
             <div className="mt-6">
               <a
                 href="/Ramakrishna_Karnati_Azure_Data_Engineer.pdf"
