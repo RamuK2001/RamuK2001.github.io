@@ -194,7 +194,7 @@ export default function Experience() {
                       transition={{ duration: 0.4 }}
                       className="mt-4 overflow-visible relative"
                     >
-                      <ul className="space-y-4">
+                      <ul className="space-y-4 text-justify">
                         {exp.projects.map((proj, projIndex) => {
                           const isOpen = openProj.includes(projIndex);
 
@@ -236,7 +236,7 @@ export default function Experience() {
                                     transition={{ duration: 0.3 }}
                                     className="mt-2 space-y-2"
                                   >
-                                    <ul className="pl-5 text-sm text-gray-700 dark:text-gray-300 list-disc space-y-1">
+                                    <ul className="pl-5 text-sm text-gray-700 dark:text-gray-300 list-disc space-y-1 text-justify">
                                       {proj.description.map((point, i) => (
                                         <li
                                           key={i}

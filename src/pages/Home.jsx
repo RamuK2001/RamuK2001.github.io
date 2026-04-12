@@ -52,12 +52,14 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-blue-900 dark:text-white mb-4">
-              Cloud Data Engineer | Infra to Insights
-            </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 text-justify">
-              Results-driven Full-Stack Azure Data Engineer with 3+ years of experience in Azure Infra & ETL Development, Azure DevOps Automation, and Power BI Visualization. Adept at designing and implementing end-to-end Azure-based data solutions, developing CI/CD pipelines, and driving cost-efficient cloud operations.
-            </p>
+            <div className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md border border-purple-200 dark:border-gray-700 p-6 mb-4">
+              <h2 className="text-4xl font-bold text-blue-900 dark:text-white mb-4">
+                Cloud Data Engineer | Infra to Insights
+              </h2>
+              <p className="text-lg text-gray-700 dark:text-gray-300 text-justify">
+                Results-driven Full-Stack Azure Data Engineer with 3+ years of experience in Azure Infra & ETL Development, Azure DevOps Automation, and Power BI Visualization. Adept at designing and implementing end-to-end Azure-based data solutions, developing CI/CD pipelines, and driving cost-efficient cloud operations.
+              </p>
+            </div>
             <div className="mt-6">
               <a
                 href="/Ramakrishna_Karnati_Azure_Data_Engineer.pdf"
@@ -82,7 +84,7 @@ export default function Home() {
               src="/Portfolio_Home.png"
               alt="Infra to Insights Illustration"
               className="rounded-xl shadow-lg w-full max-w-lg mx-auto border-2 border-purple-300 dark:border-purple-600 bg-white/60 dark:bg-white/10 backdrop-blur-md"
-              whileHover={{ 
+              whileHover={{
                 scale: 1.1,
                 boxShadow:
                   "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
