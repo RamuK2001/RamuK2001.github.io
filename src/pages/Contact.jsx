@@ -1,6 +1,4 @@
-import { Mail, Phone, MapPin } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
 import BackgroundVisuals from "../components/BackgroundVisuals";
 
@@ -84,7 +82,7 @@ export default function Contact() {
               </h3>
 
               <div className="flex items-center gap-3">
-                <Phone className="text-purple-600" />
+                <FaPhone className="text-purple-600" />
                 <a
                   href="tel:+917207000030"
                   className="text-blue-700 dark:text-blue-400 hover:underline"
@@ -94,7 +92,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-center gap-3">
-                <Mail className="text-purple-600" />
+                <FaEnvelope className="text-purple-600" />
                 <a
                   href="mailto:ramukarnati2001@gmail.com"
                   className="text-blue-700 dark:text-blue-400 hover:underline"
@@ -128,7 +126,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-center gap-3">
-                <MapPin className="text-purple-600" />
+                <FaMapMarkerAlt className="text-purple-600" />
                 <span>Hyderabad, India</span>
               </div>
             </motion.div>
