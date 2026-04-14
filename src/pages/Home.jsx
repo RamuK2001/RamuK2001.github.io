@@ -89,9 +89,11 @@ export default function Home() {
               }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             />
-            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400 text-justify">
-              Overall technical expertise summarized in a picture.
-            </p>
+            <div className="flex justify-center">
+              <p className="mt-4 text-sm text-gray-600 dark:text-gray-400 text-center max-w-xs">
+                Overall technical expertise summarized in a picture.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>

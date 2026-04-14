@@ -1,4 +1,6 @@
-import { Mail, Phone, Linkedin, Github, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 import BackgroundVisuals from "../components/BackgroundVisuals";
 
@@ -102,7 +104,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-center gap-3">
-                <Linkedin className="text-purple-600" />
+                  <FaLinkedin className="text-purple-600" />
                 <a
                   href="https://linkedin.com/in/ramakrishna-karnati-899066170"
                   target="_blank"
@@ -114,7 +116,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-center gap-3">
-                <Github className="text-purple-600" />
+                <FaGithub className="text-purple-600" />
                 <a
                   href="https://github.com/RamuK2001"
                   target="_blank"
