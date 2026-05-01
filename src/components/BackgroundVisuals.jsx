@@ -162,13 +162,12 @@ export default function BackgroundVisuals() {
       }
 
       // --- Chart Placement ---
-      // Bottom right: bar, scatter (above), line (left)
-      // Top left: area, pie (below area), horizontal bar (right of area)
+      // Bottom right: bar, pie (above), line (left)
+      // Top left: area, scatter (below area), horizontal bar (right of area)
       const barX = width - chartSize - chartPadding;
       const barY = height - chartSize - chartPadding;
-      // Original pie chart position (bottom right, above bar)
-      const pieXBottom = barX + chartSize / 2;
-      const pieYBottom = barY - chartSize / 2 - chartPadding;
+      const pieX = barX + chartSize / 2;
+      const pieY = barY - chartSize / 2 - chartPadding;
       const lineX = barX - chartSize - chartPadding;
       const lineY = barY;
 
@@ -177,9 +176,6 @@ export default function BackgroundVisuals() {
       const topStartY = navBarHeight + chartPadding;
       const chartGapY = chartSize + chartPadding * 0.7;
       const chartGapX = chartSize + chartPadding * 0.7;
-      // Original scatter plot position (top left, below area)
-      const dotXTop = topStartX;
-      const dotYTop = topStartY + chartGapY;
 
       // --- Area Chart (top left, with axes, no diagonal) ---
       const areaX = topStartX;
@@ -218,84 +214,25 @@ export default function BackgroundVisuals() {
       ctx.fill();
       ctx.restore();
 
-      // --- Pie Chart (bottom right, above bar graph) ---
-      let startAnglePie = t / 3000 % (2 * Math.PI);
-      let totalPie = 0;
-      const pieDataTop = [1.2 + Math.sin(t / 1200), 0.8 + Math.cos(t / 900), 1.1 + Math.sin(t / 1700), 0.7 + Math.cos(t / 1400), 0.9 + Math.sin(t / 2100)];
-      for (let i = 0; i < pieDataTop.length; i++) totalPie += Math.abs(pieDataTop[i]);
-      for (let i = 0; i < pieDataTop.length; i++) {
-        const value = Math.abs(pieDataTop[i]);
-        const angle = (value / totalPie) * Math.PI * 2;
-        ctx.save();
-        ctx.beginPath();
-        ctx.moveTo(dotXTop, dotYTop);
-        ctx.arc(dotXTop, dotYTop, pieRadius, startAnglePie, startAnglePie + angle);
-        ctx.closePath();
-        ctx.globalAlpha = 0.7;
-        ctx.fillStyle = pieColors[i % pieColors.length];
-        ctx.shadowColor = pieColors[i % pieColors.length];
-        ctx.shadowBlur = 8;
-        ctx.fill();
-        ctx.restore();
-        startAnglePie += angle;
-      }
-      // Pie chart outline
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(dotXTop, dotYTop, pieRadius, 0, Math.PI * 2);
-      ctx.globalAlpha = 0.18;
-      ctx.strokeStyle = "#fff";
-      ctx.lineWidth = 2;
-      ctx.stroke();
-      ctx.restore();
-
-      // --- Scatter Plot (bottom right, above bar graph, with axes, no diagonal) ---
-      // Now at pieXBottom, pieYBottom
+      // --- Scatter Plot (top left, below area chart, with axes, no diagonal) ---
+      const dotX = topStartX;
+      const dotY = topStartY + chartGapY;
       // Axes (no diagonal)
       ctx.save();
       ctx.globalAlpha = 0.45;
       ctx.strokeStyle = "#fff";
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.moveTo(pieXBottom, pieYBottom + chartSize);
-      ctx.lineTo(pieXBottom, pieYBottom);
-      ctx.moveTo(pieXBottom, pieYBottom + chartSize);
-      ctx.lineTo(pieXBottom + chartSize, pieYBottom + chartSize);
+      ctx.moveTo(dotX, dotY + chartSize);
+      ctx.lineTo(dotX, dotY);
+      ctx.moveTo(dotX, dotY + chartSize);
+      ctx.lineTo(dotX + chartSize, dotY + chartSize);
       ctx.stroke();
       ctx.restore();
       // Dots
       for (let i = 0; i < 12; i++) {
-        const px = pieXBottom + (Math.abs(Math.sin(t / 900 + i * 1.2)) * 0.8 + 0.1) * chartSize;
-        const py = pieYBottom + (Math.abs(Math.cos(t / 1100 + i * 1.3)) * 0.8 + 0.1) * chartSize;
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(px, py, 4 + Math.abs(Math.sin(t / 700 + i)) * 2, 0, Math.PI * 2);
-        ctx.globalAlpha = 0.7;
-        ctx.fillStyle = dotColors[i % dotColors.length];
-        ctx.shadowColor = dotColors[i % dotColors.length];
-        ctx.shadowBlur = 6;
-        ctx.fill();
-        ctx.restore();
-      }
-
-      // --- Scatter Plot (bottom right, above bar graph, with axes, no diagonal) ---
-      // Now at scatterX, scatterY
-      // Axes (no diagonal)
-      ctx.save();
-      ctx.globalAlpha = 0.45;
-      ctx.strokeStyle = "#fff";
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(scatterX, scatterY + chartSize);
-      ctx.lineTo(scatterX, scatterY);
-      ctx.moveTo(scatterX, scatterY + chartSize);
-      ctx.lineTo(scatterX + chartSize, scatterY + chartSize);
-      ctx.stroke();
-      ctx.restore();
-      // Dots
-      for (let i = 0; i < 12; i++) {
-        const px = scatterX + (Math.abs(Math.sin(t / 900 + i * 1.2)) * 0.8 + 0.1) * chartSize;
-        const py = scatterY + (Math.abs(Math.cos(t / 1100 + i * 1.3)) * 0.8 + 0.1) * chartSize;
+        const px = dotX + (Math.abs(Math.sin(t / 900 + i * 1.2)) * 0.8 + 0.1) * chartSize;
+        const py = dotY + (Math.abs(Math.cos(t / 1100 + i * 1.3)) * 0.8 + 0.1) * chartSize;
         ctx.save();
         ctx.beginPath();
         ctx.arc(px, py, 4 + Math.abs(Math.sin(t / 700 + i)) * 2, 0, Math.PI * 2);
