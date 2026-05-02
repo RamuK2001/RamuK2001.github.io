@@ -71,10 +71,10 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold text-blue-900 dark:text-white mb-4">
-              Cloud Data Engineer | Infra to Insights
+              Azure Data Engineer
             </h2>
             <p className="text-lg text-gray-700 dark:text-gray-300 text-justify">
-              Results-driven Full-Stack Azure Data Engineer with 3+ years of experience in Azure Infra & ETL Development, Azure DevOps Automation, and Power BI Visualization. Adept at designing and implementing end-to-end Azure-based data solutions, developing CI/CD pipelines, and driving cost-efficient cloud operations.
+              with 4+ years of experience across Cloud Infrastructure, ETL Design, and DevOps Automation. Specialized in building scalable Azure data platforms using Azure Data Factory, Databricks, ADLS Gen 2, and Fabric. Proven expertise in developing CI/CD pipelines, optimizing cloud costs, and delivering high-performance data solutions processing billions of records efficiently on daily basis. Strong track record of improving system efficiency, enabling automation, and driving business insights through data visualization.
             </p>
             <div className="mt-6">
               <a
