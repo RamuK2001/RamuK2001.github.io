@@ -40,7 +40,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm ci
 
       - name: Fix node_modules permissions
         run: chmod -R +x node_modules/.bin/
