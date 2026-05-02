@@ -7,6 +7,9 @@ on:
   # Allow manual trigger from Actions tab
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   download-resume:
     runs-on: ubuntu-latest
@@ -47,4 +50,4 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git add public/Ramakrishna_Karnati_Data_Engineer.pdf
           git commit -m "chore: update resume from Overleaf"
-          git push
+          git push origin main
