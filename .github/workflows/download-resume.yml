@@ -1,0 +1,50 @@
+name: Download Latest Resume from Overleaf
+
+on:
+  schedule:
+    # Run daily at 9 AM UTC (adjust time as needed)
+    - cron: '0 9 * * *'
+  # Allow manual trigger from Actions tab
+  workflow_dispatch:
+
+jobs:
+  download-resume:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download PDF from Overleaf
+        run: |
+          # Download the PDF from Overleaf
+          # Replace PROJECT_ID with your actual Overleaf project ID
+          curl -L "https://www.overleaf.com/download/project/69de7af1443940c2b90994d2/output/output.pdf" \
+            -o public/Ramakrishna_Karnati_Data_Engineer.pdf
+          
+          # Verify the file was downloaded
+          if [ -f public/Ramakrishna_Karnati_Data_Engineer.pdf ]; then
+            echo "✓ PDF downloaded successfully"
+            ls -lh public/Ramakrishna_Karnati_Data_Engineer.pdf
+          else
+            echo "✗ Failed to download PDF"
+            exit 1
+          fi
+
+      - name: Check if file changed
+        id: check_changes
+        run: |
+          if git diff --quiet public/Ramakrishna_Karnati_Data_Engineer.pdf; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push if changed
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add public/Ramakrishna_Karnati_Data_Engineer.pdf
+          git commit -m "chore: update resume from Overleaf"
+          git push

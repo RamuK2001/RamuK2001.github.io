@@ -78,9 +78,8 @@ export default function Home() {
             </p>
             <div className="mt-6">
               <a
-                href="https://www.overleaf.com/download/project/69de7af1443940c2b90994d2/build/19de794ed5a-f1166c5f221c38cf/output/output.pdf?compileGroup=standard&clsiserverid=clsi-pre-emp-c3d-b-f-5k5c&enable_pdf_caching=true&popupDownload=true&editorId=81f7cf57-8494-4db1-ba92-3eb380480980"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/Ramakrishna_Karnati_Data_Engineer.pdf"
+                download
                 className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-purple-700 transform hover:scale-105 transition-all duration-300"
               >
                 <FileDown className="w-5 h-5" />
