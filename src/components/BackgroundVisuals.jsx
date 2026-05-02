@@ -162,12 +162,10 @@ export default function BackgroundVisuals() {
       }
 
       // --- Chart Placement ---
-      // Bottom right: bar, pie (above), line (left)
-      // Top left: area, scatter (below area), horizontal bar (right of area)
+      // Bottom right: bar, scatter (above), line (left)
+      // Top left: area, pie (below area), horizontal bar (right of area)
       const barX = width - chartSize - chartPadding;
       const barY = height - chartSize - chartPadding;
-      const pieX = barX + chartSize / 2;
-      const pieY = barY - chartSize / 2 - chartPadding;
       const lineX = barX - chartSize - chartPadding;
       const lineY = barY;
 
@@ -214,9 +212,9 @@ export default function BackgroundVisuals() {
       ctx.fill();
       ctx.restore();
 
-      // --- Scatter Plot (top left, below area chart, with axes, no diagonal) ---
-      const dotX = topStartX;
-      const dotY = topStartY + chartGapY;
+      // --- Scatter Plot (bottom right, above bar chart, with axes, no diagonal) ---
+      const dotX = barX;
+      const dotY = barY - chartSize - chartPadding;
       // Axes (no diagonal)
       ctx.save();
       ctx.globalAlpha = 0.45;
@@ -325,9 +323,11 @@ export default function BackgroundVisuals() {
         ctx.restore();
       }
 
-      // --- Pie Chart (above bar graph, bottom right) ---
+      // --- Pie Chart (top left, below area chart) ---
       let startAngle = t / 3000 % (2 * Math.PI);
       let total = 0;
+      const pieX = topStartX + chartSize / 2;
+      const pieY = topStartY + chartGapY + chartSize / 2;
       const pieData = [1.2 + Math.sin(t / 1200), 0.8 + Math.cos(t / 900), 1.1 + Math.sin(t / 1700), 0.7 + Math.cos(t / 1400), 0.9 + Math.sin(t / 2100)];
       for (let i = 0; i < pieData.length; i++) total += Math.abs(pieData[i]);
       for (let i = 0; i < pieData.length; i++) {
