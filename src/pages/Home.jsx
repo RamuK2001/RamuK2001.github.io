@@ -6,20 +6,39 @@ import {
   Star,
   Award,
   ShieldCheck,
+  BadgeCheck,
 } from "lucide-react";
 import BackgroundVisuals from "../components/BackgroundVisuals";
 
 export default function Home() {
   const achievements = [
+      {
+      icon: <BadgeCheck className="text-blue-500 w-6 h-6" />,
+      text: (
+        <>
+          Recognized by internal delivery heads for representing my current project as the primary presenter during an external audit by Microsoft,
+          delivering end-to-end walkthrough of architecture design, delivery processes, and documentation as per the comprehensive
+          audit checklist, contributing to Infosys securing the{" "}
+          <a
+            href="https://partner.microsoft.com/en-us/partnership/specialization/data-warehouse-migration#tab-4"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-purple-600 dark:text-purple-400 underline hover:text-purple-800 dark:hover:text-purple-300 font-semibold"
+          >
+            Data Warehouse Migration to Microsoft Azure specialization
+          </a>.
+        </>
+      ),
+    },
     {
       icon: <ThumbsUp className="text-purple-600 w-6 h-6" />,
       text:
-        "Earned a formal appreciation (individual) from the client for resolving a critical incident during a crucial month-end business closure outside the scope of the project and my usual work hours.",
+        "Earned an official appreciation from the client for going above and beyond in resolving a critical incident during a crucial month-end business closure outside the scope of the project and my usual work hours.",
     },
     {
       icon: <CheckCircle className="text-purple-600 w-6 h-6" />,
       text:
-        "Received formal client appreciation (individual) for delivering exceptional support on a separate project, particularly for seamlessly automating CI/CD deployments.",
+        "Received a designated client appreciation for delivering exceptional cross-project support by automating CI/CD deployments and providing expertise in infrastructure automation, ETL best practices, and DevOps excellence",
     },
     {
       icon: <Star className="text-yellow-500 w-6 h-6" />,
@@ -35,8 +54,7 @@ export default function Home() {
       icon: <ShieldCheck className="text-green-600 w-6 h-6" />,
       text:
         'Achieved the “Outstanding” rating twice in year-end performance appraisals, reflecting exceptional contributions.',
-    },
-  ];
+    },  ];
 
   return (
     <>
@@ -60,8 +78,9 @@ export default function Home() {
             </p>
             <div className="mt-6">
               <a
-                href="/Ramakrishna_Karnati_Data_Engineer.pdf"
-                download
+                href="https://www.overleaf.com/download/project/69de7af1443940c2b90994d2/build/19de794ed5a-f1166c5f221c38cf/output/output.pdf?compileGroup=standard&clsiserverid=clsi-pre-emp-c3d-b-f-5k5c&enable_pdf_caching=true&popupDownload=true&editorId=81f7cf57-8494-4db1-ba92-3eb380480980"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-purple-700 transform hover:scale-105 transition-all duration-300"
               >
                 <FileDown className="w-5 h-5" />
