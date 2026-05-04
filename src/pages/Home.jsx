@@ -70,12 +70,29 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-blue-900 dark:text-white mb-4">
-              Azure Data Engineer
-            </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 text-justify">
-              with 4+ years of experience across Cloud Infrastructure, ETL Design, and DevOps Automation. Specialized in building scalable Azure data platforms using Azure Data Factory, Databricks, ADLS Gen 2, and Fabric. Proven expertise in developing CI/CD pipelines, optimizing cloud costs, and delivering high-performance data solutions processing billions of records efficiently on daily basis. Strong track record of improving system efficiency, enabling automation, and driving business insights through data visualization.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow:
+                  "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 20
+              }}
+              viewport={{ once: true }}
+              className="bg-white/60 dark:bg-white/10 backdrop-blur-md shadow-md rounded-lg p-5 border border-purple-200 dark:border-gray-700 mb-6"
+            >
+              <h2 className="text-4xl font-bold text-blue-900 dark:text-white mb-4">
+                Azure Data Engineer
+              </h2>
+              <p className="text-lg text-gray-700 dark:text-gray-300 text-justify">
+                with 4+ years of experience across Cloud Infrastructure, ETL Design, and DevOps Automation. Specialized in building scalable Azure data platforms using Azure Data Factory, Databricks, ADLS Gen 2, and Fabric. Proven expertise in developing CI/CD pipelines, optimizing cloud costs, and delivering high-performance data solutions processing billions of records efficiently on daily basis. Strong track record of improving system efficiency, enabling automation, and driving business insights through data visualization.
+              </p>
+            </motion.div>
             <div className="mt-6">
               <a
                 href="/Ramakrishna_Karnati_Data_Engineer.pdf"
