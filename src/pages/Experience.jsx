@@ -41,7 +41,7 @@ const experienceData = [
         ],
       },
       {
-        title: "ETL & Automations",
+        title: "ETL & Data Engineering",
         description: [
           "Built scheduled ADF pipelines integrated with ADLS and ADB to migrate terabytes of on-premise data (SAP, SFTP, Salesforce, on-prem DBs) to Azure Unity Catalog with 99% success rate.",
           "Created detailed logging and HTML-based email alerts in ADF to notify stakeholders of failures.",
@@ -70,6 +70,23 @@ const experienceData = [
         ],
       },
       {
+        title: "Data Transformations using LLM",
+        description: [
+          "Built a Power BI SLA matrix report to monitor the SLA breaches in ServiceNow incidents and service requests.",
+          "Designed centralized Power BI dashboard to monitor production ADF pipelines using embedded logs for near real-time visibility.",
+          "Developed an interactive report in Microsoft Fabric to visualize sales and revenue data using aggregated metrics like Month-To-Date (MTD) and Year-To-Date (YTD).",
+          "Leveraged REST APIs to trigger near real-time report refreshes, effectively overcoming the scheduling limitations of the Power BI service.",
+          "Collaborated with business teams to define visualization needs, identify KPIs, and streamline reporting logic for dashboards.",
+        ],
+        tags: [
+          "Azure Open AI",
+          "Azure Data Factory",
+          "Databricks",
+          "RAI Policies",
+          "Prompt Engineering",
+        ],
+      },
+      {
         title: "Reporting & Visualization",
         description: [
           "Built a Power BI SLA matrix report to monitor the SLA breaches in ServiceNow incidents and service requests.",
@@ -83,6 +100,22 @@ const experienceData = [
           "ServiceNow",
           "Microsoft Fabric",
           "REST APIs",
+        ],
+      },
+      {
+        title: "Data Governance & Security",
+        description: [
+          "Built a Power BI SLA matrix report to monitor the SLA breaches in ServiceNow incidents and service requests.",
+          "Designed centralized Power BI dashboard to monitor production ADF pipelines using embedded logs for near real-time visibility.",
+          "Developed an interactive report in Microsoft Fabric to visualize sales and revenue data using aggregated metrics like Month-To-Date (MTD) and Year-To-Date (YTD).",
+          "Leveraged REST APIs to trigger near real-time report refreshes, effectively overcoming the scheduling limitations of the Power BI service.",
+          "Collaborated with business teams to define visualization needs, identify KPIs, and streamline reporting logic for dashboards.",
+        ],
+        tags: [
+          "Databricks Unity Catalog",
+          "Microsoft Purview",
+          "Row Level Security",
+          "RBAC",
         ],
       },
     ],
