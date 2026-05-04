@@ -20,13 +20,13 @@ const highlight = (text) => {
 const highlights = [
   "Built scheduled Azure Data Factory (ADF) pipelines integrated with ADLS and Azure Databricks (ADB) to migrate terabytes of on-premise data (SAP, SFTP, Salesforce, on-prem DBs) into Unity Catalog with 99% success rate, featuring detailed logging and HTML-based failure alerts.",
   "Developed generic PySpark jobs in ADB for ingesting and processing both historic and incremental data from flat-files (CSV, Excel, JSON, XML, Parquet) and on-prem DBs via JDBC, orchestrated using REST APIs.",
-  "Led a team of 5 to design a scalable product categorization job in ADB for over 3 billion records leveraging external lookup tables, keyword matching, and LLM-based approaches, achieving over 90% accuracy",
+  "Led a team of 5 to design a scalable product categorization job in ADB for over 2.5 billion records leveraging external lookup tables, keyword matching, and LLM-based approaches, achieving over 90% accuracy",
   "Automated ADB Vacuum & Optimize and achieved 75% improvement in query performance by implementing Partitioning, Z-Ordering, and Liquid Clustering based on the data cardinality.",
   "Provisioned full-stack Azure environments (ADLS, ADB, ADF, VMs) with private networking via ARM templates and Terraform, cutting setup time by 85%.",
   "Designed a YAML-based CI/CD pipeline in Azure DevOps to deploy ADF and ADB artifacts (notebooks, jobs, pipelines, etc.), incorporating targeted deployment feature for improved flexibility and faster release cycles.",
   "Automated code quality checks by integrating SonarQube and ARMTTK with the CI/CD pipeline, reducing manual review effort by 80%.",
-  "Supported building an interactive report in Microsoft Fabric to visualize sales and revenue data using aggregated metrics like Month-To-Date (MTD) and Year-To-Date (YTD).",
-  "Built near real-time Power BI dashboards for SLA tracking and job monitoring, improving performance insights."
+  "Developed centralized monitoring and analytics solutions using Power BI and Databricks, enabling near real-time visibility into pipeline performance, SLA compliance, and LLM usage metrics across large-scale data platforms.",
+  "Implemented robust data governance and quality frameworks using Unity Catalog, Purview, RLS, and validation rules integrated with ETL, ensuring secure, reliable, and high-quality data for downstream analytics."
 ];
 
 const skills = [
