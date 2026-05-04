@@ -162,22 +162,22 @@ export default function BackgroundVisuals() {
       }
 
       // --- Chart Placement ---
+      // Bottom left: area, horizontal bar, pie
       // Bottom right: bar, scatter (above), line (left)
-      // Top left: area, pie (below area), horizontal bar (right of area)
       const barX = width - chartSize - chartPadding;
       const barY = height - chartSize - chartPadding;
       const lineX = barX - chartSize - chartPadding;
       const lineY = barY;
 
-      // Top left charts (fixed below navbar)
-      const topStartX = chartPadding;
-      const topStartY = navBarHeight + chartPadding;
+      // Bottom left charts
+      const bottomStartX = chartPadding;
+      const bottomStartY = height - chartSize - chartPadding;
       const chartGapY = chartSize + chartPadding * 0.7;
       const chartGapX = chartSize + chartPadding * 0.7;
 
-      // --- Area Chart (top left, with axes, no diagonal) ---
-      const areaX = topStartX;
-      const areaY = topStartY;
+      // --- Area Chart (bottom left, with axes, no diagonal) ---
+      const areaX = bottomStartX;
+      const areaY = bottomStartY;
       ctx.save();
       // Axes (no diagonal)
       ctx.globalAlpha = 0.45;
@@ -242,9 +242,9 @@ export default function BackgroundVisuals() {
         ctx.restore();
       }
 
-      // --- Horizontal Bar Chart (top left, right of area chart, with axes, no diagonal) ---
-      const hBarX = topStartX + chartGapX;
-      const hBarY = topStartY;
+      // --- Horizontal Bar Chart (bottom left, right of area chart, with axes, no diagonal) ---
+      const hBarX = bottomStartX + chartGapX;
+      const hBarY = bottomStartY;
       // Axes (no diagonal)
       ctx.save();
       ctx.globalAlpha = 0.45;
@@ -323,11 +323,11 @@ export default function BackgroundVisuals() {
         ctx.restore();
       }
 
-      // --- Pie Chart (top left, below area chart) ---
+      // --- Pie Chart (bottom left, below area chart) ---
       let startAngle = t / 3000 % (2 * Math.PI);
       let total = 0;
-      const pieX = topStartX + chartSize / 2;
-      const pieY = topStartY + chartGapY + chartSize / 2;
+      const pieX = bottomStartX + chartSize / 2;
+      const pieY = bottomStartY - chartGapY + chartSize / 2;
       const pieData = [1.2 + Math.sin(t / 1200), 0.8 + Math.cos(t / 900), 1.1 + Math.sin(t / 1700), 0.7 + Math.cos(t / 1400), 0.9 + Math.sin(t / 2100)];
       for (let i = 0; i < pieData.length; i++) total += Math.abs(pieData[i]);
       for (let i = 0; i < pieData.length; i++) {
