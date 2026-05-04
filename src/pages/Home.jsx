@@ -60,7 +60,7 @@ export default function Home() {
     <>
       <BackgroundVisuals />
       {/* Hero Section */}
-      <section className="p-10 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-gray-900 dark:to-gray-800 min-h-[70vh]">
+      <section className="p-10 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-black dark:to-slate-950 min-h-[70vh]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
           {/* Left: Summary Text */}
           <motion.div
@@ -84,12 +84,12 @@ export default function Home() {
                 damping: 20
               }}
               viewport={{ once: true }}
-              className="bg-white/60 dark:bg-white/10 backdrop-blur-md shadow-md rounded-lg p-5 border border-purple-200 dark:border-gray-700 mb-6"
+              className="bg-white/60 dark:bg-white/10 backdrop-blur-md shadow-md rounded-lg p-5 border border-purple-200 dark:border-purple-500/30 dark:shadow-[0_0_20px_rgba(168,85,247,0.2)] mb-6"
             >
-              <h2 className="text-4xl font-bold text-blue-900 dark:text-white mb-4">
+              <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-300 bg-clip-text text-transparent dark:drop-shadow-[0_0_8px_rgba(168,85,247,0.5)] mb-4">
                 Azure Data Engineer
               </h2>
-              <p className="text-lg text-gray-700 dark:text-gray-300 text-justify">
+              <p className="text-lg text-gray-700 dark:text-gray-100 text-justify">
                 with 4+ years of experience across Cloud Infrastructure, ETL Design, and DevOps Automation. Specialized in building scalable Azure data platforms using Azure Data Factory, Databricks, ADLS Gen 2, and Fabric. Proven expertise in developing CI/CD pipelines, optimizing cloud costs, and delivering high-performance data solutions processing billions of records efficiently on daily basis. Strong track record of improving system efficiency, enabling automation, and driving business insights through data visualization.
               </p>
             </motion.div>
@@ -125,7 +125,7 @@ export default function Home() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             />
             <div className="flex justify-center">
-              <p className="mt-4 text-sm text-gray-600 dark:text-gray-400 text-center max-w-xs">
+              <p className="mt-4 text-sm text-gray-600 dark:text-gray-300 text-center max-w-xs">
                 Overall technical expertise summarized in a picture.
               </p>
             </div>
@@ -134,8 +134,8 @@ export default function Home() {
       </section>
 
       {/* Achievements Section */}
-      <section className="p-10 bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 text-left">
-        <h3 className="text-2xl font-bold text-purple-800 dark:text-white mb-6 text-center">
+      <section className="p-10 bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100 dark:from-black dark:via-slate-950 dark:to-black text-left">
+        <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-300 dark:to-pink-300 bg-clip-text text-transparent dark:drop-shadow-[0_0_8px_rgba(236,72,153,0.5)] mb-6 text-center">
           🏆 Achievements
         </h3>
 
@@ -156,10 +156,10 @@ export default function Home() {
                 damping: 20
               }}
               viewport={{ once: true }}
-              className="bg-white/60 dark:bg-white/10 backdrop-blur-md shadow-md rounded-lg p-5 flex items-start space-x-4 border border-purple-200 dark:border-gray-700"
+              className="bg-white/60 dark:bg-white/10 backdrop-blur-md shadow-md rounded-lg p-5 flex items-start space-x-4 border border-purple-200 dark:border-purple-500/30 dark:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
             >
               <div>{item.icon}</div>
-              <p className="text-gray-700 dark:text-gray-300 text-justify">{item.text}</p>
+              <p className="text-gray-700 dark:text-gray-100 text-justify">{item.text}</p>
             </motion.div>
           ))}
         </div>
