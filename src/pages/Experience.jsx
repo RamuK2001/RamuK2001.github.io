@@ -5,7 +5,7 @@ import BackgroundVisuals from "../components/BackgroundVisuals";
 
 const highlight = (text) => {
   return text
-    .replace(/\b(Azure|ADF|ADB|DevOps|Databricks|Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental|Unity Catalog|HTML|Vacuum|Optimize|Partitioning|Z-Ordering|Liquid Clustering|Row-Level Security|REST APIs|Microsoft Fabric)\b/g, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
+    .replace(/\b(Azure|ADF|Databricks|DevOps|Databricks|Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental|Unity Catalog|HTML|Vacuum|Optimize|Partitioning|Z-Ordering|Liquid Clustering|Row-Level Security|REST APIs|Microsoft Fabric)\b/g, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
     .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records|\d+ billion)/g, '<span class="font-semibold text-green-700 dark:text-green-400">$1</span>')
     .replace(/\b(gigabytes|terabytes)\b/g, '<span class="font-semibold text-pink-700 dark:text-pink-400">$1</span>')
     .replace(/\b(CSV|JSON|XML|PARQUET)\b/g, '<span class="italic">$1</span>');
@@ -26,7 +26,7 @@ const experienceData = [
           "Developed PowerShell scripts and used Azure Automation Accounts to generate weekly cost and job performance reports, reducing manual work by 95%.",
           "Managed production deployments, bug fixes, and enhancements during monthly release cycles through automated DevOps pipelines.",
           "Analyzed weekly Azure cost reports to identify anomalies and provide optimization insights.",
-          "Integrated Azure services (ADF, ADB) with Azure DevOps for streamlined version control and collaboration.",
+          "Integrated Azure services (ADF, Databricks) with Azure DevOps for streamlined version control and collaboration.",
           "Authored comprehensive documentation in Azure Wiki detailing infrastructure configurations, CI/CD workflows, and DevOps security practices.",
         ],
         tags: [
@@ -43,18 +43,17 @@ const experienceData = [
       {
         title: "ETL & Data Engineering",
         description: [
-          "Built scheduled ADF pipelines integrated with ADLS and ADB to migrate terabytes of on-premise data (SAP, SFTP, Salesforce, on-prem DBs) to Azure Unity Catalog with 99% success rate.",
+          "Built scheduled ADF pipelines integrated with ADLS and Databricks to migrate terabytes of on-premise data (SAP, SFTP, Salesforce, on-prem DBs) to Azure Unity Catalog with 99% success rate.",
           "Created detailed logging and HTML-based email alerts in ADF to notify stakeholders of failures.",
           "Developed PySpark jobs to process gigabytes of data daily in various formats (CSV, JSON, XML, PARQUET) with optimal performance.",
-          "Created Logic App workflows to extract SAP data via RFC and orchestrated end-to-end data flow through ADF and ADB.",
+          "Created Logic App workflows to extract SAP data via RFC and orchestrated end-to-end data flow through ADF and Databricks.",
           "Engineered event-triggered pipelines to auto-load files from ADLS to target tables, handling 20+ files/day with 99% automation.",
-          "Automated Vacuum and Optimize operations in ADB, improving storage costs and table performance",
-          "Improved Databricks cluster performance and cost efficiency using optimization techniques like Partitioning, Z-Ordering and Liquid Clustering.",
-          "Scheduled ADB jobs using CRON syntax and configured using job clusters for efficient resource use.",
-          "Handled production-level CI/CD for ADB jobs and resolved critical issues including Row-Level Security and concurrency bugs.",
-          "Designed product categorization job in ADB for over 3 billion records data using lookup tables, keyword matching, and LLM-based approaches, achieving over 90% accuracy.",
-          "Developed generic ADB jobs to ingest both historic and incremental data extracted from on-prem DBs using JDBC into Delta Lake.",
-          "Built scheduled data pipelines in Microsoft Fabric to ingest data into a Lakehouse from multiple sources (ADLS, OneLake, and AWS S3 Bucket).",
+          "Automated Vacuum and Optimize operations in Databricks, improving storage costs and table performance by 30%.",
+          "Improved Databricks cluster performance and cost efficiency using optimization techniques like Partitioning, Z-Ordering, Broadcasting, Caching and Liquid Clustering.",
+          "Scheduled Databricks jobs using CRON syntax and leveraged job clusters for efficient resource usage.",
+          "Handled production-level CI/CD for Databricks jobs and resolved critical issues including Row-Level Security and concurrency bugs.",
+          "Developed generic Databricks jobs to ingest both historic and incremental data extracted from on-prem Databases using JDBC into Delta Lake.",
+          "Performed a POC in Microsoft Fabric to ingest data into a Lakehouse from multiple sources (ADLS, OneLake, and AWS S3 Bucket).",
         ],
         tags: [
           "Azure Data Factory",
@@ -72,15 +71,15 @@ const experienceData = [
       {
         title: "Data Transformations using LLM",
         description: [
-          "Built a Power BI SLA matrix report to monitor the SLA breaches in ServiceNow incidents and service requests.",
-          "Designed centralized Power BI dashboard to monitor production ADF pipelines using embedded logs for near real-time visibility.",
-          "Developed an interactive report in Microsoft Fabric to visualize sales and revenue data using aggregated metrics like Month-To-Date (MTD) and Year-To-Date (YTD).",
-          "Leveraged REST APIs to trigger near real-time report refreshes, effectively overcoming the scheduling limitations of the Power BI service.",
-          "Collaborated with business teams to define visualization needs, identify KPIs, and streamline reporting logic for dashboards.",
+          "Led a team of 5 to design a product categorization job in Databricks for over 2.5 billion records data using lookup tables, keyword matching, and LLM-based approaches, achieving over 90% accuracy.",
+          "Engineered a cost-optimized LLM processing strategy by sampling 0.2% of over 2.5 billion records of data to generalize classification, significantly reducing compute costs while maintaining accuracy.",
+          "Developed a prompting framework in Databricks using Python to optimize LLM performance for data categorization, increasing accuracy by 20%.",
+          "Leveraged Mostly AI SDK to generate synthetic data for testing and validation of data pipelines, effectively preventing use of production data for testing purposes and ensuring data privacy.",
+          "Implemented RAI policies in Azure Open AI to ensure responsible AI usage and compliance with organizational guidelines with appropriate content filtering.",
         ],
         tags: [
           "Azure Open AI",
-          "Azure Data Factory",
+          "Mostly AI",
           "Databricks",
           "RAI Policies",
           "Prompt Engineering",
@@ -89,27 +88,29 @@ const experienceData = [
       {
         title: "Reporting & Visualization",
         description: [
-          "Built a Power BI SLA matrix report to monitor the SLA breaches in ServiceNow incidents and service requests.",
+          "Designed and developed AI/BI dashboards in Databricks to monitor LLM usage metrics, including input/output token consumption, request volume, and cost analysis, enabling real-time visibility into model utilization.",
           "Designed centralized Power BI dashboard to monitor production ADF pipelines using embedded logs for near real-time visibility.",
-          "Developed an interactive report in Microsoft Fabric to visualize sales and revenue data using aggregated metrics like Month-To-Date (MTD) and Year-To-Date (YTD).",
-          "Leveraged REST APIs to trigger near real-time report refreshes, effectively overcoming the scheduling limitations of the Power BI service.",
+          "Modeled optimized star schema semantic layers by de-normalizing complex relational datasets into fact and dimension tables, leveraging DAX measures, relationships, and aggregations to improve report query performance by 30%.",
+          "Leveraged REST APIs to trigger near real-time report refreshes, effectively overcoming the scheduling limitations of the Power BI service and reducing data latency from 2 hours to 10 minutes.",
+          "Evaluated Microsoft Fabric against Azure Data Factory and Databricks for reporting use cases, leading to a successful pilot implementation that enhanced user experience and improved data lineage tracking.",
           "Collaborated with business teams to define visualization needs, identify KPIs, and streamline reporting logic for dashboards.",
         ],
         tags: [
           "Power BI",
-          "ServiceNow",
           "Microsoft Fabric",
+          "AI/BI Dashboards",
           "REST APIs",
         ],
       },
       {
         title: "Data Governance & Security",
         description: [
-          "Built a Power BI SLA matrix report to monitor the SLA breaches in ServiceNow incidents and service requests.",
-          "Designed centralized Power BI dashboard to monitor production ADF pipelines using embedded logs for near real-time visibility.",
-          "Developed an interactive report in Microsoft Fabric to visualize sales and revenue data using aggregated metrics like Month-To-Date (MTD) and Year-To-Date (YTD).",
-          "Leveraged REST APIs to trigger near real-time report refreshes, effectively overcoming the scheduling limitations of the Power BI service.",
-          "Collaborated with business teams to define visualization needs, identify KPIs, and streamline reporting logic for dashboards.",
+          "Implemented centralized data governance using Unity Catalog, managing external and managed Delta tables with a unified metastore, enabling fine-grained access control, data lineage tracking, and secure data sharing across environments.",
+          "Utilized Microsoft Purview to classify and catalog datasets from various sources such as Databricks, ADLS and Fabric, enabling data discovery for downstream consumers.",
+          "Established data quality monitoring frameworks for curated Delta tables, profiling datasets to track schema consistency, data freshness, and usage patterns over time.",
+          "Designed and enforced Row-Level Security (RLS) on 100M+ record datasets using Azure AD group-based access control, ensuring secure and role-based data access for downstream consumers.",
+          "Integrated data validation rules within ETL pipelines to enforce business constraints, detect anomalies, and prevent propagation of invalid data into curated layers.",
+          "Collaborated with security teams to implement RBAC policies in Unity Catalog, ensuring least-privilege access and compliance with organizational security standards.",
         ],
         tags: [
           "Databricks Unity Catalog",
