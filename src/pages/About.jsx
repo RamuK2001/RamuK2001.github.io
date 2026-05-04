@@ -64,7 +64,7 @@ const skills = [
 
 export default function About() {
   return (
-    <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-black dark:via-slate-950 dark:to-black">
       <BackgroundVisuals />
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-purple-900 dark:text-white mb-10 text-center">
@@ -83,7 +83,7 @@ export default function About() {
             <h3 className="text-2xl font-semibold text-purple-800 dark:text-white mb-6 text-center">
               💼 Professional Highlights
             </h3>
-            <ul className="list-disc pl-6 text-gray-800 dark:text-gray-200 space-y-4 text-justify">
+            <ul className="list-disc pl-6 text-gray-800 dark:text-gray-100 space-y-4 text-justify">
               {highlights.map((item, index) => (
                 <motion.li
                   key={index}

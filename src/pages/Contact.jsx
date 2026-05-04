@@ -6,9 +6,9 @@ export default function Contact() {
   return (
     <>
       <BackgroundVisuals />
-      <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-black dark:via-slate-950 dark:to-black">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-purple-900 dark:text-white mb-10 text-center">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-300 dark:to-pink-300 bg-clip-text text-transparent dark:drop-shadow-[0_0_8px_rgba(236,72,153,0.5)] mb-10 text-center">
             Contact Me
           </h2>
 
