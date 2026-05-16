@@ -153,6 +153,13 @@ const experienceData = [
 export default function Experience() {
   const [openCompanies, setOpenCompanies] = useState([]);
   const [openProjects, setOpenProjects] = useState({});
+  const isEverythingOpen =
+    openCompanies.length === experienceData.length &&
+    experienceData.every(
+      (exp, companyIndex) =>
+        openCompanies.includes(companyIndex) &&
+        (openProjects[companyIndex] || []).length === exp.projects.length
+    );
 
   const toggleCompany = (index) => {
     setOpenCompanies((prev) =>
@@ -169,6 +176,24 @@ export default function Experience() {
     }));
   };
 
+  const toggleAll = () => {
+    if (isEverythingOpen) {
+      setOpenCompanies([]);
+      setOpenProjects({});
+      return;
+    }
+
+    setOpenCompanies(experienceData.map((_, index) => index));
+    setOpenProjects(
+      experienceData.reduce((projectsByCompany, exp, companyIndex) => {
+        projectsByCompany[companyIndex] = exp.projects.map(
+          (_, projectIndex) => projectIndex
+        );
+        return projectsByCompany;
+      }, {})
+    );
+  };
+
   return (
     <>
       <BackgroundVisuals />
@@ -177,6 +202,27 @@ export default function Experience() {
           <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-300 dark:to-pink-300 bg-clip-text text-transparent dark:drop-shadow-[0_0_8px_rgba(236,72,153,0.5)] mb-10 text-center">
             💼 Experience
           </h2>
+
+          <div className="mb-6 flex justify-center md:justify-end">
+            <button
+              type="button"
+              onClick={toggleAll}
+              aria-pressed={isEverythingOpen}
+              className="inline-flex items-center gap-2 rounded-full bg-purple-600 px-5 py-2 text-sm font-semibold text-white shadow-md transition hover:bg-purple-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-purple-100 dark:focus:ring-offset-slate-950"
+            >
+              {isEverythingOpen ? (
+                <>
+                  <ChevronUp className="h-4 w-4" />
+                  Collapse All
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="h-4 w-4" />
+                  Expand All
+                </>
+              )}
+            </button>
+          </div>
 
           {experienceData.map((exp, index) => {
             const isCompanyOpen = openCompanies.includes(index);
