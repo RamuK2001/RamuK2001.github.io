@@ -10,15 +10,50 @@ export default function BackgroundVisuals() {
     let animationFrameId;
     let width = window.innerWidth;
     let height = window.innerHeight;
+    let chartSize = 110;
+    const chartPadding = 24;
+    const navBarHeight = 64;
+    let isCompact = width < 768;
+
+    function updateLayoutMetrics() {
+      chartSize = Math.max(90, Math.min(130, width * 0.18, height * 0.18));
+      isCompact = width < 768;
+    }
 
     function resize() {
       width = window.innerWidth;
       height = window.innerHeight;
       canvas.width = width;
       canvas.height = height;
+      updateLayoutMetrics();
     }
     window.addEventListener("resize", resize);
     resize();
+
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let prefersReducedMotion = reducedMotionQuery.matches;
+    let scrollY = window.scrollY || 0;
+    let scrollProgress = 0;
+    let easedScrollY = scrollY;
+
+    function updateScrollMetrics() {
+      const doc = document.documentElement;
+      const maxScroll = Math.max(1, doc.scrollHeight - window.innerHeight);
+      scrollY = window.scrollY || doc.scrollTop || 0;
+      scrollProgress = Math.min(1, Math.max(0, scrollY / maxScroll));
+    }
+
+    function updateReducedMotion() {
+      prefersReducedMotion = reducedMotionQuery.matches;
+    }
+
+    window.addEventListener("scroll", updateScrollMetrics, { passive: true });
+    if (reducedMotionQuery.addEventListener) {
+      reducedMotionQuery.addEventListener("change", updateReducedMotion);
+    } else {
+      reducedMotionQuery.addListener(updateReducedMotion);
+    }
+    updateScrollMetrics();
 
     // --- Data Packets (across the screen) ---
     function createPacket() {
@@ -61,12 +96,6 @@ export default function BackgroundVisuals() {
     for (let i = 0; i < 28; i++) {
       packets.push(createPacket());
     }
-
-    // --- Chart Area Sizing ---
-    // All charts: 110x110 px (responsive minimum, increased size)
-    const chartSize = Math.max(90, Math.min(130, width * 0.18, height * 0.18));
-    const chartPadding = 24;
-    const navBarHeight = 64; // px, adjust if your navbar is taller/shorter
 
     // --- Bar Graph (bottom right) ---
     const barCount = 7;
@@ -118,7 +147,88 @@ export default function BackgroundVisuals() {
       "rgba(236,72,153,0.32)",
     ];
 
+    function drawScrollDataRail(t) {
+      const railTop = navBarHeight + chartPadding;
+      const railHeight = Math.max(160, height - railTop - chartPadding);
+      const railInset = isCompact ? 18 : 32;
+      const railXs = isCompact ? [width - railInset] : [railInset, width - railInset];
+      const scrollMotion = prefersReducedMotion ? scrollY : easedScrollY;
+
+      for (let lane = 0; lane < railXs.length; lane++) {
+        const baseX = railXs[lane];
+        const laneDirection = lane % 2 === 0 ? 1 : -1;
+        const laneColor =
+          lane % 2 === 0
+            ? "rgba(59,130,246,0.24)"
+            : "rgba(236,72,153,0.2)";
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.setLineDash([5, 18]);
+        ctx.lineDashOffset = prefersReducedMotion
+          ? 0
+          : -(t * 0.025 + scrollMotion * 0.18 * laneDirection);
+        ctx.moveTo(baseX, railTop);
+        ctx.lineTo(baseX, railTop + railHeight);
+        ctx.globalAlpha = isCompact ? 0.12 : 0.16;
+        ctx.strokeStyle = laneColor;
+        ctx.lineWidth = 1.25;
+        ctx.stroke();
+        ctx.restore();
+
+        for (let i = 0; i < 7; i++) {
+          const y =
+            railTop +
+            ((i * (railHeight / 6) +
+              scrollMotion * (0.05 + lane * 0.025) +
+              (prefersReducedMotion ? 0 : t * 0.018)) %
+              railHeight);
+          const x =
+            baseX +
+            Math.sin(t / 1200 + i * 0.9 + lane) * (isCompact ? 4 : 7);
+          const packetSize = 4 + Math.sin(t / 900 + i) * 1.2;
+
+          ctx.save();
+          ctx.beginPath();
+          ctx.roundRect(
+            x - packetSize / 2,
+            y - packetSize / 2,
+            packetSize,
+            packetSize,
+            1.5
+          );
+          ctx.globalAlpha = isCompact ? 0.28 : 0.36;
+          ctx.fillStyle =
+            i % 3 === 0
+              ? "rgba(168,85,247,0.5)"
+              : i % 3 === 1
+              ? "rgba(59,130,246,0.46)"
+              : "rgba(20,184,166,0.38)";
+          ctx.shadowColor = ctx.fillStyle;
+          ctx.shadowBlur = 6;
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      const progressX = isCompact ? width - railInset : railInset;
+      const progressY = railTop + railHeight * scrollProgress;
+      ctx.save();
+      ctx.beginPath();
+      ctx.roundRect(progressX - 7, progressY - 2, 14, 4, 2);
+      ctx.globalAlpha = 0.42;
+      ctx.fillStyle = "rgba(255,255,255,0.5)";
+      ctx.shadowColor = "rgba(168,85,247,0.4)";
+      ctx.shadowBlur = 8;
+      ctx.fill();
+      ctx.restore();
+    }
+
     function animate(t) {
+      easedScrollY = prefersReducedMotion
+        ? scrollY
+        : easedScrollY + (scrollY - easedScrollY) * 0.08;
+
       ctx.clearRect(0, 0, width, height);
 
       // Subtle gradient background
@@ -128,6 +238,8 @@ export default function BackgroundVisuals() {
       grad.addColorStop(1, "rgba(59,130,246,0.07)");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, width, height);
+
+      drawScrollDataRail(t);
 
       // --- Data Packets (across the screen) ---
       for (let i = 0; i < packets.length; i++) {
@@ -164,14 +276,26 @@ export default function BackgroundVisuals() {
       // --- Chart Placement ---
       // Bottom right: bar, scatter (above), line (left)
       // Top left: area, pie (below area), horizontal bar (right of area)
-      const barX = width - chartSize - chartPadding;
-      const barY = height - chartSize - chartPadding;
+      const scrollDriftX = prefersReducedMotion
+        ? 0
+        : Math.sin(easedScrollY * 0.003) * (isCompact ? 5 : 16);
+      const scrollDriftY = prefersReducedMotion
+        ? 0
+        : Math.cos(easedScrollY * 0.0025) * (isCompact ? 4 : 12);
+      const topScrollDriftX = prefersReducedMotion
+        ? 0
+        : Math.sin(easedScrollY * 0.0024) * (isCompact ? 4 : 14);
+      const topScrollDriftY = prefersReducedMotion
+        ? 0
+        : Math.cos(easedScrollY * 0.002) * (isCompact ? 4 : 10);
+      const barX = width - chartSize - chartPadding - scrollDriftX;
+      const barY = height - chartSize - chartPadding + scrollDriftY;
       const lineX = barX - chartSize - chartPadding;
       const lineY = barY;
 
       // Top left charts (fixed below navbar)
-      const topStartX = chartPadding;
-      const topStartY = navBarHeight + chartPadding;
+      const topStartX = chartPadding + topScrollDriftX;
+      const topStartY = navBarHeight + chartPadding + topScrollDriftY;
       const chartGapY = chartSize + chartPadding * 0.7;
       const chartGapX = chartSize + chartPadding * 0.7;
 
@@ -409,6 +533,12 @@ export default function BackgroundVisuals() {
 
     return () => {
       window.removeEventListener("resize", resize);
+      window.removeEventListener("scroll", updateScrollMetrics);
+      if (reducedMotionQuery.removeEventListener) {
+        reducedMotionQuery.removeEventListener("change", updateReducedMotion);
+      } else {
+        reducedMotionQuery.removeListener(updateReducedMotion);
+      }
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
