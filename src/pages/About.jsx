@@ -75,7 +75,7 @@ const education = {
 const aboutSections = ["summary", "skills", "education"];
 
 export default function About() {
-  const [openSections, setOpenSections] = useState(["summary"]);
+  const [openSections, setOpenSections] = useState([]);
   const isEverythingOpen = aboutSections.every((section) =>
     openSections.includes(section)
   );
