@@ -15,7 +15,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md py-4">
+    <nav className="relative z-50 bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md py-4">
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <h1 className="text-2xl font-bold tracking-tight">RAMAKRISHNA KARNATI</h1>
 
