@@ -84,7 +84,7 @@ export default function Home() {
                 damping: 20
               }}
               viewport={{ once: true }}
-              className="bg-white/60 dark:bg-white/10 backdrop-blur-md shadow-md rounded-lg p-5 border border-purple-200 dark:border-purple-500/30 dark:shadow-[0_0_20px_rgba(168,85,247,0.2)] mb-6"
+              className="relative z-10 bg-white dark:bg-gray-900 shadow-md rounded-lg p-5 border border-purple-200 dark:border-purple-500/30 dark:shadow-[0_0_20px_rgba(168,85,247,0.2)] mb-6"
             >
               <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-300 bg-clip-text text-transparent dark:drop-shadow-[0_0_8px_rgba(168,85,247,0.5)] mb-4">
                 Azure Data Engineer
