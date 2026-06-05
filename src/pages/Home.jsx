@@ -95,7 +95,7 @@ export default function Home() {
             </motion.div>
             <div className="mt-6">
               <a
-                href="/Ramakrishna_Karnati_Data_Engineer.pdf"
+                href="/Ramakrishna_Karnati_Data_Engineer_Resume.pdf"
                 download
                 className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-purple-700 transform hover:scale-105 transition-all duration-300"
               >
