@@ -5,10 +5,10 @@ import BackgroundVisuals from "../components/BackgroundVisuals";
 
 const highlight = (text) => {
   return text
-    .replace(/\b(Azure|ADF|Databricks|DevOps|Databricks|Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental|Unity Catalog|HTML|Vacuum|Optimize|Partitioning|Z-Ordering|Liquid Clustering|Row-Level Security|REST APIs|Microsoft Fabric)\b/g, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
-    .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records|\d+ billion)/g, '<span class="font-semibold text-green-700 dark:text-green-400">$1</span>')
-    .replace(/\b(gigabytes|terabytes)\b/g, '<span class="font-semibold text-pink-700 dark:text-pink-400">$1</span>')
-    .replace(/\b(CSV|JSON|XML|PARQUET)\b/g, '<span class="italic">$1</span>');
+    .replace(/\b(Azure|ADF|Databricks|DevOps|Databricks|Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental|Unity Catalog|HTML|Vacuum|Optimize|Partitioning|Z-Ordering|Liquid Clustering|Row-Level Security|REST APIs|Microsoft Fabric)\b/g, '<span class="font-semibold text-blue-800 dark:text-blue-300 bg-blue-100/50 dark:bg-blue-900/30 px-1 rounded">$1</span>')
+    .replace(/(\d+(?:\.\d+)?%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records|\d+(?:\.\d+)? billion)/g, '<span class="font-semibold text-green-700 dark:text-green-400 bg-green-100/50 dark:bg-green-900/30 px-1 rounded">$1</span>')
+    .replace(/\b(gigabytes|terabytes)\b/g, '<span class="font-semibold text-pink-700 dark:text-pink-400 bg-pink-100/50 dark:bg-pink-900/30 px-1 rounded">$1</span>')
+    .replace(/\b(CSV|JSON|XML|PARQUET)\b/g, '<span class="italic text-purple-700 dark:text-purple-400">$1</span>');
 };
 
 const experienceData = [
@@ -197,7 +197,7 @@ export default function Experience() {
   return (
     <>
       <BackgroundVisuals />
-      <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-black dark:via-slate-950 dark:to-black">
+      <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-black dark:via-black dark:to-black">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-300 dark:to-pink-300 bg-clip-text text-transparent dark:drop-shadow-[0_0_8px_rgba(236,72,153,0.5)] mb-10 text-center">
             💼 Experience
@@ -235,7 +235,7 @@ export default function Experience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="mb-6 bg-white/60 dark:bg-white/10 backdrop-blur-md shadow-md rounded-xl p-5"
+                className="mb-6 bg-white/70 dark:bg-slate-900/50 backdrop-blur-lg border border-white/50 dark:border-slate-800 shadow-lg rounded-xl p-5"
               >
                 <button
                   onClick={() => toggleCompany(index)}
@@ -291,7 +291,7 @@ export default function Experience() {
                                   "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
                               }}
                               whileTap={{ scale: 0.98 }}
-                              className="relative z-10 bg-white dark:bg-gray-900/40 p-4 rounded-xl border border-purple-200 dark:border-purple-600 shadow-md"
+                              className="relative z-10 bg-white/90 dark:bg-slate-800/80 backdrop-blur-sm p-4 rounded-xl border border-purple-200 dark:border-purple-700 shadow-sm transition-shadow hover:shadow-md"
                             >
                               <button
                                 className="flex justify-between items-center w-full text-left"

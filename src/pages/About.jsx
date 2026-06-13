@@ -15,9 +15,9 @@ import BackgroundVisuals from "../components/BackgroundVisuals";
 
 const highlight = (text) => {
   return text
-    .replace(/\b(ADF|ADB|Azure DevOps|Azure Databricks|Azure Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental|Unity Catalog|HTML|Vacuum|Optimize|Partitioning|Z-Ordering|Liquid Clustering|Row-Level Security|REST APIs|Microsoft Fabric|Star|Snowflake|SCDs|SonarQube|ARMTTK|Automation Account|cost|performance|reports|dimension tables|table|artifact|infrastructure|IaC|infrastructure as code|selective deployment|pipeline|cluster|job|metrics|manual effort|near real-time|SLA tracking|job monitoring|performance insights|Led|targeted)\b/gi, '<span class="font-semibold text-blue-700 dark:text-blue-400">$1</span>')
-    .replace(/(\d+%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records|\d+ billion|40%|85%|95%|99%|80%|gigabytes|terabytes)/g, '<span class="font-semibold text-green-700 dark:text-green-400">$1</span>')
-    .replace(/\b(CSV|Excel|JSON|XML|Parquet)\b/g, '<span class="italic">$1</span>');
+    .replace(/\b(ADF|ADB|Azure DevOps|Azure Databricks|Azure Data Factory|VMs|Power BI|ARM templates|YAML|CI\/CD|PySpark|Logic Apps|Delta Lake|LLM|PowerShell|CRON|ServiceNow|Dashboarding|ETL|SQL|SAP|SFTP|Salesforce|ADLS|Terraform|historic|incremental|Unity Catalog|HTML|Vacuum|Optimize|Partitioning|Z-Ordering|Liquid Clustering|Row-Level Security|REST APIs|Microsoft Fabric|Star|Snowflake|SCDs|SonarQube|ARMTTK|Automation Account|cost|performance|reports|dimension tables|table|artifact|infrastructure|IaC|infrastructure as code|selective deployment|pipeline|cluster|job|metrics|manual effort|near real-time|SLA tracking|job monitoring|performance insights|Led|targeted)\b/gi, '<span class="font-semibold text-blue-800 dark:text-blue-300 bg-blue-100/50 dark:bg-blue-900/30 px-1 rounded">$1</span>')
+    .replace(/(\d+(?:\.\d+)?%|\d+B|\d+\+? files\/day|under \d+ minutes|\d+ records|\d+(?:\.\d+)? billion|40%|85%|95%|99%|80%|gigabytes|terabytes)/g, '<span class="font-semibold text-green-700 dark:text-green-400 bg-green-100/50 dark:bg-green-900/30 px-1 rounded">$1</span>')
+    .replace(/\b(CSV|Excel|JSON|XML|Parquet)\b/g, '<span class="italic text-purple-700 dark:text-purple-400">$1</span>');
 };
 
 const highlights = [
@@ -95,7 +95,7 @@ export default function About() {
   };
 
   return (
-    <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-black dark:via-slate-950 dark:to-black">
+    <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-black dark:via-black dark:to-black">
       <BackgroundVisuals />
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-300 dark:to-pink-300 bg-clip-text text-transparent dark:drop-shadow-[0_0_8px_rgba(236,72,153,0.5)] mb-10 text-center">
@@ -129,7 +129,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md p-5"
+            className="bg-white/70 dark:bg-slate-900/50 backdrop-blur-lg border border-white/50 dark:border-slate-800 rounded-xl shadow-lg p-5"
           >
             <button
               type="button"
@@ -178,7 +178,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md p-5"
+            className="bg-white/70 dark:bg-slate-900/50 backdrop-blur-lg border border-white/50 dark:border-slate-800 rounded-xl shadow-lg p-5"
           >
             <button
               type="button"
@@ -245,7 +245,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white/60 dark:bg-white/10 backdrop-blur-md rounded-xl shadow-md p-5"
+            className="bg-white/70 dark:bg-slate-900/50 backdrop-blur-lg border border-white/50 dark:border-slate-800 rounded-xl shadow-lg p-5"
           >
             <button
               type="button"

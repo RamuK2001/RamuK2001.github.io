@@ -60,7 +60,7 @@ export default function Home() {
     <>
       <BackgroundVisuals />
       {/* Hero Section */}
-      <section className="p-10 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-black dark:to-slate-950 min-h-[70vh]">
+      <section className="p-10 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-black dark:to-black min-h-[70vh]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
           {/* Left: Summary Text */}
           <motion.div
@@ -134,7 +134,7 @@ export default function Home() {
       </section>
 
       {/* Achievements Section */}
-      <section className="p-10 bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100 dark:from-black dark:via-slate-950 dark:to-black text-left">
+      <section className="p-10 bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100 dark:from-black dark:via-black dark:to-black text-left">
         <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-300 dark:to-pink-300 bg-clip-text text-transparent dark:drop-shadow-[0_0_8px_rgba(236,72,153,0.5)] mb-6 text-center">
           🏆 Achievements
         </h3>
