@@ -1,76 +1,50 @@
 import { motion } from "framer-motion";
 import BackgroundVisuals from "../components/BackgroundVisuals";
+import { certifications } from "../data/portfolio";
 
 export default function Certifications() {
-  const certifications = [
-    {
-      logo: "/assets/badges/db_professional_badge.png",
-      title: "Databricks Certified: Data Engineer Professional",
-      link: "https://credentials.databricks.com/a433bf7e-4db4-484a-8f3b-bec4761b103b#acc.uQJa82lf",
-    },
-    {
-      logo: "/assets/badges/microsoft-certified-expert-badge.png",
-      title: "Microsoft Certified: Azure Solutions Architect Expert (AZ-305)",
-      link: "https://learn.microsoft.com/api/credentials/share/en-us/RamakrishnaKarnati-9798/6C22BEF46B187286",
-    },
-    {
-      logo: "/assets/badges/dp_600_badge.png",
-      title: "Microsoft Certified: Fabric Analytics Engineer Associate (DP-600)",
-      link: "https://learn.microsoft.com/api/credentials/share/en-us/RamakrishnaKarnati-9798/4758FFFD196B98F",
-    },
-    {
-      logo: "/assets/badges/dp_600_badge.png",
-      title: "Microsoft Certified: Fabric Data Engineer Associate (DP-700)",
-      link: "https://learn.microsoft.com/api/credentials/share/en-us/RamakrishnaKarnati-9798/34249CB5868CC6BB",
-    },
-    {
-      logo: "/assets/badges/az_fundamentals_badge.png",
-      title: "Microsoft Certified: Azure Fundamentals (AZ-900)",
-      link: "https://learn.microsoft.com/api/credentials/share/en-us/RamakrishnaKarnati-9798/470AB1DC400F6146",
-    },
-    {
-      logo: "/assets/badges/az_fundamentals_badge.png",
-      title: "Microsoft Certified: Azure Data Fundamentals (DP-900)",
-      link: "https://learn.microsoft.com/api/credentials/share/en-us/RamakrishnaKarnati-9798/E573B6137CAF15FE",
-    },
-  ];
-
   return (
     <>
       <BackgroundVisuals />
-      <section className="min-h-screen p-10 bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 dark:from-black dark:via-black dark:to-black">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-300 dark:to-pink-300 bg-clip-text text-transparent dark:drop-shadow-[0_0_8px_rgba(236,72,153,0.5)] mb-10 text-center">
-            📜 Certifications
+      <section className="min-h-screen bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 px-4 py-8 dark:from-black dark:via-black dark:to-black sm:px-6 lg:px-10">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-10 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-center text-3xl font-bold text-transparent dark:from-purple-300 dark:to-pink-300 dark:drop-shadow-[0_0_8px_rgba(236,72,153,0.5)]">
+            Certifications
           </h2>
 
           <ul className="space-y-6">
             {certifications.map((cert, index) => (
               <motion.li
-                key={index}
+                key={cert.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{
-                  scale: 1.05,
+                  scale: 1.03,
                   boxShadow:
                     "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
                 }}
-                transition={{ delay: index * 0.1, duration: 0.5, type: "spring", stiffness: 300, damping: 20 }}
+                transition={{
+                  delay: index * 0.1,
+                  duration: 0.5,
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 20,
+                }}
                 viewport={{ once: true }}
-                className="bg-white/60 dark:bg-white/10 backdrop-blur-md p-5 rounded-xl shadow-md"
+                className="rounded-xl bg-white/60 p-5 shadow-md backdrop-blur-md dark:bg-white/10"
               >
                 <a
                   href={cert.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg font-medium text-blue-700 dark:text-blue-400 hover:underline flex items-center gap-2 text-justify"
+                  className="flex items-center gap-3 text-left text-base font-medium text-blue-700 transition hover:underline dark:text-blue-400 sm:text-lg"
                 >
                   <img
                     src={cert.logo}
                     alt={`${cert.title} badge`}
-                    className="w-8 h-8 object-contain rounded bg-white dark:bg-gray-100 p-1"
+                    className="h-10 w-10 shrink-0 rounded bg-white object-contain p-1 dark:bg-gray-100"
                   />
-                  {cert.title}
+                  <span>{cert.title}</span>
                 </a>
               </motion.li>
             ))}

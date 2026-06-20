@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ThemeToggle from './ThemeToggle'; // <-- ADD THIS
+import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,42 +15,54 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="relative z-50 bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md py-4">
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <h1 className="text-2xl font-bold tracking-tight">RAMAKRISHNA KARNATI</h1>
+    <nav
+      className="relative z-50 bg-gradient-to-r from-purple-600 to-blue-600 py-4 text-white shadow-md"
+      aria-label="Primary navigation"
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6">
+        <h1 className="text-lg font-bold tracking-tight sm:text-2xl">
+          <Link to="/" onClick={() => setIsOpen(false)}>
+            RAMAKRISHNA KARNATI
+          </Link>
+        </h1>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-4 font-medium">
+        <div className="hidden items-center space-x-4 font-medium md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               to={link.to}
-              className="hover:bg-white hover:text-purple-700 px-3 py-1 rounded-md transition"
+              className="rounded-md px-3 py-1 transition hover:bg-white hover:text-purple-700 focus:outline-none focus:ring-2 focus:ring-white/70"
             >
               {link.label}
             </Link>
           ))}
-          <ThemeToggle /> {/* <-- Add toggle here */}
+          <ThemeToggle />
         </div>
 
-        {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-white focus:outline-none"
+          type="button"
+          className="text-white focus:outline-none focus:ring-2 focus:ring-white/70 md:hidden"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
         >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isOpen ? (
+            <X className="h-6 w-6" aria-hidden="true" />
+          ) : (
+            <Menu className="h-6 w-6" aria-hidden="true" />
+          )}
         </button>
       </div>
 
-      {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="md:hidden mt-4 space-y-2">
+        <div id="mobile-navigation" className="mt-4 space-y-2 md:hidden">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               to={link.to}
               onClick={() => setIsOpen(false)}
-              className="block bg-white text-purple-700 font-medium px-4 py-2 rounded-md shadow hover:bg-purple-100 mx-4 transition"
+              className="mx-4 block rounded-md bg-white px-4 py-2 font-medium text-purple-700 shadow transition hover:bg-purple-100 focus:outline-none focus:ring-2 focus:ring-white/70"
             >
               {link.label}
             </Link>
