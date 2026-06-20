@@ -112,7 +112,7 @@ export default function Home() {
               <a
                 href="/Ramakrishna_Karnati_Data_Engineer_Resume.pdf"
                 download
-                className="inline-flex items-center gap-2 rounded-full bg-purple-600 px-6 py-2 text-white opacity-100 shadow-lg transition-all duration-300 hover:scale-105 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-purple-100 dark:focus:ring-offset-black"
+                className="relative z-10 inline-flex items-center gap-2 rounded-full bg-purple-600 px-6 py-2 text-white opacity-100 shadow-lg transition-all duration-300 hover:scale-105 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-purple-100 dark:focus:ring-offset-black"
               >
                 <FileDown className="h-5 w-5" aria-hidden="true" />
                 Download My Resume
