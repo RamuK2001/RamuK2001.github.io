@@ -91,10 +91,12 @@ export default function Home() {
             </motion.div>
 
             <div className="relative z-10 grid grid-cols-2 gap-3 sm:grid-cols-5">
-              {profileMetrics.map((metric) => (
+              {profileMetrics.map((metric, index) => (
                 <div
                   key={metric.label}
-                  className="rounded-lg border border-purple-200 bg-white/75 px-3 py-4 text-center shadow-sm backdrop-blur-md dark:border-purple-500/30 dark:bg-white/10"
+                  className={`rounded-lg border border-purple-200 bg-white/75 px-3 py-4 text-center shadow-sm backdrop-blur-md dark:border-purple-500/30 dark:bg-white/10 ${
+                    index === profileMetrics.length - 1 ? "col-span-2 sm:col-span-1" : ""
+                  }`}
                 >
                   <div className="text-2xl font-bold text-purple-700 dark:text-purple-200">
                     {metric.value}
