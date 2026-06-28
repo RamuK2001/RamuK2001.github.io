@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Check, ClipboardCopy } from "lucide-react";
 import BackgroundVisuals from "../components/BackgroundVisuals";
 
 const formEndpoint = "https://formspree.io/f/mjkokndo";
 
 export default function Contact() {
   const [formStatus, setFormStatus] = useState("idle");
+  const [copied, setCopied] = useState(null);
   const [statusMessage, setStatusMessage] = useState("");
   const isSubmitting = formStatus === "submitting";
 
@@ -50,6 +52,13 @@ export default function Contact() {
     }
   };
 
+  const handleCopy = (text, type) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(type);
+      setTimeout(() => setCopied(null), 2000);
+    });
+  };
+
   return (
     <>
       <BackgroundVisuals />
@@ -58,6 +67,10 @@ export default function Contact() {
           <h2 className="mb-10 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-center text-3xl font-bold text-transparent dark:from-purple-300 dark:to-pink-300 dark:drop-shadow-[0_0_8px_rgba(236,72,153,0.5)]">
             Contact Me
           </h2>
+
+          <p className="mx-auto mb-8 max-w-2xl text-center text-gray-700 dark:text-gray-300">
+            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious team. Whether you have a question or just want to say hi, I&apos;ll do my best to get back to you!
+          </p>
 
           <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
             <motion.form
@@ -147,17 +160,33 @@ export default function Contact() {
               </h3>
 
               <div className="flex items-center gap-3">
-                <FaPhone className="shrink-0 text-purple-600" aria-hidden="true" />
-                <a href="tel:+917207000030" className="text-blue-700 hover:underline dark:text-blue-400">
-                  +91 7207000030
-                </a>
-              </div>
-
-              <div className="flex items-center gap-3">
                 <FaEnvelope className="shrink-0 text-purple-600" aria-hidden="true" />
                 <a href="mailto:ramukarnati2001@gmail.com" className="break-all text-blue-700 hover:underline dark:text-blue-400">
                   ramukarnati2001@gmail.com
                 </a>
+                <button
+                  type="button"
+                  onClick={() => handleCopy("ramukarnati2001@gmail.com", "email")}
+                  className="ml-auto rounded-md p-1 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+                  aria-label="Copy email"
+                >
+                  {copied === "email" ? <Check className="h-4 w-4 text-green-500" /> : <ClipboardCopy className="h-4 w-4 text-gray-500" />}
+                </button>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <FaPhone className="shrink-0 text-purple-600" aria-hidden="true" />
+                <a href="tel:+917207000030" className="text-blue-700 hover:underline dark:text-blue-400">
+                  +91 7207000030
+                </a>
+                <button
+                  type="button"
+                  onClick={() => handleCopy("+917207000030", "phone")}
+                  className="ml-auto rounded-md p-1 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+                  aria-label="Copy phone number"
+                >
+                  {copied === "phone" ? <Check className="h-4 w-4 text-green-500" /> : <ClipboardCopy className="h-4 w-4 text-gray-500" />}
+                </button>
               </div>
 
               <div className="flex items-center gap-3">
@@ -188,6 +217,10 @@ export default function Contact() {
                 <FaMapMarkerAlt className="shrink-0 text-purple-600" aria-hidden="true" />
                 <span>Hyderabad, India</span>
               </div>
+
+              <p className="border-t border-gray-300 pt-4 text-center text-sm text-gray-600 dark:border-gray-700 dark:text-gray-400">
+                I typically respond to messages within 24-48 hours.
+              </p>
             </motion.div>
           </div>
         </div>
