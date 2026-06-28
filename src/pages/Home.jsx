@@ -88,6 +88,16 @@ export default function Home() {
               <p className="text-left text-base leading-7 text-gray-700 dark:text-gray-100 sm:text-lg">
                 With 4+ years of experience across Cloud Infrastructure, ETL Design, and DevOps Automation. Specialized in building scalable Azure data platforms using Azure Data Factory, Databricks, ADLS Gen 2, and Fabric. Proven expertise in developing CI/CD pipelines, optimizing cloud costs, and delivering high-performance data solutions processing billions of records efficiently on a daily basis.
               </p>
+              <div className="mt-6 flex justify-center md:justify-start">
+                <a
+                  href="/Ramakrishna_Karnati_Data_Engineer_Resume.pdf"
+                  download
+                  className="relative z-10 inline-flex items-center gap-2 rounded-full bg-purple-600 px-6 py-2 text-white opacity-100 shadow-lg transition-all duration-300 hover:scale-105 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-purple-100 dark:focus:ring-offset-black"
+                >
+                  <FileDown className="h-5 w-5" aria-hidden="true" />
+                  Download My Resume
+                </a>
+              </div>
             </motion.div>
 
             <div className="relative z-10 grid grid-cols-2 gap-3 sm:grid-cols-5">
@@ -106,17 +116,6 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-            </div>
-
-            <div className="mt-6">
-              <a
-                href="/Ramakrishna_Karnati_Data_Engineer_Resume.pdf"
-                download
-                className="relative z-10 inline-flex items-center gap-2 rounded-full bg-purple-600 px-6 py-2 text-white opacity-100 shadow-lg transition-all duration-300 hover:scale-105 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-purple-100 dark:focus:ring-offset-black"
-              >
-                <FileDown className="h-5 w-5" aria-hidden="true" />
-                Download My Resume
-              </a>
             </div>
           </motion.div>
 

@@ -113,8 +113,6 @@ export const skills = [
       "Adaptability",
       "Quick learning ability",
       "Attention to detail",
-      "Googling",
-      "AI Prompting",
     ],
   },
 ];
