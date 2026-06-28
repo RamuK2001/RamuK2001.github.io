@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { animate, motion, useInView, useMotionValue, useTransform } from "framer-motion";
 import {
   Award,
   BadgeCheck,
@@ -51,6 +52,34 @@ function renderAchievementText(text) {
       </a>
     );
   });
+}
+
+function AnimatedNumber({ value }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  const numericValue = parseInt(value.match(/\d+/)[0], 10);
+  const suffix = value.substring(numericValue.toString().length);
+
+  const count = useMotionValue(1);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(count, numericValue, {
+        duration: 1,
+        ease: "easeOut",
+      });
+      return () => controls.stop();
+    }
+  }, [isInView, count, numericValue]);
+
+  return (
+    <span ref={ref}>
+      <motion.span>{rounded}</motion.span>
+      {suffix}
+    </span>
+  );
 }
 
 export default function Home() {
@@ -109,7 +138,7 @@ export default function Home() {
                   }`}
                 >
                   <div className="text-2xl font-bold text-purple-700 dark:text-purple-200">
-                    {metric.value}
+                    <AnimatedNumber value={metric.value} />
                   </div>
                   <div className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-600 dark:text-gray-300">
                     {metric.label}
