@@ -6,9 +6,11 @@ import {
   ChevronUp,
   Cloud,
   Code,
+  ClipboardCheck,
   Database,
   GraduationCap,
   Smile,
+  Star,
   Wrench,
 } from "lucide-react";
 import BackgroundVisuals from "../components/BackgroundVisuals";
@@ -24,6 +26,7 @@ const skillIcons = {
   chart: BarChart,
   tools: Wrench,
   smile: Smile,
+  methodologies: ClipboardCheck,
 };
 
 export default function About() {
@@ -158,35 +161,57 @@ export default function About() {
                   transition={{ duration: 0.35 }}
                   className="overflow-hidden"
                 >
-                  <div className="mt-6 space-y-6">
+                  <p className="mt-4 text-sm text-gray-700 dark:text-gray-400">
+                    My core skills are highlighted with a{" "}
+                    <Star
+                      className="inline-block h-3.5 w-3.5 align-text-bottom text-purple-600 dark:text-purple-400"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    />{" "}
+                    icon for easy identification.
+                  </p>
+                  <div className="mt-4 md:columns-2 md:gap-6">
                     {skills.map((skill, index) => {
                       const Icon = skillIcons[skill.icon] || Code;
 
                       return (
                         <motion.div
                           key={skill.label}
-                          initial={{ opacity: 0, y: 10 }}
+                          initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           transition={{ delay: index * 0.1, duration: 0.5 }}
                           viewport={{ once: true }}
+                          className="mb-6 break-inside-avoid rounded-xl border border-purple-200/50 bg-white/60 p-4 shadow-md backdrop-blur-md dark:border-purple-800/50 dark:bg-slate-800/60"
                         >
-                          <div className="flex items-start gap-3">
-                            <Icon className="mt-1 h-5 w-5 shrink-0 text-purple-600" aria-hidden="true" />
-                            <div>
-                              <h4 className="mb-1 font-semibold text-purple-700 dark:text-purple-300">
-                                {skill.label}
-                              </h4>
-                              <div className="flex flex-wrap gap-2">
-                                {skill.technologies.map((tech) => (
-                                  <span
-                                    key={tech}
-                                    className="rounded-full bg-blue-200 px-3 py-1 text-sm text-blue-900 shadow-sm transition-transform duration-200 hover:scale-105 hover:shadow-md dark:bg-blue-700/40 dark:text-blue-100"
-                                  >
-                                    {tech}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
+                          <div className="flex items-center gap-3">
+                            <Icon
+                              className="h-6 w-6 shrink-0 text-purple-600 dark:text-purple-400"
+                              aria-hidden="true"
+                            />
+                            <h4 className="font-semibold text-purple-800 dark:text-purple-200">
+                              {skill.label}
+                            </h4>
+                          </div>
+                          <div className="mt-3 flex flex-wrap gap-2">
+                            {skill.technologies.map((tech) => (
+                              <span
+                                key={tech.name}
+                                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm shadow-sm ${
+                                  tech.core
+                                    ? "bg-purple-200 font-medium text-purple-900 dark:bg-purple-700/50 dark:text-purple-100"
+                                    : "bg-gray-200 text-gray-800 dark:bg-gray-700/50 dark:text-gray-200"
+                                }`}
+                              >
+                                {tech.core && (
+                                  <Star
+                                    className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                  />
+                                )}
+                                {tech.name}
+                              </span>
+                            ))}
                           </div>
                         </motion.div>
                       );
