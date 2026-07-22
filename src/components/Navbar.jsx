@@ -9,7 +9,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      const nextScrolled = window.scrollY > 10;
+      setScrolled((current) => (current === nextScrolled ? current : nextScrolled));
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -29,7 +30,7 @@ export default function Navbar() {
   return (
     <nav
       className={`sticky top-0 z-50 py-4 shadow-md transition-colors duration-300 ${
-        scrolled ? 'bg-white/80 backdrop-blur-lg dark:bg-slate-900/80' : 'bg-gradient-to-r from-purple-600 to-blue-600'
+        scrolled ? 'bg-white/95 dark:bg-slate-900/95' : 'bg-gradient-to-r from-purple-600 to-blue-600'
       }`}
       aria-label="Primary navigation"
     >
@@ -53,7 +54,7 @@ export default function Navbar() {
             <Link
               key={link.label}
               to={link.to}
-              className={`rounded-md px-3 py-1 transition-all duration-300 focus:outline-none focus:ring-2 ${
+              className={`rounded-md px-3 py-1 transition-colors duration-200 focus:outline-none focus:ring-2 ${
                 scrolled
                   ? 'hover:text-purple-600 dark:hover:text-purple-400 focus:ring-purple-500'
                   : 'hover:bg-white/20 focus:ring-white/70'
@@ -97,7 +98,7 @@ export default function Navbar() {
               key={link.label}
               to={link.to}
               onClick={() => setIsOpen(false)}
-              className={`mx-4 block rounded-md px-4 py-2 font-medium shadow transition-all duration-300 focus:outline-none focus:ring-2 ${
+              className={`mx-4 block rounded-md px-4 py-2 font-medium shadow transition-colors duration-200 focus:outline-none focus:ring-2 ${
                 scrolled
                   ? 'bg-white/80 text-purple-700 hover:bg-purple-100 focus:ring-purple-500 dark:bg-slate-800/80 dark:text-purple-300 dark:hover:bg-slate-700'
                   : 'bg-white/10 text-white hover:bg-white/20 focus:ring-white/70'

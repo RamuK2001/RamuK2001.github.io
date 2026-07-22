@@ -1,16 +1,18 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Experience from "./pages/Experience";
 import Contact from './pages/Contact';
 import Certifications from './pages/Certifications';
 import Navbar from './components/Navbar';
+import BackgroundVisuals from './components/BackgroundVisuals';
 
 export default function App() {
   return (
     <Router>
       <div className="min-h-screen font-sans bg-gray-50 text-gray-800">
+        <BackgroundVisuals />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

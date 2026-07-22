@@ -1,5 +1,3 @@
-import { useEffect, useRef } from "react";
-import { animate, motion, useInView, useMotionValue, useTransform } from "framer-motion";
 import {
   Award,
   BadgeCheck,
@@ -9,7 +7,6 @@ import {
   Star,
   ThumbsUp,
 } from "lucide-react";
-import BackgroundVisuals from "../components/BackgroundVisuals";
 import { achievements, profileMetrics } from "../data/portfolio";
 
 const achievementIcons = {
@@ -54,64 +51,14 @@ function renderAchievementText(text) {
   });
 }
 
-function AnimatedNumber({ value }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  const numericValue = parseInt(value.match(/\d+/)[0], 10);
-  const suffix = value.substring(numericValue.toString().length);
-
-  const count = useMotionValue(1);
-  const rounded = useTransform(count, (latest) => Math.round(latest));
-
-  useEffect(() => {
-    if (isInView) {
-      const controls = animate(count, numericValue, {
-        duration: 1,
-        ease: "easeOut",
-      });
-      return () => controls.stop();
-    }
-  }, [isInView, count, numericValue]);
-
-  return (
-    <span ref={ref}>
-      <motion.span>{rounded}</motion.span>
-      {suffix}
-    </span>
-  );
-}
-
 export default function Home() {
   return (
     <>
-      <BackgroundVisuals />
       <section className="min-h-[70vh] bg-gradient-to-r from-blue-100 to-purple-100 px-4 py-8 dark:from-black dark:to-black sm:px-6 lg:px-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-10 md:flex-row">
-          <motion.div
-            className="text-center md:w-1/2 md:text-left"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              whileHover={{
-                scale: 1.03,
-                boxShadow:
-                  "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 20,
-              }}
-              viewport={{ once: true }}
-              className="relative z-10 mb-6 rounded-lg border border-purple-200 bg-white p-5 shadow-md dark:border-purple-500/30 dark:bg-gray-900 dark:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
-            >
-              <h2 className="mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent dark:from-blue-300 dark:to-purple-300 dark:drop-shadow-[0_0_8px_rgba(168,85,247,0.5)] sm:text-4xl">
+          <div className="text-center md:w-1/2 md:text-left">
+            <div className="relative z-10 mb-6 rounded-lg border border-purple-200 bg-white p-5 shadow-md dark:border-purple-500/30 dark:bg-gray-900">
+              <h2 className="mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent dark:from-blue-300 dark:to-purple-300 sm:text-4xl">
                 Azure Data Engineer
               </h2>
               <p className="text-left text-base leading-7 text-gray-700 dark:text-gray-100 sm:text-lg">
@@ -121,24 +68,24 @@ export default function Home() {
                 <a
                   href="/Ramakrishna_Karnati_Data_Engineer_Resume.pdf"
                   download
-                  className="relative z-10 inline-flex items-center gap-2 rounded-full bg-purple-600 px-6 py-2 text-white opacity-100 shadow-lg transition-all duration-300 hover:scale-105 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-purple-100 dark:focus:ring-offset-black"
+                  className="relative z-10 inline-flex items-center gap-2 rounded-full bg-purple-600 px-6 py-2 text-white opacity-100 shadow-lg transition-colors duration-200 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-purple-100 dark:focus:ring-offset-black"
                 >
                   <FileDown className="h-5 w-5" aria-hidden="true" />
                   Download My Resume
                 </a>
               </div>
-            </motion.div>
+            </div>
 
             <div className="relative z-10 grid grid-cols-2 gap-3 sm:grid-cols-5">
               {profileMetrics.map((metric, index) => (
                 <div
                   key={metric.label}
-                  className={`rounded-lg border border-purple-200 bg-white/75 px-3 py-4 text-center shadow-sm backdrop-blur-md dark:border-purple-500/30 dark:bg-white/10 ${
+                  className={`rounded-lg border border-purple-200 bg-white/90 px-3 py-4 text-center shadow-sm dark:border-purple-500/30 dark:bg-slate-900/85 ${
                     index === profileMetrics.length - 1 ? "col-span-2 sm:col-span-1" : ""
                   }`}
                 >
                   <div className="text-2xl font-bold text-purple-700 dark:text-purple-200">
-                    <AnimatedNumber value={metric.value} />
+                    {metric.value}
                   </div>
                   <div className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-600 dark:text-gray-300">
                     {metric.label}
@@ -146,37 +93,25 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="text-center md:w-1/2"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
-          >
-            <motion.img
+          <div className="text-center md:w-1/2">
+            <img
               src="/Portfolio_Home.png"
               alt="Infra to insights technical expertise overview"
-              className="mx-auto w-full max-w-xl rounded-xl border-2 border-purple-300 bg-white/60 shadow-lg backdrop-blur-md dark:border-purple-600 dark:bg-white/10"
-              whileHover={{
-                scale: 1.04,
-                boxShadow:
-                  "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="mx-auto w-full max-w-xl rounded-xl border-2 border-purple-300 bg-white/80 shadow-lg dark:border-purple-600 dark:bg-slate-900/70"
             />
             <div className="flex justify-center">
               <p className="mt-4 max-w-xs text-center text-sm text-gray-600 dark:text-gray-300">
                 Overall technical expertise summarized in one view.
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       <section className="bg-gradient-to-br from-purple-100 via-blue-50 to-pink-100 px-4 py-8 text-left dark:from-black dark:via-black dark:to-black sm:px-6 lg:px-10">
-        <h3 className="mb-6 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-center text-2xl font-bold text-transparent dark:from-purple-300 dark:to-pink-300 dark:drop-shadow-[0_0_8px_rgba(236,72,153,0.5)]">
+        <h3 className="mb-6 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-center text-2xl font-bold text-transparent dark:from-purple-300 dark:to-pink-300">
           Achievements
         </h3>
 
@@ -185,22 +120,9 @@ export default function Home() {
             const Icon = achievementIcons[item.icon] || BadgeCheck;
 
             return (
-              <motion.div
+              <div
                 key={`${item.icon}-${index}`}
-                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                whileHover={{
-                  scale: 1.03,
-                  boxShadow:
-                    "0 0 0 0 rgba(0,0,0,0), 0 0 32px 8px rgba(168,85,247,0.25), 0 0 48px 16px rgba(236,72,153,0.18)",
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 20,
-                }}
-                viewport={{ once: true }}
-                className="flex items-start gap-4 rounded-lg border border-purple-200 bg-white/60 p-5 shadow-md backdrop-blur-md dark:border-purple-500/30 dark:bg-white/10 dark:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
+                className="relative z-10 flex items-start gap-4 rounded-lg border border-purple-200 bg-white/85 p-5 shadow-md dark:border-purple-500/30 dark:bg-slate-900/80"
               >
                 <Icon
                   className={`mt-1 h-6 w-6 shrink-0 ${achievementIconClasses[item.icon] || "text-blue-500"}`}
@@ -209,7 +131,7 @@ export default function Home() {
                 <p className="text-left leading-7 text-gray-700 dark:text-gray-100">
                   {renderAchievementText(item.text)}
                 </p>
-              </motion.div>
+              </div>
             );
           })}
         </div>
