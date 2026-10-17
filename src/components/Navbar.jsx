@@ -36,7 +36,7 @@ export default function Navbar() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6">
         <h1
-          className={`text-lg font-bold tracking-tight sm:text-2xl transition-colors duration-300 ${
+          className={`shrink-0 text-lg font-bold tracking-tight sm:text-2xl transition-colors duration-300 ${
             scrolled ? 'text-slate-900 dark:text-slate-50' : 'text-white'
           }`}
         >
@@ -46,7 +46,7 @@ export default function Navbar() {
         </h1>
 
         <div
-          className={`hidden items-center space-x-4 font-medium md:flex transition-colors duration-300 ${
+          className={`hidden items-center space-x-4 font-medium lg:flex transition-colors duration-300 ${
             scrolled ? 'text-slate-700 dark:text-slate-200' : 'text-white'
           }`}
         >
@@ -68,7 +68,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className={`focus:outline-none focus:ring-2 md:hidden transition-colors duration-300 ${
+          className={`focus:outline-none focus:ring-2 lg:hidden transition-colors duration-300 ${
             scrolled
               ? 'text-slate-800 dark:text-slate-200 focus:ring-purple-500'
               : 'text-white focus:ring-white/70'
@@ -89,7 +89,7 @@ export default function Navbar() {
       {isOpen && (
         <div
           id="mobile-navigation"
-          className={`mt-2 space-y-2 border-t pt-2 md:hidden transition-colors duration-300 ${
+          className={`mt-2 space-y-2 border-t pt-2 lg:hidden transition-colors duration-300 ${
             scrolled ? 'border-gray-200/50 dark:border-gray-700/50' : 'border-white/30'
           }`}
         >

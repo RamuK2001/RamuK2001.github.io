@@ -132,14 +132,14 @@ export default function About() {
                   />{" "}
                   icon for easy identification.
                 </p>
-                <div className="mt-4 md:columns-2 md:gap-6">
+                <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
                   {skills.map((skill) => {
                     const Icon = skillIcons[skill.icon] || Code;
 
                     return (
                       <div
                         key={skill.label}
-                        className="mb-6 break-inside-avoid rounded-xl border border-purple-200/50 bg-white/80 p-4 shadow-md dark:border-purple-800/50 dark:bg-slate-800/85"
+                        className="rounded-xl border border-purple-200/50 bg-white/80 p-4 shadow-md dark:border-purple-800/50 dark:bg-slate-800/85"
                       >
                         <div className="flex items-center gap-3">
                           <Icon
@@ -197,12 +197,12 @@ export default function About() {
             </button>
 
             {isSectionOpen("education") ? (
-              <div className="mt-6 flex items-start gap-4 text-left text-gray-800 dark:text-gray-100">
-                <div className="rounded-full bg-blue-200 p-3 text-blue-900 dark:bg-blue-700/40 dark:text-blue-100">
+              <div className="mt-6 flex min-w-0 items-start gap-4 text-left text-gray-800 dark:text-gray-100">
+                <div className="shrink-0 rounded-full bg-blue-200 p-3 text-blue-900 dark:bg-blue-700/40 dark:text-blue-100">
                   <GraduationCap className="h-6 w-6" aria-hidden="true" />
                 </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-purple-700 dark:text-purple-300">
+                <div className="min-w-0 flex-1">
+                  <h4 className="text-lg font-semibold break-words text-purple-700 dark:text-purple-300">
                     {education.degree}
                   </h4>
                   <p className="mt-1 text-sm">{education.institution}</p>

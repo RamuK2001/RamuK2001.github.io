@@ -2,22 +2,27 @@ export const profileMetrics = [
   {
     value: "4+",
     label: "Years of Azure delivery",
+    icon: "briefcase",
   },
   {
     value: "20+ TB",
     label: "Data migrated to Azure",
+    icon: "database",
   },
   {
     value: "85%",
     label: "Faster environment setup",
+    icon: "zap",
   },
   {
     value: "99%",
     label: "Pipeline success rate",
+    icon: "activity",
   },
   {
     value: "6",
     label: "Cloud and data certifications",
+    icon: "award",
   },
 ];
 

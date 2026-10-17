@@ -145,30 +145,30 @@ export default function Contact() {
               Contact Details
             </h3>
 
-            <div className="flex items-center gap-3">
+            <div className="flex min-w-0 items-center gap-3">
               <FaEnvelope className="shrink-0 text-purple-600" aria-hidden="true" />
-              <a href="mailto:ramukarnati2001@gmail.com" className="break-all text-blue-700 hover:underline dark:text-blue-400">
+              <a href="mailto:ramukarnati2001@gmail.com" className="min-w-0 flex-1 break-all text-blue-700 hover:underline dark:text-blue-400">
                 ramukarnati2001@gmail.com
               </a>
               <button
                 type="button"
                 onClick={() => handleCopy("ramukarnati2001@gmail.com", "email")}
-                className="ml-auto rounded-md p-1 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+                className="ml-auto shrink-0 rounded-md p-1 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
                 aria-label="Copy email"
               >
                 {copied === "email" ? <Check className="h-4 w-4 text-green-500" /> : <ClipboardCopy className="h-4 w-4 text-gray-500" />}
               </button>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex min-w-0 items-center gap-3">
               <FaPhone className="shrink-0 text-purple-600" aria-hidden="true" />
-              <a href="tel:+917207000030" className="text-blue-700 hover:underline dark:text-blue-400">
+              <a href="tel:+917207000030" className="min-w-0 flex-1 text-blue-700 hover:underline dark:text-blue-400">
                 +91 7207000030
               </a>
               <button
                 type="button"
                 onClick={() => handleCopy("+917207000030", "phone")}
-                className="ml-auto rounded-md p-1 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+                className="ml-auto shrink-0 rounded-md p-1 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
                 aria-label="Copy phone number"
               >
                 {copied === "phone" ? <Check className="h-4 w-4 text-green-500" /> : <ClipboardCopy className="h-4 w-4 text-gray-500" />}

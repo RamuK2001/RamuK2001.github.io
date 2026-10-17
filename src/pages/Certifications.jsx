@@ -27,8 +27,8 @@ export default function Certifications() {
                   alt={`${cert.title} badge`}
                   className="h-12 w-12 shrink-0 rounded-md bg-white object-contain p-1 shadow-sm dark:bg-gray-800"
                 />
-                <div className="flex-grow">
-                  <h3 className="text-base font-semibold text-purple-800 group-hover:text-purple-600 dark:text-white dark:group-hover:text-purple-300 sm:text-lg">
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-base font-semibold break-words text-purple-800 group-hover:text-purple-600 dark:text-white dark:group-hover:text-purple-300 sm:text-lg">
                     {cert.title}
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
