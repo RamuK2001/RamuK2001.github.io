@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -112,6 +119,12 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
+      {/* Reading scroll progress bar */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-[2.5px] origin-left bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400"
+        style={{ scaleX }}
+      />
     </nav>
   );
 }
