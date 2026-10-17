@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Home from './pages/Home';
 import About from './pages/About';
 import Experience from "./pages/Experience";
@@ -9,41 +9,44 @@ import Certifications from './pages/Certifications';
 import Navbar from './components/Navbar';
 import BackgroundVisuals from './components/BackgroundVisuals';
 
-const pageVariants = {
-  initial: { opacity: 0, y: 8 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.25, ease: "easeOut" } },
-  exit: { opacity: 0, y: -8, transition: { duration: 0.18, ease: "easeIn" } },
-};
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
+
+  return null;
+}
 
 function AnimatedRoutes() {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={location.pathname}
-        variants={pageVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        className="w-full flex-1"
-      >
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/certifications" element={<Certifications />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </motion.div>
-    </AnimatePresence>
+    <motion.div
+      key={location.pathname}
+      initial={{ opacity: 0.85, filter: 'blur(5px)' }}
+      animate={{ opacity: 1, filter: 'blur(0px)' }}
+      transition={{ duration: 0.22, ease: 'easeOut' }}
+      style={{ willChange: 'filter, opacity', transform: 'translateZ(0)' }}
+      className="w-full flex-1"
+    >
+      <Routes location={location}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/experience" element={<Experience />} />
+        <Route path="/certifications" element={<Certifications />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </motion.div>
   );
 }
 
 export default function App() {
   return (
     <Router>
-      <div className="flex min-h-screen flex-col font-sans bg-gray-50 text-gray-800">
+      <ScrollToTop />
+      <div className="flex min-h-screen flex-col font-sans bg-purple-50/40 dark:bg-black text-gray-800 dark:text-gray-100 transition-colors duration-300">
         <BackgroundVisuals />
         <Navbar />
         <AnimatedRoutes />

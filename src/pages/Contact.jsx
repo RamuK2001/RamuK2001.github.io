@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
-import { Check, ClipboardCopy } from "lucide-react";
+import { Check, ClipboardCopy, Loader2, Send } from "lucide-react";
 
 const formEndpoint = "https://formspree.io/f/mjkokndo";
 
@@ -71,7 +72,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
           <form
             onSubmit={handleSubmit}
-            className="relative z-10 space-y-6 rounded-lg bg-white/85 p-6 shadow-md dark:bg-slate-900/85"
+            className="relative z-10 space-y-6 rounded-xl border border-white/50 bg-white/85 p-6 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900/85"
           >
             <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
 
@@ -85,7 +86,7 @@ export default function Contact() {
                 name="name"
                 required
                 disabled={isSubmitting}
-                className="w-full rounded border border-gray-300 bg-white px-3 py-2 text-black focus:outline-none focus:ring-2 focus:ring-purple-400 disabled:cursor-not-allowed disabled:opacity-70 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-black shadow-sm transition-all duration-200 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-400/50 disabled:cursor-not-allowed disabled:opacity-70 dark:border-gray-600 dark:bg-gray-800/90 dark:text-white dark:focus:border-purple-400"
               />
             </div>
 
@@ -99,7 +100,7 @@ export default function Contact() {
                 name="email"
                 required
                 disabled={isSubmitting}
-                className="w-full rounded border border-gray-300 bg-white px-3 py-2 text-black focus:outline-none focus:ring-2 focus:ring-purple-400 disabled:cursor-not-allowed disabled:opacity-70 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-black shadow-sm transition-all duration-200 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-400/50 disabled:cursor-not-allowed disabled:opacity-70 dark:border-gray-600 dark:bg-gray-800/90 dark:text-white dark:focus:border-purple-400"
               />
             </div>
 
@@ -113,34 +114,52 @@ export default function Contact() {
                 rows="5"
                 required
                 disabled={isSubmitting}
-                className="w-full rounded border border-gray-300 bg-white px-3 py-2 text-black focus:outline-none focus:ring-2 focus:ring-purple-400 disabled:cursor-not-allowed disabled:opacity-70 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3.5 py-2.5 text-black shadow-sm transition-all duration-200 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-400/50 disabled:cursor-not-allowed disabled:opacity-70 dark:border-gray-600 dark:bg-gray-800/90 dark:text-white dark:focus:border-purple-400"
               />
             </div>
 
-            <button
+            <motion.button
               type="submit"
               disabled={isSubmitting}
-              className="rounded bg-purple-600 px-6 py-2 text-white transition-colors duration-200 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-purple-100 disabled:cursor-not-allowed disabled:opacity-70 dark:focus:ring-offset-black"
+              whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+              whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-purple-600 px-6 py-2.5 font-medium text-white shadow-md transition-colors duration-200 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-purple-100 disabled:cursor-not-allowed disabled:opacity-70 dark:focus:ring-offset-black"
             >
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </button>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send className="h-4 w-4" aria-hidden="true" />
+                  Send Message
+                </>
+              )}
+            </motion.button>
 
-            {statusMessage ? (
-              <p
-                role="status"
-                aria-live="polite"
-                className={`text-sm font-medium ${
-                  formStatus === "success"
-                    ? "text-green-700 dark:text-green-400"
-                    : "text-red-700 dark:text-red-400"
-                }`}
-              >
-                {statusMessage}
-              </p>
-            ) : null}
+            <AnimatePresence>
+              {statusMessage ? (
+                <motion.p
+                  role="status"
+                  aria-live="polite"
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -4 }}
+                  transition={{ duration: 0.2 }}
+                  className={`text-sm font-medium ${
+                    formStatus === "success"
+                      ? "text-green-700 dark:text-green-400"
+                      : "text-red-700 dark:text-red-400"
+                  }`}
+                >
+                  {statusMessage}
+                </motion.p>
+              ) : null}
+            </AnimatePresence>
           </form>
 
-          <div className="relative z-10 space-y-5 rounded-lg bg-white/85 p-6 text-left text-gray-800 shadow-md dark:bg-slate-900/85 dark:text-gray-200">
+          <div className="relative z-10 space-y-5 rounded-xl border border-white/50 bg-white/85 p-6 text-left text-gray-800 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900/85 dark:text-gray-200">
             <h3 className="text-center text-xl font-semibold text-purple-900 dark:text-white">
               Contact Details
             </h3>
@@ -150,14 +169,38 @@ export default function Contact() {
               <a href="mailto:ramukarnati2001@gmail.com" className="min-w-0 flex-1 break-all text-blue-700 hover:underline dark:text-blue-400">
                 ramukarnati2001@gmail.com
               </a>
-              <button
+              <motion.button
                 type="button"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 onClick={() => handleCopy("ramukarnati2001@gmail.com", "email")}
-                className="ml-auto shrink-0 rounded-md p-1 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+                className="ml-auto shrink-0 rounded-md p-1.5 transition-colors hover:bg-purple-100 dark:hover:bg-purple-900/40"
                 aria-label="Copy email"
               >
-                {copied === "email" ? <Check className="h-4 w-4 text-green-500" /> : <ClipboardCopy className="h-4 w-4 text-gray-500" />}
-              </button>
+                <AnimatePresence mode="wait" initial={false}>
+                  {copied === "email" ? (
+                    <motion.span
+                      key="checked"
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.5, opacity: 0 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    >
+                      <Check className="h-4 w-4 text-green-500" />
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="copy"
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.5, opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <ClipboardCopy className="h-4 w-4 text-gray-500" />
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </motion.button>
             </div>
 
             <div className="flex min-w-0 items-center gap-3">
@@ -165,14 +208,38 @@ export default function Contact() {
               <a href="tel:+917207000030" className="min-w-0 flex-1 text-blue-700 hover:underline dark:text-blue-400">
                 +91 7207000030
               </a>
-              <button
+              <motion.button
                 type="button"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 onClick={() => handleCopy("+917207000030", "phone")}
-                className="ml-auto shrink-0 rounded-md p-1 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+                className="ml-auto shrink-0 rounded-md p-1.5 transition-colors hover:bg-purple-100 dark:hover:bg-purple-900/40"
                 aria-label="Copy phone number"
               >
-                {copied === "phone" ? <Check className="h-4 w-4 text-green-500" /> : <ClipboardCopy className="h-4 w-4 text-gray-500" />}
-              </button>
+                <AnimatePresence mode="wait" initial={false}>
+                  {copied === "phone" ? (
+                    <motion.span
+                      key="checked"
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.5, opacity: 0 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    >
+                      <Check className="h-4 w-4 text-green-500" />
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="copy"
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.5, opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <ClipboardCopy className="h-4 w-4 text-gray-500" />
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </motion.button>
             </div>
 
             <div className="flex items-center gap-3">
